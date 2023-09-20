@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from 'next/link';
 
 interface CircularButtonProps {
   imageUrl: string;
@@ -6,7 +7,8 @@ interface CircularButtonProps {
 }
 const circularbutton: FC<CircularButtonProps> = ({ imageUrl, text }) => {
   return (
-    <button
+    <Link
+      href="/cajas"
       className="w-72 h-72 rounded-full overflow-hidden bg-cover bg-center text-center shadow-lg transition-transform transform hover:scale-105"
       style={{
         backgroundImage: `url(${imageUrl})`,
@@ -17,7 +19,7 @@ const circularbutton: FC<CircularButtonProps> = ({ imageUrl, text }) => {
           {text}
         </div>
       </div>
-    </button>
+    </Link>
   );
 };
 export default circularbutton;

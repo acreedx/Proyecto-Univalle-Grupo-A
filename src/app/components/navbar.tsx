@@ -1,16 +1,19 @@
 const Navbar = () => {
   return (
-    <nav className=" p-4">
-      <div className="container mx-0 flex items-center justify-between">
-        <div className="text-white text-2xl">
-          <img
-            src="../UnivalleLogo.png"
-            alt="icono univalle"
-            className="bg-white w-56"
-          />
+    <nav>
+      <div className="flex justify-between py-1 px-3">
+        <div className="flex items-center gap-5 ">
+          <img className="w-28" src="/UnivalleLogo.png" />
+          <div className="text-center">
+            <h3 className="text-white font-bold text-5xl">UNIVALLE</h3>
+            <hr className="w-64 pb-1 mt-1" />
+            <p className="text-white text-xs">
+              LA RESPUESTA CIENTIFICA AL FUTURO
+            </p>
+          </div>
         </div>
       </div>
-      <hr className="border-t border-white mt-2" />
+      <hr className="border-2" />
     </nav>
   );
 };

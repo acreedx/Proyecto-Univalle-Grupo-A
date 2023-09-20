@@ -1,9 +1,10 @@
 import Circularbutton from "../components/circular-button";
 
+
 function servicios() {
   return (
     <main className="h-full grid gap-40">
-      <h1 className="text-center text-4xl font-bold">Servicios</h1>
+      <h1 className="text-center mt-10 text-4xl font-bold text-white">Servicios</h1>
       <div className="flex gap-16 w-full justify-center">
         <Circularbutton
           imageUrl={

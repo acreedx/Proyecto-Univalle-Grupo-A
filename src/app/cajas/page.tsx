@@ -1,7 +1,7 @@
 import Circularbutton from "../components/circular-button";
 
-function cajas() {
+function Page() {
   return <h1>Cajas</h1>;
 }
 
-export default cajas;
+export default Page;
