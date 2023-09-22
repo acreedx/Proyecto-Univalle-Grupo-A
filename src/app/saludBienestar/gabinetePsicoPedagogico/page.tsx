@@ -25,11 +25,7 @@ function GabinetePsicoPedagogicoPage() {
         </div>
       </div>
       <h1 className="text-center mt-10 text-3xl font-bold text-white">Requisitos</h1>
-      <div className="flex w-full justify-center">
-        <div className="grid grid-cols-3 gap-16">
-          
-        </div>
-      </div>
+      
     </main>
   );
 }
