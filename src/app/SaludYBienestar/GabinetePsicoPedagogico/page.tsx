@@ -1,5 +1,5 @@
 import Circularbutton from "../../components/circular-button";
-import Card from "../../components/card"
+import Card from "../../components/card-gray"
 
 function GabinetePsicoPedagogico() {
   return (

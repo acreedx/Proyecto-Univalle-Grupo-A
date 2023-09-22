@@ -5,7 +5,7 @@ interface cardProps {
     title: string;
     text: string;
 }
-const card: FC<cardProps> = ({ title, text }) => {
+const cardgray: FC<cardProps> = ({ title, text }) => {
   return (
     <>
         <div className="block max-w-sm p-6 bg-gray-500 border border-gray-500 rounded-xl shadow  dark:bg-gray-500 dark:border-gray-500 ">
@@ -15,4 +15,4 @@ const card: FC<cardProps> = ({ title, text }) => {
     </>
   );
 };
-export default card;
+export default cardgray;
