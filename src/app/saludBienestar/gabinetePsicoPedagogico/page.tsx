@@ -1,7 +1,7 @@
 import Circularbutton from "../../components/circular-button";
 import Card from "../../components/card-gray"
 
-function GabinetePsicoPedagogico() {
+function GabinetePsicoPedagogicoPage() {
   return (
     <main className="h-full grid gap-40">
       <h1 className="text-center mt-10 text-5xl font-bold text-white">Gabinete Pisco-Pedagógico</h1>
@@ -34,4 +34,4 @@ function GabinetePsicoPedagogico() {
   );
 }
 
-export default GabinetePsicoPedagogico;
+export default GabinetePsicoPedagogicoPage;
