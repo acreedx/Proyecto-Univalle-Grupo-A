@@ -18,7 +18,7 @@ function servicios() {
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
           text={"Salud y Bienestar"}
-          routeUrl="/SaludYBienestar"
+          routeUrl="/saludBienestar"
         />
         <Circularbutton
           imageUrl={
