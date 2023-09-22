@@ -4,11 +4,12 @@ import Link from 'next/link';
 interface CircularButtonProps {
   imageUrl: string;
   text: string;
+  routeUrl: string;
 }
-const circularbutton: FC<CircularButtonProps> = ({ imageUrl, text }) => {
+const circularbutton: FC<CircularButtonProps> = ({ imageUrl, text, routeUrl }) => {
   return (
     <Link
-      href="/cajas"
+    href={{pathname: routeUrl}}
       className="w-72 h-72 rounded-full overflow-hidden bg-cover bg-center text-center shadow-lg transition-transform transform hover:scale-105"
       style={{
         backgroundImage: `url(${imageUrl})`,
