@@ -1,7 +1,7 @@
 import Circularbutton from "../components/circular-button";
 
 
-function servicios() {
+function ServiciosPage() {
   return (
     <main className="h-full grid gap-40">
       <h1 className="text-center mt-10 text-4xl font-bold text-white">Servicios</h1>
@@ -10,26 +10,26 @@ function servicios() {
           imageUrl={
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
-          text={"Administración"}
-          routeUrl="/administracion"
+          text={"Cafetería"}
+          routeUrl="/servicios/cafeteria"
         />
         <Circularbutton
           imageUrl={
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
-          text={"Salud y Bienestar"}
-          routeUrl="/saludBienestar"
+          text={"Campus deportivo"}
+          routeUrl="/servicios/campusDeportivo"
         />
         <Circularbutton
           imageUrl={
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
-          text={"Servicios"}
-          routeUrl="/servicios"
+          text={"Biblioteca"}
+          routeUrl="/servicios/biblioteca"
         />
       </div>
     </main>
   );
 }
 
-export default servicios;
+export default ServiciosPage;
