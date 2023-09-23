@@ -11,7 +11,7 @@ function BienestarUniversitarioPage() {
       <h1 className="text-center mt-10 text-4xl font-bold text-white">
         Bienestar universitario
       </h1>
-      <div className="mt-8 grid grid-cols-5 grid-rows-1 w-full px-16 gap-x-8 bg-black ">
+      <div className="mt-8 grid grid-cols-5 grid-rows-1 w-full px-16 gap-x-8">
         <div className="col-span-3 bg-green">
           <h2 className="text-center mt-4 text-2xl font-bold text-white mb-2">
             Ubicación
