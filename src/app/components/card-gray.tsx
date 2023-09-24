@@ -1,18 +1,21 @@
 import { FC } from "react";
-import Link from 'next/link';
 
 interface cardProps {
-    title: string;
-    children: any;
+  title: string;
+  children: any;
 }
-const cardgray: FC<cardProps> = ({ title, children }) => {
+
+const CardGray: FC<cardProps> = ({ title, children }) => {
   return (
-    <>
-        <div className="block max-w-sm p-6 bg-gray-500 border border-gray-500 rounded-xl shadow  dark:bg-gray-500 dark:border-gray-500 ">
-            <h5 className="mb-2 text-3xl font-bold tracking-tight text-white dark:text-white text-center">{title}</h5>
-            {children}
-        </div>
-    </>
+    <div className="flex items-center min-h-min justify-center h-80 p-6 bg-gray-500 border border-gray-500 rounded-xl drop-shadow-lg shadow dark:bg-gray-500 dark:border-gray-500">
+      <div className="text-center">
+        <h5 className="mb-2 text-4xl font-bold tracking-tight text-white dark:text-white">
+          {title}
+        </h5>
+        <div className="text-2xl">{children}</div>
+      </div>
+    </div>
   );
 };
-export default cardgray;
+
+export default CardGray;
