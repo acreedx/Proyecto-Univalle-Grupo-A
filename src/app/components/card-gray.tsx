@@ -12,7 +12,7 @@ const CardGray: FC<cardProps> = ({ title, children }) => {
         <h5 className="mb-2 text-4xl font-bold tracking-tight text-white dark:text-white">
           {title}
         </h5>
-        <div className="text-2xl">{children}</div>
+        <div className="text-2xl text-white">{children}</div>
       </div>
     </div>
   );
