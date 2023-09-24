@@ -6,7 +6,7 @@ import CopyToClipboard from "@/app/components/copy-clipboard";
 
 const RequirementInfo = () => {
   return (
-    <div className="col-span-5">
+    <div className="col-span-5 mb-10">
       <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
         Requisitos para usar la clínica odontológica
       </h3>
@@ -110,10 +110,10 @@ function BienestarUniversitarioPage() {
         className="mt-8 flex flex-col w-full px-1 gap-x-1
           min-[320px]:px-2
           sm:gap-x-4 sm:px-4
+          md:grid grid-cols-4 auto-rows-auto
           xl:px-8
           2xl:px-16
-          md:grid grid-cols-4 auto-rows-auto
-          2xl:grid-cols-5 xl:grid-rows-2"
+          2xl:grid-cols-5"
       >
         <Ubication />
         <div className="col-start-1 col-span-4 min-[460px]:flex flex-row 2xl:col-start-4 2xl:col-span-2 gap-x-4">

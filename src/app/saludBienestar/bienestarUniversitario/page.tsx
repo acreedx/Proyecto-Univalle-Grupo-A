@@ -1,4 +1,5 @@
 import VideoPlayer from "@/app/components/video-player";
+import CardGray from "@/app/components/card-gray";
 import HeaderTitle from "@/app/components/header-title";
 import Circularbutton from "@/app/components/circular-button";
 import CopyToClipboard from "@/app/components/copy-clipboard";
@@ -10,8 +11,8 @@ const Ubication = () => {
   const videoHeight = "360";
 
   return (
-    <div className="col-span-3">
-      <h2 className="text-center mt-4 text-3xl font-bold text-white mb-2">
+    <div className="col-span-4 2xl:col-span-3">
+      <h2 className="text-center mt-4 text-xl font-bold text-white mb-2 md:text-2xl xl:text-3xl">
         Ubicación
       </h2>
       <VideoPlayer url={videoUrl} width={videoWidth} height={videoHeight} />
@@ -21,57 +22,63 @@ const Ubication = () => {
 
 const Contacts = () => {
   return (
-    <div className="col-start-4 bg-[#898989] rounded-2xl p-4 text-white">
-      <h3 className="text-center text-3xl font-bold mb-2">Contactos</h3>
-      <ul className="text-[1.5rem]">
-        <li>
-          Teléfonos:
-          <ul className="list-disc pl-6">
+    <div className="mt-10 2xl:mt-0 flex-1">
+      <CardGray
+        title="Contactos"
+        children={
+          <ul>
             <li>
-              <CopyToClipboard text="(591-2) 2001800" />
+              Teléfonos:
+              <ul className="list-disc pl-4 sm:pl-6 xl:pl-4 2xl:pl-6">
+                <li>
+                  <CopyToClipboard text="(591-2) 2001800" />
+                </li>
+                <li>
+                  <CopyToClipboard text="(591-2) 2246725" />
+                </li>
+                <li>
+                  <CopyToClipboard text="(591-2) 2246726" />
+                </li>
+              </ul>
             </li>
             <li>
-              <CopyToClipboard text="(591-2) 2246725" />
-            </li>
-            <li>
-              <CopyToClipboard text="(591-2) 2246726" />
+              Whatsapp:
+              <ul className="list-disc pl-6">
+                <li>
+                  <CopyToClipboard text="+591 77277872" />
+                </li>
+              </ul>
             </li>
           </ul>
-        </li>
-        <li>
-          Whatsapp:
-          <ul className="list-disc pl-6">
-            <li>
-              <CopyToClipboard text="+591 77277872" />
-            </li>
-          </ul>
-        </li>
-      </ul>
+        }
+      />
     </div>
   );
 };
 
 const Schedule = () => {
   return (
-    <div className="col-start-5 bg-[#898989] rounded-2xl p-4 text-white">
-      <h3 className="text-center text-3xl font-bold mb-2">
-        Horarios de atención
-      </h3>
-      <ul className="text-[1.5rem] pl-6 list-disc">
-        <li>Lunes a Viernes: 08:00 a 19:00</li>
-        <li>Sábado: 08:00 a 12:00</li>
-      </ul>
+    <div className="mt-10 2xl:mt-0 flex-1">
+      <CardGray
+        title="Horarios de atención"
+        children={
+          <ul className="list-disc pl-1 sm:pl-2 lg:pl-6 xl:pl-4 2xl:pl-6">
+            <li>Lunes a Viernes: 08:00 a 19:00</li>
+            <li>Sábado: 08:00 a 12:00</li>
+          </ul>
+        }
+      />
     </div>
   );
 };
 
 const Services = () => {
   return (
-    <div className="col-span-5">
-      <h3 className="text-center mt-10 text-3xl font-bold text-white col-start-2 mb-4">
+    <div className="col-span-5 mb-10">
+      <h3 className="mt-10 font-bold text-white col-start-2 mb-4 text-center text-base min-[320px]:text-lg sm:text-xl md:text-2xl xl:text-3xl">
         Servicios de bienestar universitario
       </h3>
-      <div className="flex gap-16 w-full justify-center  col-span-5">
+      <div className="flex gap-2 w-full justify-center col-span-5 flex-col items-center min-[320px]:flex-row">
         <Circularbutton
           imageUrl={
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
@@ -83,7 +90,7 @@ const Services = () => {
           imageUrl={
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
-          text={"Becas y ayudas universitarias"}
+          text={"Becas y ayudas"}
           routeUrl=""
         />
       </div>
@@ -96,12 +103,22 @@ function BienestarUniversitarioPage() {
     <>
       <HeaderTitle
         direction="/saludBienestar"
-        title="Bienestar universitario"
+        title="Bienestar Universitario"
       />
-      <div className="mt-8 grid grid-cols-5 grid-rows-2 w-full px-16 gap-x-8">
+      <div
+        className="mt-8 flex flex-col w-full px-1 gap-x-1
+          min-[320px]:px-2
+          sm:gap-x-4 sm:px-4
+          md:grid grid-cols-4 auto-rows-auto
+          xl:px-8
+          2xl:px-16
+          2xl:grid-cols-5"
+      >
         <Ubication />
-        <Contacts />
-        <Schedule />
+        <div className="col-start-1 col-span-4 min-[460px]:flex flex-row 2xl:col-start-4 2xl:col-span-2 gap-x-4">
+          <Contacts />
+          <Schedule />
+        </div>
         <Services />
       </div>
     </>

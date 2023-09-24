@@ -7,7 +7,7 @@ interface headerTitleProps {
 
 function HeaderTitle({ direction, title }: headerTitleProps) {
   return (
-    <div className="mt-2 mx-2 flex flex-col sm:grid grid-cols-3 sm:mx-16">
+    <div className="mt-2 mx-0 flex flex-col sm:grid grid-cols-3 sm:mx-16">
       <div className="flex items-end justify-center">
         <ButtonNav href={direction} text="Volver" />
       </div>
