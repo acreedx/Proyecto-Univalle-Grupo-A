@@ -1,10 +1,10 @@
 import Circularbutton from "../components/circular-button";
-
+import HeaderTitle from "@/app/components/header-title";
 
 function SaludYBienestarPage() {
   return (
     <main className="h-full grid gap-40">
-      <h1 className="text-center mt-10 text-4xl font-bold text-white">Salud Y Bienestar</h1>
+      <HeaderTitle direction="/" title="Bienestar universitario" />
       <div className="flex gap-16 w-full justify-center">
         <Circularbutton
           imageUrl={
@@ -24,8 +24,8 @@ function SaludYBienestarPage() {
           imageUrl={
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
-          text={"Clinica Odontologica"}
-          routeUrl=""
+          text={"Clínica Odontológica"}
+          routeUrl="/saludBienestar/clinicaOdontologica"
         />
         <Circularbutton
           imageUrl={
