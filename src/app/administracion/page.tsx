@@ -11,7 +11,7 @@ function AdministracionPage() {
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
           text={"Trámites"}
-          routeUrl="/administracion/tramites"
+          routeUrl="/administracion/tramites/procesosAcademicos"
         />
         <Circularbutton
           imageUrl={

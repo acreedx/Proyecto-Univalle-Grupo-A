@@ -11,7 +11,7 @@ function ServiciosPage() {
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
           text={"Cafetería"}
-          routeUrl="/servicios/cafeteria"
+          routeUrl="/servicios/Cafeteria"
         />
         <Circularbutton
           imageUrl={
