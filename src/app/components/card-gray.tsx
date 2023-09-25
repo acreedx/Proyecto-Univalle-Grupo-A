@@ -19,3 +19,4 @@ const CardGray: FC<cardProps> = ({ title, children }) => {
 };
 
 export default CardGray;
+
