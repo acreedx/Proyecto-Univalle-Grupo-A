@@ -4,7 +4,7 @@ import HeaderTitle from "@/app/components/header-title";
 function SaludYBienestarPage() {
   return (
     <main className="h-full grid gap-40">
-      <HeaderTitle direction="/" title="Bienestar universitario" />
+      <HeaderTitle direction="/" title="Salud Y Bienestar" />
       <div className="flex gap-16 w-full justify-center">
         <Circularbutton
           imageUrl={
