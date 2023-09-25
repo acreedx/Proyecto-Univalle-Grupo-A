@@ -1,0 +1,20 @@
+/*
+You do not need to worry about .error {} colliding with any other `.css` or
+`.module.css` files!
+*/
+.description {
+    color: white;
+    background-color: rgba(255, 0, 0, 0);
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 20px;
+  }
+
+.description-item{
+    background-color: #ae046e;
+    padding: 20px;
+    box-shadow: #c7017b 4px 4px 5px ;
+    width: 100%;
+    border-radius: 8px;
+}
