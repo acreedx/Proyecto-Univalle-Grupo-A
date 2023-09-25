@@ -2,6 +2,7 @@ import Circularbutton from "../../components/circular-button";
 import Card from "../../components/card-gray"
 import style from "./page.module.css"
 import VideoPlayer from "@/app/components/video-player";
+import HeaderTitle from "@/app/components/header-title";
 
 function GabinetePsicoPedagogicoPage() {
   const videoUrl =
@@ -10,7 +11,10 @@ function GabinetePsicoPedagogicoPage() {
   const videoHeight = "100%";
   return (
     <main className="h-full grid gap-16">
-      <h1 className="text-center mt-10 text-6xl font-bold text-white">Gabinete Pisco-Pedagógico</h1>
+      <HeaderTitle
+        direction="/saludBienestar"
+        title="Gabinete Psico-Pedagogico"
+      />
       <div className="flex flex-row justify-center gap-10 mx-3">
           <div className="basis-5/12" >
             <VideoPlayer url={videoUrl} width={videoWidth} height={videoHeight} />
