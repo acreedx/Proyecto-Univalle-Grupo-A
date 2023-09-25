@@ -96,7 +96,7 @@ function ProcesosAcademicos() {
                 <div className="flex justify-center">
 
                     <button
-                        className="text-white rounded-full p-2 text-7xl ml-6"
+                        className={`text-white rounded-full p-2 text-7xl ml-6 ${currentPage == 1 ? "invisible" : "visible"}`}
                         onClick={() => goToPage(currentPage - 1)}
                         disabled={currentPage === 1}
                     >
@@ -117,7 +117,7 @@ function ProcesosAcademicos() {
                     </div>
 
                     <button
-                        className="text-white rounded-full p-2 text-7xl mr-6"
+                        className={`text-white rounded-full p-2 text-7xl mr-6 ${currentPage == totalPages ? "invisible" : "visible"}`}
                         onClick={() => goToPage(currentPage + 1)}
                         disabled={currentPage === totalPages}
                     >

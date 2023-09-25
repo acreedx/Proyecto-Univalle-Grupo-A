@@ -20,7 +20,8 @@ function ProcesoAcademico() {
             </h1>
             <div className="grid grid-cols-12 p-10 gap-20 py-0">
                 <div className="col-span-5">
-                    <ImageCarrousel                    
+                    <ImageCarrousel
+                    
                         slides={slides}
                         description={descriptions}
                     ></ImageCarrousel>
@@ -36,8 +37,8 @@ function ProcesoAcademico() {
                         </p>
                     </div>
                 </div>
-                <div className="col-span-7 text-white font-bold m-10 relative">
-                    <ol className="text-2xl text-justify list-decimal grid gap-5">
+                <div className="col-span-7 text-white font-bold m-10 relative ">
+                    <ol className="text-2xl text-justify list-decimal grid gap-5 ">
                         <li>Presentar una Carta Dirigido Al: Ing. Msc. Franklin Nestor Rada solicitando la extensión de documentos de defensa pública </li>
                         <li>
                             Recojo del formulario de Solvencia interna en ventanilla de trámites para su llenado y sellado correspondiente en Dirección de carrera, Biblioteca, Cajas y Plataforma de informaciones
@@ -47,18 +48,19 @@ function ProcesoAcademico() {
                         </li>
                     </ol>
                     <div className="absolute -bottom-10 right-0 mr-10 mb-1 flex flex-row items-center gap-4 justify-center bg-slate-600 rounded-2xl p-3">
-                        <img
-                            src="/icons/clockicon.png"
-                            alt="Encargado icon"
-                            className="w-12"
-                        />
-                        <p className="text-white text-xl font-bold">
-                            Duracion del tramite: 72 hrs
-                        </p>
-                    </div>
+                    <img
+                        src="/icons/clockicon.png"
+                        alt="Encargado icon"
+                        className="w-12"
+                    />
+                    <p className="text-white text-xl font-bold">
+                        Duracion del tramite: 72 hrs
+                    </p>
                 </div>
 
 
+                </div>
+        
             </div>
         </>
     );
