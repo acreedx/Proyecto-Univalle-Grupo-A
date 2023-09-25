@@ -23,35 +23,32 @@ const Ubication = () => {
 const Contacts = () => {
   return (
     <div className="mt-10 2xl:mt-0 flex-1">
-      <CardGray
-        title="Contactos"
-        children={
-          <ul>
-            <li>
-              Teléfonos:
-              <ul className="list-disc pl-4 sm:pl-6 xl:pl-4 2xl:pl-6">
-                <li>
-                  <CopyToClipboard text="(591-2) 2001800" />
-                </li>
-                <li>
-                  <CopyToClipboard text="(591-2) 2246725" />
-                </li>
-                <li>
-                  <CopyToClipboard text="(591-2) 2246726" />
-                </li>
-              </ul>
-            </li>
-            <li>
-              Whatsapp:
-              <ul className="list-disc pl-6">
-                <li>
-                  <CopyToClipboard text="+591 77277872" />
-                </li>
-              </ul>
-            </li>
-          </ul>
-        }
-      />
+      <CardGray title="Contactos">
+        <ul>
+          <li>
+            Teléfonos:
+            <ul className="list-disc pl-4 sm:pl-6 xl:pl-4 2xl:pl-6">
+              <li>
+                <CopyToClipboard text="(591-2) 2001800" />
+              </li>
+              <li>
+                <CopyToClipboard text="(591-2) 2246725" />
+              </li>
+              <li>
+                <CopyToClipboard text="(591-2) 2246726" />
+              </li>
+            </ul>
+          </li>
+          <li>
+            Whatsapp:
+            <ul className="list-disc pl-6">
+              <li>
+                <CopyToClipboard text="+591 77277872" />
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </CardGray>
     </div>
   );
 };
@@ -59,15 +56,12 @@ const Contacts = () => {
 const Schedule = () => {
   return (
     <div className="mt-10 2xl:mt-0 flex-1">
-      <CardGray
-        title="Horarios de atención"
-        children={
-          <ul className="list-disc pl-1 sm:pl-2 lg:pl-6 xl:pl-4 2xl:pl-6">
-            <li>Lunes a Viernes: 08:00 a 19:00</li>
-            <li>Sábado: 08:00 a 12:00</li>
-          </ul>
-        }
-      />
+      <CardGray title="Horarios de atención">
+        <ul className="list-disc pl-1 sm:pl-2 lg:pl-6 xl:pl-4 2xl:pl-6">
+          <li>Lunes a Viernes: 08:00 a 19:00</li>
+          <li>Sábado: 08:00 a 12:00</li>
+        </ul>
+      </CardGray>
     </div>
   );
 };
