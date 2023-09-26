@@ -8,7 +8,7 @@ function ServiciosPage() {
       <div className="flex gap-16 w-full justify-center">
         <Circularbutton
           imageUrl={
-            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+            "https://media.istockphoto.com/id/646314156/vector/restaurant-icon-isolated-vector.jpg?s=612x612&w=0&k=20&c=2qFLVCalkUeQEo75tuBarbGy30Rbvr4bUfalsW9o1cw="
           }
           text={"Cafetería"}
           routeUrl="/servicios/Cafeteria"
