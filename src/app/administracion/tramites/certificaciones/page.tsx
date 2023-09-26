@@ -72,9 +72,8 @@ export default function Certificaciones() {
   };
   return (
     <>
-      <div className="mt-3 md:-ml-24">
-        <HeaderTitle direction="/administracion" title="" />
-      </div>
+       <HeaderTitle direction="/administracion" title="" />
+   
 
 
       <ul className="flex flex-col md:flex-row items-center py-5 p-4 gap-4 justify-center md:-mt-5">
