@@ -16,14 +16,14 @@ function DireccionDeCarrera() {
         <div className="container">
           <div className="flex flex-wrap -mx-4">
             {/* Card 1 */}
-            {jsondata.map((carrera) => (
+            {jsondata.map((carrera, index) => (
             <Cardbutton
               imageUrl={
                 carrera.imagen
               }
               title={carrera.titulo}
               routeUrl={`/administracion/direccionDeCarrera/${carrera.id}`}
-              description={carrera.breveDescripcion}
+              description={carrera.breveDescripcion} key={index}
             />
             ))}
           </div>
