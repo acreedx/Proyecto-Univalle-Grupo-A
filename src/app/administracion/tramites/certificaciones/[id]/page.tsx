@@ -4,15 +4,15 @@ import HeaderTitle from '@/app/components/header-title';
 const slides = [
     "/administracion/tramites.png",
     "/administracion/cajas.png",
-];
+]
 const descriptions = [
     "Tramites se encuentra en el primer piso de la torre innovacion al lado de cajas",
-    "Cajas se encuentran en el primer piso de la torre innovacion al lado de la ventanilla de tramites",
+    "Plataforma de informaciones se encuentra en el primer piso de la torre innovacion",
 ];
-function ProcesoAcademico() {
+function certificaciones() {
     return (
         <>
-          <HeaderTitle direction="/administracion/tramites/procesosAcademicos" title=" Extension de documentos de defensa pública" />
+          <HeaderTitle direction="/administracion/tramites/procesosAcademicos" title="      Certificado de Estudiante Regular" />
       
           <div className="grid grid-cols-1 mt-1 p-5 md:p-10 gap-5 md:gap-20 py-0 xl:grid-cols-12">
             <div className="col-span-7 xl:col-span-5 md:col-span-10">
@@ -35,12 +35,12 @@ function ProcesoAcademico() {
             <div className="col-span-7 text-white font-bold m-5 md:m-10 md:col-span-10 xl:col-span-7 relative">
               <h1 className="mb-5 text-2xl md:text-3xl text-center">Requisitos</h1>
               <ol className="text-lg md:text-2xl text-justify list-decimal grid gap-2 md:gap-5">
-                <li>Presentar una Carta Dirigido Al: Ing. Msc. Franklin Nestor Rada solicitando la extensión de documentos de defensa pública </li>
+                <li>Solicitar el Formulario de Certificado, otorgado por ventanillas de tramites o presentar una Carta (1 ejemplar) de solicitud Dirigido Al: Ing. Msc. Franklin Nestor Rada  </li>
                 <li>
-                  Recojo del formulario de Solvencia interna en ventanilla de trámites para su llenado y sellado correspondiente en Dirección de carrera, Biblioteca, Cajas y Plataforma de informaciones
+                Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa o institucion)
                 </li>
                 <li>
-                  Presentar en la ventanilla de trámites Carta original y fotocopia, Formulario de solvencia (Llenado y sellado), Fotocopia de carnet de identidad (Alumnos Nacionales) o Fotocopia Pasaporte (Con visa vigente) en caso de Alumnos extranjeros
+                Solicitar Estado Economico en Plantaforma de informaciones
                 </li>
               </ol>
               <div className="absolute right-2 md:-bottom-10 md:right-5 flex flex-row items-center gap-2 bg-slate-600 rounded-2xl p-1 md:p-2">
@@ -58,4 +58,4 @@ function ProcesoAcademico() {
         </>
       );
 }
-export default ProcesoAcademico;
+export default certificaciones;
