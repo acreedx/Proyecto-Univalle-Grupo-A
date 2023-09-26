@@ -17,7 +17,7 @@ function ProcesosAcademicos() {
     // Lista de trámites
     const tramites: Tramite[] = [
         {
-            text: "Certificado de alumno regular",
+            text: "Certificado de alumno regular sdsdsds",
             imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
