@@ -4,21 +4,16 @@ import HeaderTitle from '@/app/components/header-title';
 const slides = [
     "/administracion/tramites.png",
     "/administracion/cajas.png",
-    "https://images.pexels.com/photos/6794920/pexels-photo-6794920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/6794920/pexels-photo-6794920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 ];
 const descriptions = [
-    "Tramites se encuentra en la torre innovacion",
-    "Cajas se encuentran en la torre innovacion",
-    "Los jurados externos que participaron en defensas de grado pueden realizar el cobro de su sueldo por cajas",
-    "Los jurados externos que participaron en defensas de grado pueden realizar el cobro de su sueldo por cajas",
+    "Tramites se encuentra en el primer piso de la torre innovacion al lado de cajas",
+    "Cajas se encuentran en el primer piso de la torre innovacion al lado de la ventanilla de tramites",
 ];
 function ProcesoAcademico() {
     return (
         <>
-            <div className="mt-3 -ml-24">
                 <HeaderTitle direction="/administracion/tramites/procesosAcademicos" title="" />
-            </div>
+      
             <h1 className=" text-white text-center font-bold text-4xl p-8 -mt-5">
                 Extension de documentos de defensa publica
             </h1>
