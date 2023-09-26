@@ -8,25 +8,19 @@ const RequirementInfo = () => {
   return (
     <div className="col-span-5 mb-10">
       <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
-        Requisitos para usar el Gabinete Psico-Pedagogico
+        Requisitos para usar los servicios de Gabinete Psico-Pedagógico
       </h3>
       <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
         <div>
           <CardRequirement
-            title="Requisito 1"
-            info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id magna vestibulum, auctor risus ac, tincidunt libero. Fusce vel consectetur tortor, nec facilisis justo. Nullam vel interdum urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae."
+            title="Requisitos - Atención general"
+            info="Ser estudiante, personal administrativo, docente, guardia de seguridad, personal de limpieza en Univalle. Debe presentar su credencial de la universidad al momento de usar este servicio"
           />
         </div>
         <div>
           <CardRequirement
-            title="Requisito 2"
-            info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id magna vestibulum, auctor risus ac, tincidunt libero. Fusce vel consectetur tortor, nec facilisis justo. Nullam vel interdum urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae."
-          />
-        </div>
-        <div>
-          <CardRequirement
-            title="Requisito 3"
-            info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id magna vestibulum, auctor risus ac, tincidunt libero. Fusce vel consectetur tortor, nec facilisis justo. Nullam vel interdum urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae."
+            title="Requisitos - Atención a personal externo"
+            info="Esto incluye a familias o paciente externo. Esto solo es aplicable en casos de emergencia"
           />
         </div>
       </div>
@@ -71,7 +65,7 @@ const Contacts = () => {
           </li>
           <li>
             Whatsapp:
-            <ul className="list-disc pl-6">
+            <ul className="list-disc pl-4 sm:pl-6 xl:pl-4 2xl:pl-6">
               <li>
                 <CopyToClipboard text="+591 77277872" />
               </li>
@@ -99,7 +93,10 @@ const Schedule = () => {
 function GabinetePsicoPedagogicoPage() {
   return (
     <>
-      <HeaderTitle direction="/saludBienestar" title="Gabinete Psico-Pedagogico" />
+      <HeaderTitle
+        direction="/saludBienestar"
+        title="Gabinete Psico-Pedagógico"
+      />
       <div
         className="mt-8 flex flex-col w-full px-1 gap-x-1
           min-[320px]:px-2

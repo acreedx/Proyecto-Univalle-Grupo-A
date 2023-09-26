@@ -8,25 +8,19 @@ const RequirementInfo = () => {
   return (
     <div className="col-span-5 mb-10">
       <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
-        Requisitos para usar la clínica odontológica
+        Requisitos para usar los servicios de clínica odontológica
       </h3>
       <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
         <div>
           <CardRequirement
-            title="Requisito 1"
-            info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id magna vestibulum, auctor risus ac, tincidunt libero. Fusce vel consectetur tortor, nec facilisis justo. Nullam vel interdum urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae."
+            title="Requisitos - Atención general"
+            info="Ser estudiante, personal administrativo, docente, guardia de seguridad, personal de limpieza en Univalle. Debe presentar su credencial de la universidad al momento de usar este servicio"
           />
         </div>
         <div>
           <CardRequirement
-            title="Requisito 2"
-            info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id magna vestibulum, auctor risus ac, tincidunt libero. Fusce vel consectetur tortor, nec facilisis justo. Nullam vel interdum urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae."
-          />
-        </div>
-        <div>
-          <CardRequirement
-            title="Requisito 3"
-            info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id magna vestibulum, auctor risus ac, tincidunt libero. Fusce vel consectetur tortor, nec facilisis justo. Nullam vel interdum urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae."
+            title="Requisitos - Atención a personal externo"
+            info="Esto incluye a familias o paciente externo. Esto solo es aplicable en casos de emergencia"
           />
         </div>
       </div>
@@ -36,7 +30,7 @@ const RequirementInfo = () => {
 
 const Ubication = () => {
   const videoUrl =
-    "https://drive.google.com/uc?id=12UmVcV_XpDeF7V2PhrMQ0opcDXSwCZiJ";
+    "https://drive.google.com/uc?id=1etx-59zNpnuhlY2u4C77Ec4GPa6mX_x8";
   const videoWidth = "100%";
   const videoHeight = "360";
 
@@ -71,7 +65,7 @@ const Contacts = () => {
           </li>
           <li>
             Whatsapp:
-            <ul className="list-disc pl-6">
+            <ul className="list-disc pl-4 sm:pl-6 xl:pl-4 2xl:pl-6">
               <li>
                 <CopyToClipboard text="+591 77277872" />
               </li>
@@ -91,6 +85,11 @@ const Schedule = () => {
           <li>Lunes a Viernes: 08:00 a 19:00</li>
           <li>Sábado: 08:00 a 12:00</li>
         </ul>
+        <br />
+        <p>
+          <span className="font-bold">Ubicación: </span>
+          <span>Piso 2 - Torre Maestra</span>
+        </p>
       </CardGray>
     </div>
   );
