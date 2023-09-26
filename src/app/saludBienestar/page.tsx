@@ -11,7 +11,7 @@ function SaludYBienestarPage() {
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
           text={"Gabinete Medico"}
-          routeUrl=""
+          routeUrl="/saludBienestar/gabineteMedico"
         />
         <Circularbutton
           imageUrl={
