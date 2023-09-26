@@ -18,27 +18,27 @@ function ProcesosAcademicos() {
     const tramites: Tramite[] = [
         {
             text: "Extencion de documentos de defensa publica",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
+            imageUrl: "https://servicios.poder-judicial.go.cr/media/k2/items/cache/d9b208614500b6f80739755fd29fad52_L.jpg",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
         {
             text: "Titulo de provicion nacional",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
+            imageUrl: "https://thumbs.dreamstime.com/b/ic%C3%B4ne-plate-bleue-de-cercle-certificat-119294924.jpg",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
         {
             text: "Extencion de diploma de maestria",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
+            imageUrl: "https://i0.wp.com/enfermeriabuenosaires.com/wp-content/uploads/2018/11/1Maestria-1.png?fit=225%2C240&ssl=1",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
         {
             text: "Convalidacion de materias y traspasos",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
+            imageUrl: "https://moria.aurens.com/content/blog_post/829/1639098738-Notepad-550x585.png",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
         {
             text: "Legalizacion de diploma",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
+            imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
        

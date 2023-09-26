@@ -15,46 +15,23 @@ export default function Solicitudes() {
                 <div className="flex flex-wrap justify-center items-center gap-40">
                     <CircularButton
                         imageUrl={
-                            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+                            "https://cdn.xxl.thumbs.canstockphoto.com/graduation-cap-and-diploma-icon-in-a-flat-design-vector-illustration-vector-clip-art_csp47390116.jpg"
                         }
-                        text={"CERFICADO ALUMNO REGULAR"}
+                        text={"Extencion del supletorio de diploma academico"}
                         routeUrl="/administracion/tramites"
                     />
                     <CircularButton
                         imageUrl={
-                            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+                            "https://2.bp.blogspot.com/-JxbmXVacOHI/TwLEbyQ2GdI/AAAAAAAAD6Y/NWkwIhiiIRI/s1600/28Rename.png"
                         }
-                        text={"CERFICADO ALUMNO REGULAR"}
+                        text={"Cambio de apellido"}
                         routeUrl="/administracion/tramites"
                     />
                     <CircularButton
                         imageUrl={
-                            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+                            "https://th.bing.com/th/id/R.c0edae6b2ed83f05615ccaaf9f0515af?rik=GTx7Y59ScgPxWg&riu=http%3a%2f%2fwww.reflexionesobrasliterarias.com%2fwp-content%2fuploads%2f2019%2f08%2fNacionalidad.png&ehk=Wo50f2rJiOLniXeDN2TeQN2nSxvSIbF0sKVEsvPpB0s%3d&risl=&pid=ImgRaw&r=0"
                         }
-                        text={"CERFICADO ALUMNO REGULAR"}
-                        routeUrl="/administracion/tramites"
-                    />
-                </div>
-                <div className="flex flex-wrap justify-center items-center gap-40">
-                    <CircularButton
-                        imageUrl={
-                            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-                        }
-                        text={"CERFICADO ALUMNO REGULAR"}
-                        routeUrl="/administracion/tramites"
-                    />
-                    <CircularButton
-                        imageUrl={
-                            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-                        }
-                        text={"CERFICADO ALUMNO REGULAR"}
-                        routeUrl="/administracion/tramites"
-                    />
-                    <CircularButton
-                        imageUrl={
-                            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-                        }
-                        text={"CERFICADO ALUMNO REGULAR"}
+                        text={"Cambio de nacionalidad"}
                         routeUrl="/administracion/tramites"
                     />
                 </div>
