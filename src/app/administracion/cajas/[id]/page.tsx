@@ -74,8 +74,7 @@ function Servicios({ params }: { params: { id: number } }) {
               className="w-20"
             />
             <p className="text-white text-xl font-bold">
-              {servicio.encargado} : {servicio.encargado} -{" "}
-              {servicio.nrocontacto}
+              {servicio.cargo} : {servicio.encargado} - {servicio.nrocontacto}
             </p>
           </div>
         </div>
