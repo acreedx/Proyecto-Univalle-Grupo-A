@@ -1,0 +1,39 @@
+.Titulo{
+    margin-top: 50px;
+}
+
+.text-titulo{
+    font-size: 50px;
+    color:white;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Espacio entre los contenedores */
+    padding: 20px; /* Espacio interior */
+    margin-top: 100px;
+    margin-left: 100px;
+}
+  
+  /* Estilos para el contenedor de texto en la parte izquierda */
+.text-container {
+    width: 950px;
+    margin-right: 20px; /* Espacio a la derecha del contenedor de texto */
+}
+  
+/* Estilos para el contenedor de imagen en la parte derecha */
+.image-container {
+    margin-left: 200px;
+    /*flex: 1; /* Ocupa el espacio disponible */
+}
+
+/* Estilos para el texto personalizado */
+.custom-text {
+    font-size: 40px; /* Cambia el tamaño de la letra */
+    color: white; /* Cambia el color de la letra (puedes usar nombres de colores o códigos hexadecimales) */
+}
+
+.parrafos {
+    font-size: 25px;
+    color: white;
+}
