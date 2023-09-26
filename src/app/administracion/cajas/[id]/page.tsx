@@ -1,18 +1,15 @@
 "use client";
-import { FC } from "react";
 import ImageCarrousel from "@/app/components/image-carrousel";
-import { useRouter } from "next/router";
+import HeaderTitle from "@/app/components/header-title";
 const slides = [
-  "https://images.pexels.com/photos/6794920/pexels-photo-6794920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/6794920/pexels-photo-6794920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/6794920/pexels-photo-6794920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/6794920/pexels-photo-6794920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "/administracion/cajas.png",
+  "/administracion/cajas.png",
+  "/administracion/cajas.png",
 ];
 const descriptions = [
-  "Los jurados externos que participaron en defensas de grado pueden realizar el cobro de su sueldo por cajas",
-  "Los jurados externos que participaron en defensas de grado pueden realizar el cobro de su sueldo por cajas",
-  "Los jurados externos que participaron en defensas de grado pueden realizar el cobro de su sueldo por cajas",
-  "Los jurados externos que participaron en defensas de grado pueden realizar el cobro de su sueldo por cajas",
+  "Las personas que deseen realizar un pago en cajas deben portar su carnet de identidad",
+  "En casos de inicio de semestre se requiere el formulario de inscripciones.",
+  "Si tiene alguna duda, puede contactar con el encargado de trámites",
 ];
 interface Servicio {
   titulo: string;
@@ -62,11 +59,9 @@ function Servicios({ params }: { params: { id: number } }) {
   const servicio: Servicio = servicios[params.id - 1];
   return (
     <>
-      <h1 className=" text-white text-center font-bold text-4xl p-8">
-        {servicio.titulo}
-      </h1>
-      <div className="grid grid-cols-12 p-10 gap-20 py-0">
-        <div className="col-span-5">
+      <HeaderTitle direction="/administracion/cajas" title={servicio.titulo} />
+      <div className="grid grid-cols-1 mt-10 p-10 gap-20 py-0 xl:grid-cols-12">
+        <div className="col-span-7  xl:col-span-5 md:col-span-10">
           <ImageCarrousel
             slides={slides}
             description={descriptions}
@@ -84,7 +79,7 @@ function Servicios({ params }: { params: { id: number } }) {
             </p>
           </div>
         </div>
-        <div className="col-span-7 text-white  font-bold m-10">
+        <div className="col-span-7  text-white  font-bold m-10  md:col-span-10 xl:col-span-7">
           <h1 className="mb-10 text-3xl text-center">Requisitos</h1>
           <ul className="text-2xl text-left list-inside list-disc grid gap-5">
             {servicio.requerimientos.map((e) => {

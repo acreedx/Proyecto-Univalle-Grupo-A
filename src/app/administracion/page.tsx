@@ -1,12 +1,10 @@
 import Circularbutton from "../components/circular-button";
-
+import HeaderTitle from "../components/header-title";
 function AdministracionPage() {
   return (
     <main className="h-full grid gap-40">
-      <h1 className="text-center mt-10 text-4xl font-bold text-white">
-        Administración
-      </h1>
-      <div className="flex gap-16 w-full justify-center">
+      <HeaderTitle direction="/" title="Administración" />
+      <div className="flex flex-wrap gap-16 w-full justify-center">
         <Circularbutton
           imageUrl={
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
