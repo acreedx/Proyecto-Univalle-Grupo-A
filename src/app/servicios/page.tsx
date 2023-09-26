@@ -1,5 +1,8 @@
-import Circularbutton from "../components/circular-button";
+'use client'
 
+import Circularbutton from "../components/circular-button";
+import { Button } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
 function ServiciosPage() {
   return (
@@ -20,6 +23,7 @@ function ServiciosPage() {
           text={"Campus deportivo"}
           routeUrl="/servicios/campusDeportivo"
         />
+
         <Circularbutton
           imageUrl={
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
@@ -27,6 +31,7 @@ function ServiciosPage() {
           text={"Biblioteca"}
           routeUrl="/servicios/biblioteca"
         />
+
       </div>
     </main>
   );
