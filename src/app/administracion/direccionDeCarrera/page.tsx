@@ -12,8 +12,8 @@ function DireccionDeCarrera() {
         <div className="container">
           <div className="flex flex-wrap -mx-4">
             {/* Card 1 */}
-            {jsondata.map((carrera) => (
-              <div className="w-full md:w-1/2 xl:w-1/3 px-4 ">
+            {jsondata.map((carrera, index) => (
+              <div className="w-full md:w-1/2 xl:w-1/3 px-4 " key={index}>
                 <div className="bg-white rounded-lg overflow-hidden mb-10">
                   <img src={carrera.imagen} alt="image" className="w-full" />
                   <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">

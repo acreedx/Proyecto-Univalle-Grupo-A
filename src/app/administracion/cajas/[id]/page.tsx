@@ -82,8 +82,8 @@ function Servicios({ params }: { params: { id: number } }) {
         <div className="col-span-7  text-white  font-bold m-10  md:col-span-10 xl:col-span-7">
           <h1 className="mb-10 text-3xl text-center">Requisitos</h1>
           <ul className="text-2xl text-left list-inside list-disc grid gap-5">
-            {servicio.requerimientos.map((e) => {
-              return <li>{e}</li>;
+            {servicio.requerimientos.map((e, index) => {
+              return <li key={index}>{e}</li>;
             })}
           </ul>
         </div>
