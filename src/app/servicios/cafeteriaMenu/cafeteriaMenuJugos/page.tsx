@@ -20,9 +20,10 @@ function CafeteriaMenuSandwichPage() {
       </ul>
       
       <div className="flex flex-wrap justify-center items-center gap-4">
-        {menu.map((menu) => (
+        {menu.map((menu, index) => (
           menu.category == "Jugo/Batido" ? (
             <ItemMenu
+              key={index}
               imageUrl={menu.imageUrl}
               name={menu.name}
               price={menu.price}
