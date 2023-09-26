@@ -1,18 +1,21 @@
 import VideoPlayer from "@/app/components/video-player";
 import Circularbutton from "@/app/components/circular-button";
+import HeaderTitle from "@/app/components/header-title";
+import WhiteHeaderTitle from "@/app/components/white-header-title";
 function BienestarUniversitarioPage() {
   const videoUrl =
     "https://drive.google.com/uc?id=12UmVcV_XpDeF7V2PhrMQ0opcDXSwCZiJ";
-  const videoWidth = "74%";
-  const videoHeight = "380";
+  const videoWidth = "72%";
+  const videoHeight = "100%";
+  const id = "1";
   return (
     <>
-      <div>
-        <h1 className="text-center mt-4 text-4xl font-bold text-white">
-          <p>Cajas</p>
-        </h1>
-      </div>
-      <div className="grid grid-cols-9 w-full px-16 gap-x-8">
+      <HeaderTitle direction="/administracion" title="Cajas" />
+      <WhiteHeaderTitle
+        direction="/administracion/cajas/pagosenlinea"
+        title="Pagos en línea ->"
+      />
+      <div className="grid grid-cols-1 w-full px-16 gap-x-8 xl:grid-cols-9">
         <div className="col-span-4 bg-green">
           <h2 className="text-center mt-4 text-2xl font-bold text-white mb-2">
             Ubicación
@@ -25,7 +28,7 @@ function BienestarUniversitarioPage() {
             />
           </div>
         </div>
-        <div className="col-span-5 grid grid-cols-2 gap-16 p-8 h-fit mt-6">
+        <div className="col-span-5 grid grid-cols-1 gap-16 p-8 h-fit mt-6 sm:grid-cols-2">
           <div className="bg-[#898989] rounded-2xl p-4 text-white my-auto shadow-lg h-full">
             <h3 className="text-center text-2xl font-bold mb-2">Requisitos</h3>
             <ul className="text-xl p-6 pt-2 text-center">
@@ -60,30 +63,26 @@ function BienestarUniversitarioPage() {
         </div>
       </div>
       <div>
-        <h1 className="text-center mt-10 text-4xl font-bold text-white">
+        <h1 className="text-center mt-0 text-4xl font-bold text-white">
           Servicios de Cajas
         </h1>
         <div className="flex flex-row m-10 mt-4 mb-0 justify-evenly">
           <Circularbutton
             imageUrl={
-              "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+              "https://img2.freepng.es/20180425/gqw/kisspng-computer-icons-university-education-scholarship-st-5ae05c41e789e1.4489979315246531219484.jpg"
             }
             text={"Cobro de Colegiatura"}
-            routeUrl="/administracion/cajas/servicios"
+            routeUrl="/administracion/cajas/1"
           />
           <Circularbutton
-            imageUrl={
-              "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-            }
+            imageUrl={"https://cdn-icons-png.flaticon.com/512/2720/2720583.png"}
             text={"Cobro de Trámites"}
-            routeUrl="/administracion/cajas/servicios"
+            routeUrl="/administracion/cajas/2"
           />
           <Circularbutton
-            imageUrl={
-              "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-            }
+            imageUrl={"https://cdn-icons-png.flaticon.com/512/431/431223.png"}
             text={"Cobro de Cheques"}
-            routeUrl="/administracion/cajas/servicios"
+            routeUrl="/administracion/cajas/3"
           />
         </div>
       </div>
