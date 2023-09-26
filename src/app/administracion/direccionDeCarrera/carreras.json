@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "titulo": "Carrera 1",
+      "breveDescripcion": "Descripción breve de la Carrera 1",
+      "ampliaDescripcion": "Descripción amplia de la Carrera 1...",
+      "imagen": "url_de_la_imagen_1.jpg"
+    },
+    {
+      "id": 2,
+      "titulo": "Carrera 2",
+      "breveDescripcion": "Descripción breve de la Carrera 2",
+      "ampliaDescripcion": "Descripción amplia de la Carrera 2...",
+      "imagen": "url_de_la_imagen_2.jpg"
+    },
+    {
+      "id": 3,
+      "titulo": "Carrera 3",
+      "breveDescripcion": "Descripción breve de la Carrera 3",
+      "ampliaDescripcion": "Descripción amplia de la Carrera 3...",
+      "imagen": "url_de_la_imagen_3.jpg"
+    },
+    {
+      "id": 4,
+      "titulo": "Carrera 4",
+      "breveDescripcion": "Descripción breve de la Carrera 4",
+      "ampliaDescripcion": "Descripción amplia de la Carrera 4...",
+      "imagen": "url_de_la_imagen_4.jpg"
+    }
+  ]
+  
