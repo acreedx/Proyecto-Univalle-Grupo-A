@@ -1,4 +1,5 @@
 import Circularbutton from "@/app/components/circular-button";
+import Link from "next/link";
 
 
 function CafeteriaPage() {
@@ -24,9 +25,11 @@ function CafeteriaPage() {
           </div>
           
           <div className="flex-1  p-4">
-            <div className="p-4 flex justify-between items-center">
-              <button className="bg-white text-red-500 px-6 py-3 rounded-full uppercase ml-auto font-bold text-2xl mx-10">Menu 〉</button>
-            </div>
+            <Link href={"/servicios/cafeteriaMenu"}>
+              <div className="p-4 flex justify-between items-center">
+                  <button className="bg-white text-red-500 px-6 py-3 rounded-full uppercase ml-auto font-bold text-2xl mx-10">Menu 〉</button>
+              </div>
+            </Link>
           <div className="bg-gray-400 text-white p-4 text-2xl mx-20 items-center rounded-3xl">
             
             <h1 className="text-4xl px-20 my-10">La cafeteria de la universidad es un ambiente esclusivo para los estudiantes de univalle
