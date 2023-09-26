@@ -17,63 +17,31 @@ function ProcesosAcademicos() {
     // Lista de trámites
     const tramites: Tramite[] = [
         {
-            text: "Certificado de alumno regular sdsdsds",
+            text: "Extencion de documentos de defensa publica",
             imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
         {
-            text: "Certificado de alumno regular",
+            text: "Titulo de provicion nacional",
             imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
         {
-            text: "Certificado de alumno regular",
+            text: "Extencion de diploma de maestria",
             imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
         {
-            text: "Certificado de alumno regular",
+            text: "Convalidacion de materias y traspasos",
             imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
         {
-            text: "Certificado de alumno regular",
+            text: "Legalizacion de diploma",
             imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
             routeUrl: "/administracion/tramites/procesosAcademicos/1",
         },
-        {
-            text: "Certificado de alumno regular",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
-            routeUrl: "/administracion/tramites/procesosAcademicos/1",
-        },
-        {
-            text: "Certificado de alumno regular",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
-            routeUrl: "/administracion/tramites/procesosAcademicos/1",
-        },
-        {
-            text: "Certificado de alumno regular",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
-            routeUrl: "/administracion/tramites/procesosAcademicos/1",
-        },
-        {
-            text: "Certificado de alumno regular",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
-            routeUrl: "/administracion/tramites/procesosAcademicos/1",
-        },
-        {
-            text: "Certificado de alumno regular",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
-            routeUrl: "/administracion/tramites/procesosAcademicos/1",
-        },
-        {
-            text: "Certificado de alumno regular",
-            imageUrl: "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png",
-            routeUrl: "/administracion/tramites/procesosAcademicos/1",
-        },
-
-
-
+       
     ];
 
     const startIndex = (currentPage - 1) * tramitesPorPagina;
