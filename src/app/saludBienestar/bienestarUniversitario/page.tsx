@@ -6,7 +6,7 @@ import CopyToClipboard from "@/app/components/copy-clipboard";
 
 const Ubication = () => {
   const videoUrl =
-    "https://drive.google.com/uc?id=12UmVcV_XpDeF7V2PhrMQ0opcDXSwCZiJ";
+    "https://drive.google.com/uc?id=1VfBa-fHQbXTr3AOOvZMzBuQiGXZSLnI6";
   const videoWidth = "100%";
   const videoHeight = "360";
 
@@ -41,7 +41,7 @@ const Contacts = () => {
           </li>
           <li>
             Whatsapp:
-            <ul className="list-disc pl-6">
+            <ul className="list-disc pl-4 sm:pl-6 xl:pl-4 2xl:pl-6">
               <li>
                 <CopyToClipboard text="+591 77277872" />
               </li>
@@ -61,6 +61,11 @@ const Schedule = () => {
           <li>Lunes a Viernes: 08:00 a 19:00</li>
           <li>Sábado: 08:00 a 12:00</li>
         </ul>
+        <br />
+        <p>
+          <span className="font-bold">Ubicación: </span>
+          <span>Planta baja - Torre Innovación</span>
+        </p>
       </CardGray>
     </div>
   );
@@ -75,14 +80,14 @@ const Services = () => {
       <div className="flex gap-2 w-full justify-center col-span-5 flex-col items-center min-[320px]:flex-row">
         <Circularbutton
           imageUrl={
-            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+            "https://img.freepik.com/vector-premium/accesorios-oficina-caja-carton-libro-cuaderno-regla-cuchillo-carpeta-lapiz-boligrafo-calculadora-tijeras-cinta-pintura-material-oficina-papeleria-educacion_169241-2421.jpg"
           }
           text={"Objetos perdidos"}
           routeUrl=""
         />
         <Circularbutton
           imageUrl={
-            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+            "https://static.vecteezy.com/system/resources/previews/005/734/015/non_2x/scholarship-graduation-cap-certificate-and-coin-cartoon-icon-illustration-education-financial-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg"
           }
           text={"Becas y ayudas"}
           routeUrl=""

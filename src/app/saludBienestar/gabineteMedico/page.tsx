@@ -8,7 +8,7 @@ const RequirementInfo = () => {
   return (
     <div className="col-span-5 mb-10">
       <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
-        Requisitos para usar los servicios de clínica odontológica
+        Requisitos para usar los servicios de Gabinete Médico
       </h3>
       <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
         <div>
@@ -30,7 +30,7 @@ const RequirementInfo = () => {
 
 const Ubication = () => {
   const videoUrl =
-    "https://drive.google.com/uc?id=1etx-59zNpnuhlY2u4C77Ec4GPa6mX_x8";
+    "https://drive.google.com/uc?id=16aEEZvF108qlyl72PcNM0cXS1FNhGCkF";
   const videoWidth = "100%";
   const videoHeight = "360";
 
@@ -88,17 +88,17 @@ const Schedule = () => {
         <br />
         <p>
           <span className="font-bold">Ubicación: </span>
-          <span>Piso 2 - Torre Maestra</span>
+          <span>Planta baja - Torre Maestra</span>
         </p>
       </CardGray>
     </div>
   );
 };
 
-function BienestarUniversitarioPage() {
+function gabineteMedico() {
   return (
     <>
-      <HeaderTitle direction="/saludBienestar" title="Clínica Odontológica" />
+      <HeaderTitle direction="/saludBienestar" title="Gabinete Médico" />
       <div
         className="mt-8 flex flex-col w-full px-1 gap-x-1
           min-[320px]:px-2
@@ -119,4 +119,4 @@ function BienestarUniversitarioPage() {
   );
 }
 
-export default BienestarUniversitarioPage;
+export default gabineteMedico;
