@@ -42,37 +42,22 @@ function ProcesosAcademicos() {
       routeUrl: "/administracion/tramites/procesosAcademicos/1",
     },
     {
-      text: "Legalizacion de diploma",
-      imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
+      text: "Extension de supletorio de diploma Académico",
+      imageUrl: "https://cdn-icons-png.flaticon.com/512/308/308201.png",
       routeUrl: "/administracion/tramites/procesosAcademicos/1",
     },
     {
-      text: "Legalizacion de diploma",
-      imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
+      text: "Requisitos para el titulo de provisión nacional",
+      imageUrl: "https://cdn-icons-png.flaticon.com/512/357/357151.png",
       routeUrl: "/administracion/tramites/procesosAcademicos/1",
     },
 
     {
-      text: "Legalizacion de diploma",
-      imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
+      text: "Extension de diploma de Maestria",
+      imageUrl: "https://cdn-icons-png.flaticon.com/512/5352/5352149.png",
       routeUrl: "/administracion/tramites/procesosAcademicos/1",
     },
-    {
-      text: "Legalizacion de diploma",
-      imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
-      routeUrl: "/administracion/tramites/procesosAcademicos/1",
-    },
-    {
-      text: "Legalizacion de diploma",
-      imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
-      routeUrl: "/administracion/tramites/procesosAcademicos/1",
-    },
-    {
-      text: "Legalizacion de diploma",
-      imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
-      routeUrl: "/administracion/tramites/procesosAcademicos/1",
-    },
-
+   
 
   ];
 

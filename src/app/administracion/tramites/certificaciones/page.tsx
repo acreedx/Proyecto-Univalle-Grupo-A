@@ -42,16 +42,21 @@ export default function Certificaciones() {
       routeUrl: "/administracion/tramites/procesosAcademicos/1",
     },
     {
-      text: "Certificado de puntaje",
-      imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
+      text: "Certificado de Culminación de Plan de Estudios",
+      imageUrl: "https://w7.pngwing.com/pngs/80/737/png-transparent-computer-icons-professional-certification-diploma-training-miscellaneous-logo-academic-certificate-thumbnail.png",
       routeUrl: "/administracion/tramites/procesosAcademicos/1",
     }, {
-      text: "Certificado de puntaje",
-      imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
+      text: "Certificado de Carga Horaria",
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0boKxT-SDw57gNrvnvIus0ie1s4Sm5TzjVg&usqp=CAU",
       routeUrl: "/administracion/tramites/procesosAcademicos/1",
     }, {
-      text: "Certificado de puntaje",
-      imageUrl: "https://irp.cdn-website.com/d3af38d7/dms3rep/multi/003-documento-legal.png",
+      text: "Certificado de promedio",
+      imageUrl: "https://cdn.icon-icons.com/icons2/300/PNG/256/certificate-icon_31840.png",
+      routeUrl: "/administracion/tramites/procesosAcademicos/1",
+    },
+    {
+      text: "Certificado de internado Rotatorio",
+      imageUrl: "https://www.incluyeme.com/wp-content/uploads/2014/02/4.png",
       routeUrl: "/administracion/tramites/procesosAcademicos/1",
     },
   ];

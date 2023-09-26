@@ -33,27 +33,28 @@ export default function Solicitudes() {
             routeUrl: "/administracion/tramites/solicitudes/1",
         },
         {
-            text: "Cambio de nacionalidad",
-            imageUrl: "https://th.bing.com/th/id/R.c0edae6b2ed83f05615ccaaf9f0515af?rik=GTx7Y59ScgPxWg&riu=http%3a%2f%2fwww.reflexionesobrasliterarias.com%2fwp-content%2fuploads%2f2019%2f08%2fNacionalidad.png&ehk=Wo50f2rJiOLniXeDN2TeQN2nSxvSIbF0sKVEsvPpB0s%3d&risl=&pid=ImgRaw&r=0",
+            text: "Nómina de Docentes",
+            imageUrl: "https://cdn-icons-png.flaticon.com/512/4880/4880293.png",
             routeUrl: "/administracion/tramites/solicitudes/1",
         },
         {
-            text: "Cambio de nacionalidad",
-            imageUrl: "https://th.bing.com/th/id/R.c0edae6b2ed83f05615ccaaf9f0515af?rik=GTx7Y59ScgPxWg&riu=http%3a%2f%2fwww.reflexionesobrasliterarias.com%2fwp-content%2fuploads%2f2019%2f08%2fNacionalidad.png&ehk=Wo50f2rJiOLniXeDN2TeQN2nSxvSIbF0sKVEsvPpB0s%3d&risl=&pid=ImgRaw&r=0",
+            text: "Historial Académico",
+            imageUrl: "https://cdn-icons-png.flaticon.com/512/2247/2247594.png",
             routeUrl: "/administracion/tramites/solicitudes/1",
         },
         {
-            text: "Cambio de nacionalidad",
-            imageUrl: "https://th.bing.com/th/id/R.c0edae6b2ed83f05615ccaaf9f0515af?rik=GTx7Y59ScgPxWg&riu=http%3a%2f%2fwww.reflexionesobrasliterarias.com%2fwp-content%2fuploads%2f2019%2f08%2fNacionalidad.png&ehk=Wo50f2rJiOLniXeDN2TeQN2nSxvSIbF0sKVEsvPpB0s%3d&risl=&pid=ImgRaw&r=0",
+            text: "Plan de Estudios en Hora Reloj",
+            imageUrl: "https://static.vecteezy.com/system/resources/previews/010/289/855/non_2x/clock-with-calendar-and-pencil-depicting-concept-of-study-timetable-vector.jpg",
             routeUrl: "/administracion/tramites/solicitudes/1",
         },
         {
-            text: "Extencion del supletorio de diploma academico",
-            imageUrl: "https://cdn.xxl.thumbs.canstockphoto.com/graduation-cap-and-diploma-icon-in-a-flat-design-vector-illustration-vector-clip-art_csp47390116.jpg",
+            text: "Orden de Merito o Ranking",
+            imageUrl: "https://us.123rf.com/450wm/makc76/makc761903/makc76190300095/118959655-icono-de-premio-insignia-de-calidad-gold-star-con-cinta-ilustraci%C3%B3n-vectorial.jpg?ver=6",
             routeUrl: "/administracion/tramites/solicitudes/1",
-        },   {
-            text: "Extencion del supletorio de diploma academico",
-            imageUrl: "https://cdn.xxl.thumbs.canstockphoto.com/graduation-cap-and-diploma-icon-in-a-flat-design-vector-illustration-vector-clip-art_csp47390116.jpg",
+        },
+        {
+            text: "Informe Técnico del S.S.S.R.O",
+            imageUrl: "https://static.vecteezy.com/system/resources/previews/010/322/033/non_2x/technical-report-color-icon-illustration-vector.jpg",
             routeUrl: "/administracion/tramites/solicitudes/1",
         },
     ];
