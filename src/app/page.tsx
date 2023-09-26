@@ -8,23 +8,17 @@ export default function Home() {
       </h1>
       <div className="flex gap-16 w-full justify-center">
         <Circularbutton
-          imageUrl={
-            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-          }
+          imageUrl={"https://cdn-icons-png.flaticon.com/512/4717/4717962.png"}
           text={"Administración"}
           routeUrl="/administracion"
         />
         <Circularbutton
-          imageUrl={
-            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-          }
+          imageUrl={"https://cdn-icons-png.flaticon.com/512/8492/8492123.png"}
           text={"Salud y Bienestar"}
           routeUrl="/saludBienestar"
         />
         <Circularbutton
-          imageUrl={
-            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-          }
+          imageUrl={"https://cdn-icons-png.flaticon.com/512/8922/8922283.png"}
           text={"Servicios"}
           routeUrl="/servicios"
         />

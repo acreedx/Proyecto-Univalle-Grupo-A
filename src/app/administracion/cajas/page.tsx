@@ -1,10 +1,12 @@
 import VideoPlayer from "@/app/components/video-player";
 import Circularbutton from "@/app/components/circular-button";
+import Link from "next/link";
 function BienestarUniversitarioPage() {
   const videoUrl =
     "https://drive.google.com/uc?id=12UmVcV_XpDeF7V2PhrMQ0opcDXSwCZiJ";
   const videoWidth = "74%";
   const videoHeight = "380";
+  const id = "1";
   return (
     <>
       <div>
@@ -66,24 +68,20 @@ function BienestarUniversitarioPage() {
         <div className="flex flex-row m-10 mt-4 mb-0 justify-evenly">
           <Circularbutton
             imageUrl={
-              "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+              "https://img2.freepng.es/20180425/gqw/kisspng-computer-icons-university-education-scholarship-st-5ae05c41e789e1.4489979315246531219484.jpg"
             }
             text={"Cobro de Colegiatura"}
-            routeUrl="/administracion/cajas/servicios"
+            routeUrl="/administracion/cajas/1"
           />
           <Circularbutton
-            imageUrl={
-              "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-            }
+            imageUrl={"https://cdn-icons-png.flaticon.com/512/2720/2720583.png"}
             text={"Cobro de Trámites"}
-            routeUrl="/administracion/cajas/servicios"
+            routeUrl="/administracion/cajas/2"
           />
           <Circularbutton
-            imageUrl={
-              "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
-            }
+            imageUrl={"https://cdn-icons-png.flaticon.com/512/431/431223.png"}
             text={"Cobro de Cheques"}
-            routeUrl="/administracion/cajas/servicios"
+            routeUrl="/administracion/cajas/3"
           />
         </div>
       </div>
