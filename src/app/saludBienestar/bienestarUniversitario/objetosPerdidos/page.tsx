@@ -7,23 +7,33 @@ import menu from "@/app/DataTools/DataMenuCafeteria";
 import HeaderTitle from "@/app/components/header-title";
 
 function ObjetosPerdidosPage() {
-  const [missObjs, setMissObjs] = useState([]);
+  const [missObjs, setMissObjs] = useState<MissObject[]>([]);
 
   //Get Information
+
+  interface MissObject {
+    albumId: number;
+    id: number;
+    title: string;
+    url: string;
+    thumbnailUrl: string;
+  }
 
   useEffect(() => {
     getInfo();
   }, []);
 
-  const getInfo = () => {
-    fetch("https://jsonplaceholder.typicode.com/photos")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setMissObjs(data);
-      })
-      .catch(() => console.log("error"));
+  const getInfo = async () => {
+    try {
+      const response = await fetch("https://jsonplaceholder.typicode.com/photos");
+      if (!response.ok) {
+        throw new Error("Error al obtener los datos");
+      }
+      const data = await response.json();
+      setMissObjs(data); // Almacena los datos en el estado
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -37,8 +47,8 @@ function ObjetosPerdidosPage() {
         {missObjs.map((obj, index) => (
           <ItemMenu
             key={index}
-            imageUrl="{obj.imageUrl}"
-            name="{obj.title}"
+            imageUrl={obj.url}
+            name={obj.title}
             price="a"
             description="a"
           />
