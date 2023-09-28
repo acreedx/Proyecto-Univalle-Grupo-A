@@ -1,21 +1,50 @@
+"use client";
+
 import VideoPlayer from "@/app/components/video-player";
 import CardGray from "@/app/components/card-gray";
 import HeaderTitle from "@/app/components/header-title";
 import Circularbutton from "@/app/components/circular-button";
 import CopyToClipboard from "@/app/components/copy-clipboard";
+import GenericButton from "@/app/components/generic-button";
+import { useState } from "react";
 
 const Ubication = () => {
   const videoUrl =
     "https://drive.google.com/uc?id=1VfBa-fHQbXTr3AOOvZMzBuQiGXZSLnI6";
-  const videoWidth = "100%";
+  const imgUrl =
+    "https://drive.google.com/uc?id=1EHJkYfgYfkcBAd69TiGuN1lT0wHrX9bL";
+  const ubiWidth = "100%";
   const videoHeight = "360";
+
+  const [ubication, setUbication] = useState(true);
+
+  const handleUbicationInformation = (ubiState: boolean) => {
+    setUbication(ubiState);
+  };
 
   return (
     <div className="col-span-4 2xl:col-span-3">
-      <h2 className="text-center mt-4 text-xl font-bold text-white mb-2 md:text-2xl xl:text-3xl">
-        Ubicación
-      </h2>
-      <VideoPlayer url={videoUrl} width={videoWidth} height={videoHeight} />
+      <div className="mb-2 flex flex-col justify-center min-[420px]:flex-row min-[420px]:justify-evenly">
+        <h2 className="text-center mt-4 text-xl font-bold text-white mb-2 md:text-2xl xl:text-3xl">
+          Ubicación
+        </h2>
+        <div className="flex flex-col gap-y-2 items-center justify-center min-[210px]:flex-row min-[210px]:gap-x-2 ">
+          <GenericButton
+            text="Croqui"
+            functionOnClick={() => handleUbicationInformation(true)}
+          />
+          <GenericButton
+            text="Video"
+            functionOnClick={() => handleUbicationInformation(false)}
+          />
+        </div>
+      </div>
+
+      {ubication ? (
+        <img src={imgUrl} width={ubiWidth} alt="Croquis" />
+      ) : (
+        <VideoPlayer url={videoUrl} width={ubiWidth} height={videoHeight} />
+      )}
     </div>
   );
 };
@@ -80,17 +109,17 @@ const Services = () => {
       <div className="flex gap-2 w-full justify-center col-span-5 flex-col items-center min-[320px]:flex-row">
         <Circularbutton
           imageUrl={
-            "https://img.freepik.com/vector-premium/accesorios-oficina-caja-carton-libro-cuaderno-regla-cuchillo-carpeta-lapiz-boligrafo-calculadora-tijeras-cinta-pintura-material-oficina-papeleria-educacion_169241-2421.jpg"
-          }
-          text={"Objetos perdidos"}
-          routeUrl=""
-        />
-        <Circularbutton
-          imageUrl={
             "https://static.vecteezy.com/system/resources/previews/005/734/015/non_2x/scholarship-graduation-cap-certificate-and-coin-cartoon-icon-illustration-education-financial-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg"
           }
           text={"Becas y ayudas"}
-          routeUrl=""
+          routeUrl="/saludBienestar/bienestarUniversitario/becasAyudas"
+        />
+        <Circularbutton
+          imageUrl={
+            "https://img.freepik.com/vector-premium/accesorios-oficina-caja-carton-libro-cuaderno-regla-cuchillo-carpeta-lapiz-boligrafo-calculadora-tijeras-cinta-pintura-material-oficina-papeleria-educacion_169241-2421.jpg"
+          }
+          text={"Objetos perdidos"}
+          routeUrl="/saludBienestar/bienestarUniversitario/objetosPerdidos"
         />
       </div>
     </div>
