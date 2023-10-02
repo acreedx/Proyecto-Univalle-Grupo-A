@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import ItemMenu from "@/app/components/item-menu";
 import HeaderTitle from "@/app/components/header-title";
 import SearchBar from "@/app/components/search-bar";
-import Pagination from "@/app/components/pagination";
+import Pagination from "@/app/components/Pagination";
 import NotFoundMessage from "@/app/components/not-found-message";
 
 function ObjetosPerdidosPage() {
