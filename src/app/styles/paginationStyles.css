@@ -25,6 +25,12 @@ ul.react-paginate li a {
     cursor: pointer;
     color: #fff;
     background-color: #450a2ca1;
+    transition: background-color .3s;
+}
+
+ul.react-paginate li a:hover {
+    transition: background-color .3s;
+    background-color: #8f145ca1;
 }
 
 ul.react-paginate li.previous a,

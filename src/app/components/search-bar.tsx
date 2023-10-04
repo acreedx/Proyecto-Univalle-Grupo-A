@@ -36,8 +36,13 @@ function SearchBar({
         <GenericButton
           text="Buscar"
           functionOnClick={() => searchFunction(search)}
+          active={null}
         />
-        <GenericButton text="Limpiar" functionOnClick={handleCleanFunction} />
+        <GenericButton
+          text="Limpiar"
+          functionOnClick={handleCleanFunction}
+          active={null}
+        />
       </div>
     </div>
   );

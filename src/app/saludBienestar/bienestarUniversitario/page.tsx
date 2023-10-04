@@ -6,7 +6,7 @@ import HeaderTitle from "@/app/components/header-title";
 import Circularbutton from "@/app/components/circular-button";
 import CopyToClipboard from "@/app/components/copy-clipboard";
 import GenericButton from "@/app/components/generic-button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Ubication = () => {
   const videoUrl =
@@ -32,10 +32,12 @@ const Ubication = () => {
           <GenericButton
             text="Croqui"
             functionOnClick={() => handleUbicationInformation(true)}
+            active={ubication}
           />
           <GenericButton
             text="Video"
             functionOnClick={() => handleUbicationInformation(false)}
+            active={!ubication}
           />
         </div>
       </div>
@@ -127,6 +129,21 @@ const Services = () => {
 };
 
 function BienestarUniversitarioPage() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      // Este evento se ejecuta cuando todos los elementos de la página se han cargado
+      setLoading(false); // Oculta la pantalla de carga una vez que todo esté listo
+    });
+
+    // Simula una carga ficticia, por ejemplo, una solicitud a una API
+    setTimeout(() => {
+      // Puedes eliminar esta parte si no necesitas simular una carga ficticia
+      // y solo quieres esperar a que se carguen las imágenes y los videos
+    }, 2000); // Cambia el tiempo según tus necesidades
+  }, []);
+
   return (
     <>
       <HeaderTitle

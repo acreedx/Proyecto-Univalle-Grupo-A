@@ -55,10 +55,12 @@ const Ubication = () => {
           <GenericButton
             text="Croqui"
             functionOnClick={() => handleUbicationInformation(true)}
+            active={ubication}
           />
           <GenericButton
             text="Video"
             functionOnClick={() => handleUbicationInformation(false)}
+            active={!ubication}
           />
         </div>
       </div>
