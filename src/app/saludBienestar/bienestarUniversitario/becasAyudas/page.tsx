@@ -1,8 +1,12 @@
 "use client";
 
 import HeaderTitle from "@/app/components/header-title";
-import PDFViewer from "@/app/components/pdfViewer";
+import dynamic from "next/dynamic";
 import { useEffect } from "react";
+
+const DynamicPDFViewer = dynamic(() => import("@/app/components/pdfViewer"), {
+  ssr: false,
+});
 
 function BecasAyudasPage() {
   useEffect(() => {
@@ -17,7 +21,7 @@ function BecasAyudasPage() {
           direction="/saludBienestar/bienestarUniversitario"
         />
       </div>
-      <PDFViewer href="/REGLAMENTO DE BECAS.pdf" />
+      <DynamicPDFViewer href="/REGLAMENTO DE BECAS.pdf" />
     </div>
   );
 }
