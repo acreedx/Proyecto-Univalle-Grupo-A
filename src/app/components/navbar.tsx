@@ -1,9 +1,11 @@
+import Image from "next/image";
+
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="pl-10 pt-5 pb-5">
       <div className="flex justify-between py-1 px-3">
         <div className="flex items-center gap-5 ">
-          <img className="w-28" src="/UnivalleLogo.png" />
+          <Image className="w-28" src="/UnivalleLogo.png" alt="" width={100} height={100}/>
           <div className="text-center">
             <h3 className="text-white font-bold text-5xl">UNIVALLE</h3>
             <hr className="w-64 pb-1 mt-1" />
@@ -13,7 +15,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <hr className="border-2" />
     </nav>
   );
 };
