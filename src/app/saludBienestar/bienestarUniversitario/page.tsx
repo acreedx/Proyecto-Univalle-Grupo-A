@@ -88,10 +88,7 @@ const Schedule = () => {
   return (
     <div className="mt-10 2xl:mt-0 flex-1">
       <CardGray title="Horarios de atención">
-        <ul className="list-disc pl-1 sm:pl-2 lg:pl-6 xl:pl-4 2xl:pl-6">
-          <li>Lunes a Viernes: 08:00 a 19:00</li>
-          <li>Sábado: 08:00 a 12:00</li>
-        </ul>
+        <p>Lunes a Viernes: 08:00 a 12:00 - 15:00 a 19:00</p>
         <br />
         <p>
           <span className="font-bold">Ubicación: </span>
