@@ -10,7 +10,7 @@ function BecasAyudasPage() {
           direction="/saludBienestar/bienestarUniversitario"
         />
       </div>
-      <PDFViewer href="https://pdftron.s3.amazonaws.com/downloads/pl/demo-annotated.pdf" />
+      <PDFViewer href="http://localhost:3000/REGLAMENTO DE BECAS.pdf" />
     </div>
   );
 }
