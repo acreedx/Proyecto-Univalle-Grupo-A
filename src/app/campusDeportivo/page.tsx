@@ -1,7 +1,7 @@
 
 
 import Image from "next/image";
-import VideoSection from "@/app/components/videoSection";
+import VideoSection from "../components/videoSection";
 
 function CampusPage() {
   return (
