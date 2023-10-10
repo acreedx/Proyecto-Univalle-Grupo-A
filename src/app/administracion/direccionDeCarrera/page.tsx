@@ -1,5 +1,4 @@
 import React from "react";
-import jsondata from "./bd_local/carreras.json";
 import Navbutton from "@/app/components/nav-button";
 import HeaderTitle from "@/app/components/header-title";
 
