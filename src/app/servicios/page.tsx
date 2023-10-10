@@ -26,7 +26,7 @@ function ServiciosPage() {
 
         <Circularbutton
           imageUrl={
-            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+            "https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Library-icon.png"
           }
           text={"Biblioteca"}
           routeUrl="/servicios/Biblioteca"
