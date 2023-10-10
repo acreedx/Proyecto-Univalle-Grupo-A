@@ -1,6 +1,7 @@
-
+'use client'
 
 import Image from "next/image";
+import ButtonNav from "@/app/components/ButtonNav";
 import VideoSection from "../../components/videoSection";
 import HeaderTitle from "@/app/components/header-title";
 
@@ -17,7 +18,8 @@ function CampusPage() {
                 <div className="lg:col-span-7 relative z-10 flex flex-col justify-center items-center text-center h-full">
                   <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white mb-4">El nuevo campus</h1>
                   <p className="font-light text-white mb-6 lg:mb-8 md:text-lg lg:text-xl">Universidad del Valle</p>
-                  <a href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 hover:text-gray-900">Novedades</a>
+                  <ButtonNav href="/servicios/campusDeportivo/novedades" text="Novedades"></ButtonNav>
+
                 </div>
                 <div className="absolute inset-0 z-0">
                   <Image src="/Images/campus.jpg" alt="mockup" layout="fill" objectFit="cover" className="opacity-70" />
@@ -37,13 +39,11 @@ function CampusPage() {
                 <p className="text-white mb-6">
                   Reservar una cancha en nuestro campus deportivo te permite garantizar el uso exclusivo de nuestras instalaciones deportivas para tus actividades planificadas. Ya sea para un partido de fútbol o tenis, ¡tenemos todo lo que necesitas para disfrutar al máximo de tus deportes favoritos!
                 </p>
-                
+
                 <div className="mt-4 pb-5">
-                  <Image src="/Images/reservas.jpg" alt="Reservas" className="max-w-full mx-auto" width={300} height={200}/>
+                  <Image src="/Images/reservas.jpg" alt="Reservas" className="max-w-full mx-auto" width={300} height={200} />
                 </div>
-                <a href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 rounded-lg hover:text-gray-900">
-                  Más Información
-                </a>
+                <ButtonNav href="/servicios/campusDeportivo/reservas" text="Mas informacion"></ButtonNav>
               </div>
             </section>
           </div>
