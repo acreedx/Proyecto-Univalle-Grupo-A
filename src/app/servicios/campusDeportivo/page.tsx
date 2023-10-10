@@ -7,18 +7,17 @@ import HeaderTitle from "@/app/components/header-title";
 function CampusPage() {
   return (
     <>
-    <HeaderTitle direction="/servicios" title="Campus Deportivo" />
+      <HeaderTitle direction="/servicios" title="Campus Deportivo" />
       <main className="p-14">
         <section className="grid grid-cols-1 mt-1 md:p-10 gap-5 md:gap-20 py-0 xl:grid-cols-12 bg-gray-700 p-10 rounded-3xl shadow-2xl pb-4">
           <div className="col-span-5 xl:col-span-5 md:col-span-7">
-
             <section className="relative h-full">
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-black to-transparent z-10"></div>
               <div className="grid max-w-screen-xl grid-cols-1 lg:grid-cols-12 h-full mx-auto">
                 <div className="lg:col-span-7 relative z-10 flex flex-col justify-center items-center text-center h-full">
-                  <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white mb-4">Campus Deportivo</h1>
+                  <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white mb-4">El nuevo campus</h1>
                   <p className="font-light text-white mb-6 lg:mb-8 md:text-lg lg:text-xl">Universidad del Valle</p>
-                  <a href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 hover:text-gray-900">Ver mas</a>
+                  <a href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 hover:text-gray-900">Novedades</a>
                 </div>
                 <div className="absolute inset-0 z-0">
                   <Image src="/Images/campus.jpg" alt="mockup" layout="fill" objectFit="cover" className="opacity-70" />
@@ -28,22 +27,27 @@ function CampusPage() {
             </section>
           </div>
           <div className="col-span-5 xl:col-span-4 md:col-span-7">
-            <VideoSection title="Campus deportivo" description="Una gran parte denuestra universidad esperaba este campus y ahora lo tienen." videoUrl="https://www.youtube.com/watch?v=IY_Myo5-4W0" width="100%" height="600px"></VideoSection>
+            <VideoSection title="Miraflores" description="El nuevo campus esta ubicado en la mejor zona de miraflores." videoUrl="https://www.youtube.com/watch?v=IY_Myo5-4W0" width="100%" height="600px"></VideoSection>
           </div>
 
           <div className="col-span-5 xl:col-span-3 md:col-span-7">
-            <section className="py-8 md:py-16 h-full flex flex-col justify-center">
+            <section className="h-full flex flex-col">
               <div className="max-w-screen-xl mx-auto px-4 text-center">
-                <h2 className="text-4xl font-extrabold text-white mb-4">¡Reserva tu Cancha!</h2>
-                <p className="mb-8 text-white md:text-xl">
+                <h2 className="text-3xl font-bold text-white mb-4">¡Reserva tu Cancha!</h2>
+                <p className="text-white mb-6">
                   Reservar una cancha en nuestro campus deportivo te permite garantizar el uso exclusivo de nuestras instalaciones deportivas para tus actividades planificadas. Ya sea para un partido de fútbol o tenis, ¡tenemos todo lo que necesitas para disfrutar al máximo de tus deportes favoritos!
                 </p>
+                
+                <div className="mt-4 pb-5">
+                  <Image src="/Images/reservas.jpg" alt="Reservas" className="max-w-full mx-auto" width={300} height={200}/>
+                </div>
                 <a href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 rounded-lg hover:text-gray-900">
                   Más Información
                 </a>
               </div>
             </section>
           </div>
+
 
 
         </section>

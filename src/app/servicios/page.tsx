@@ -18,7 +18,7 @@ function ServiciosPage() {
         />
         <Circularbutton
           imageUrl={
-            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+            "/Images/futbol.png"
           }
           text={"Campus deportivo"}
           routeUrl="/servicios/campusDeportivo"
