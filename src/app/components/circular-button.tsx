@@ -20,7 +20,7 @@ const circularbutton: FC<CircularButtonProps> = ({
       }}
     >
       <div className="w-full h-1/2 pb-4 absolute bottom-0 bg-red-950 bg-opacity-50 rounded-b-full flex items-center justify-center">
-        <div className="w-3/4 h-full flex items-center justify-center text-center text-white text-xs min-[320px]:text-lg md:text-2xl font-bold">
+        <div className="w-3/4 h-full flex items-center justify-center text-center text-white text-xs min-[320px]:text-sm sm:text-sm md:text-2xl font-bold">
           {text}
         </div>
       </div>

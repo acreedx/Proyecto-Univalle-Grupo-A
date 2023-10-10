@@ -1,5 +1,8 @@
-import Circularbutton from "../components/circular-button";
+'use client'
 
+import Circularbutton from "../components/circular-button";
+import { Button } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
 function ServiciosPage() {
   return (
@@ -8,7 +11,7 @@ function ServiciosPage() {
       <div className="flex gap-16 w-full justify-center">
         <Circularbutton
           imageUrl={
-            "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
+            "https://media.istockphoto.com/id/646314156/vector/restaurant-icon-isolated-vector.jpg?s=612x612&w=0&k=20&c=2qFLVCalkUeQEo75tuBarbGy30Rbvr4bUfalsW9o1cw="
           }
           text={"Cafetería"}
           routeUrl="/servicios/Cafeteria"
@@ -20,13 +23,15 @@ function ServiciosPage() {
           text={"Campus deportivo"}
           routeUrl="/servicios/campusDeportivo"
         />
+
         <Circularbutton
           imageUrl={
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
           text={"Biblioteca"}
-          routeUrl="/servicios/biblioteca"
+          routeUrl="/servicios/Biblioteca"
         />
+
       </div>
     </main>
   );

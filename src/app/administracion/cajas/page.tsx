@@ -10,10 +10,12 @@ function BienestarUniversitarioPage() {
   const id = "1";
   return (
     <>
-      <HeaderTitle direction="/administracion" title="Cajas" />
       <WhiteHeaderTitle
-        direction="/administracion/cajas/pagosenlinea"
-        title="Pagos en línea ->"
+        direction="/administracion"
+        title="Volver"
+        titleHeader="Cajas"
+        directionRight="/administracion/cajas/pagosenlinea"
+        titleRight="Pagos en línea ->"
       />
       <div className="grid grid-cols-1 w-full px-16 gap-x-8 xl:grid-cols-9">
         <div className="col-span-4 bg-green">
