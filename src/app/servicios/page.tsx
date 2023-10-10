@@ -29,7 +29,7 @@ function ServiciosPage() {
             "https://www.iconarchive.com/download/i103468/paomedia/small-n-flat/shop.1024.png"
           }
           text={"Biblioteca"}
-          routeUrl="/servicios/biblioteca"
+          routeUrl="/servicios/Biblioteca"
         />
 
       </div>
