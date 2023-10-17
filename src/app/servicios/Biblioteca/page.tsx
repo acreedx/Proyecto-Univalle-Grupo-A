@@ -1,72 +1,42 @@
-import Image from "next/image";
-import CardRequirement from "@/app/components/card-requirement";
-import CardGray from "@/app/components/card-gray";
+import Circularbutton from "../../components/circular-button";
 import HeaderTitle from "@/app/components/header-title";
-import VideoPlayer from "@/app/components/video-player";
-import CopyToClipboard from "@/app/components/copy-clipboard";
-import CardBlue from "@/app/components/card-blue";
 
-
-const InfoLibrary = () => {
-  return (
-    <div className="col-span-5 mb-10">
-      <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
-        Información Biblioteca
-      </h3>
-      <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
-        <div>
-        {/* <iframe width="380" height="150" src="https://www.youtube.com/embed/BNsjS_DvgQM?si=E_HgeZcQMC1WaXZL&amp;controls=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe> */}
-        <CardBlue
-          title="Ubicación"
-          videoUrl="https://www.youtube.com/watch?v=BNsjS_DvgQM"
-          width="380"
-          height="150"
-          info="Torre Innovacion Av. Argentina Nro. 2067 Piso 2"
-          
-        />
-
-          {/* <CardRequirement
-            title="Ubicación"
-            info="Torre Innovacion
-            Av. Argentina Nro. 2067
-            Piso 2"
-          /> */}
-        </div>
-        <div>
-          <CardRequirement
-            title="Horario de Atención"
-            info="Lunes a Viernes: 08:00 a 19:00
-            Sabado: 08:00 a 12:00"
-          />
-        </div>
-        <div>
-          <CardRequirement
-            title="Bibliotecas Virtual"
-            info="Bibliounivalle
-            Dynamed
-            ebooks
-            Hinari
-            MedinePlus"
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-function BibliotecaPage() {
+function LibraryPage() {
   return (
     <main className="h-full grid gap-40">
-      <div className="flex flex-col">
-  
-      
-        
-        <div className="flex-1 flex">
-          <InfoLibrary/>
-        </div>
+      <HeaderTitle direction="/servicios" title="Biblioteca" />
+      <div className="flex gap-16 w-full justify-center flex-wrap mb-8">
+        <Circularbutton
+          imageUrl={
+            "https://png.pngtree.com/png-vector/20220526/ourlarge/pngtree-open-information-book-with-bookworm-isolated-thin-line-icon-png-image_4741279.png"
+          }
+          text={"Información"}
+          routeUrl="/servicios/Biblioteca/bibliotecaInformacion"
+        />
+        <Circularbutton
+          imageUrl={
+            "https://img.freepik.com/premium-vector/pastel-book-icon-education-concept_77417-1738.jpg"
+          }
+          text={"Libros Destacados"}
+          routeUrl="/saludBienestar/gabinetePsicoPedagogico"
+        />
+        <Circularbutton
+          imageUrl={
+            "https://img.freepik.com/vector-gratis/fondo-biblioteca-libros-simbolos-lectura-ilustracion-vectorial-isometrica_1284-81743.jpg?size=626&ext=jpg&ga=GA1.1.1016474677.1696723200&semt=sph"
+          }
+          text={"Servicios de Biblioteca"}
+          routeUrl="/saludBienestar/clinicaOdontologica"
+        />
+        {/* <Circularbutton
+          imageUrl={
+            "https://static.vecteezy.com/system/resources/previews/006/310/372/non_2x/business-people-with-magnifier-and-computer-searching-new-information-explore-and-business-concept-of-data-research-and-information-cartoon-illustration-isolated-on-white-background-vector.jpg"
+          }
+          text={"Bienestar Universitario"}
+          routeUrl="/saludBienestar/bienestarUniversitario"
+        /> */}
       </div>
-
     </main>
   );
 }
 
-export default BibliotecaPage;
+export default LibraryPage;

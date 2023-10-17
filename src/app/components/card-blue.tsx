@@ -3,7 +3,7 @@ import React from "react";
 import ReactPlayer from 'react-player';
 
 
-interface CardBlueProps {
+interface CardLightRedProps {
   title: string;
   videoUrl: string;
   width: string;
@@ -11,9 +11,9 @@ interface CardBlueProps {
   info: string;
 }
 
-function CardBlue({ title, videoUrl, width, height, info }: CardBlueProps) {
+function CardLightRed({ title, videoUrl, width, height, info }: CardLightRedProps) {
   return (
-    <div className="flex flex-col items-center min-h-min justify-center p-6 bg-#68879C border border-#68879C rounded-xl drop-shadow-lg shadow text-white">
+    <div className="mx-3 flex flex-col items-center min-h-min justify-center p-6 bg-red-300 border border-red-300 rounded-xl drop-shadow-lg shadow text-white">
       <h5 className="mb-2 font-bold tracking-tight text-white text-sm min-[160px]:text-lg min-[320px]:text-xl sm:text-2xl md:text-3xl">
         {title}
       </h5>
@@ -32,4 +32,4 @@ function CardBlue({ title, videoUrl, width, height, info }: CardBlueProps) {
   );
 }
 
-export default CardBlue;
+export default CardLightRed;

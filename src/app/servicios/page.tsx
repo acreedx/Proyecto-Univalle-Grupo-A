@@ -26,7 +26,7 @@ function ServiciosPage() {
 
         <Circularbutton
           imageUrl={
-            "https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Library-icon.png"
+            "https://www.unex.es/conoce-la-uex/centros/epcc/archivos/imagenes/epcc-iconos/ICONO%20BIBLIOTECA.png/image_preview"
           }
           text={"Biblioteca"}
           routeUrl="/servicios/Biblioteca"
