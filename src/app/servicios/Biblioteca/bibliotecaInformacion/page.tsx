@@ -33,7 +33,7 @@ const InfoLibrary = () => {
         </div>
         <div className="flex flex-col items-center justify-center p-2 bg-red-400 border border-red-400 rounded-2xl shadow text-white mx-2">
             <h3 className="text-center text-2xl font-bold mb-4 mt-0">
-              Horarios de atención
+              Horarios de Atención
             </h3>
             <div className="mb-1 mt-5">
                   <Image src="/Images/calendario.png" alt="Horario" className="max-w-full mx-auto" width={200} height={100} />
@@ -69,8 +69,8 @@ function BibliotecaPage() {
   return (
     <main className="h-full grid gap-40">
       <div className="flex flex-col">
-        <div className="mb-4">
-        <HeaderTitle direction="/servicios/Biblioteca" title="Informacion Biblioteca" />
+        <div className="mb-8">
+        <HeaderTitle direction="/servicios/Biblioteca" title="Información Biblioteca" />
         </div>
         <div className="flex-1 flex">
           <InfoLibrary/>

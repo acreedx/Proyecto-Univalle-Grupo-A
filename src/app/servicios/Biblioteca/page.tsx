@@ -18,14 +18,14 @@ function LibraryPage() {
             "https://img.freepik.com/premium-vector/pastel-book-icon-education-concept_77417-1738.jpg"
           }
           text={"Libros Destacados"}
-          routeUrl="/saludBienestar/gabinetePsicoPedagogico"
+          routeUrl="/servicios/Biblioteca/bibliotecaLDestacados"
         />
         <Circularbutton
           imageUrl={
             "https://img.freepik.com/vector-gratis/fondo-biblioteca-libros-simbolos-lectura-ilustracion-vectorial-isometrica_1284-81743.jpg?size=626&ext=jpg&ga=GA1.1.1016474677.1696723200&semt=sph"
           }
           text={"Servicios de Biblioteca"}
-          routeUrl="/saludBienestar/clinicaOdontologica"
+          routeUrl="/servicios/Biblioteca/bibliotecaServicios"
         />
         {/* <Circularbutton
           imageUrl={
