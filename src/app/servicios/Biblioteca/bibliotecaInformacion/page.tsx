@@ -56,7 +56,7 @@ const InfoLibrary = () => {
             <Link href={"/servicios/Biblioteca/bibliotecaInformacion/bibliotecaInfoBVirtuales"}>
             <div className="flex justify-center mb-3 mt-3">
                 <button className="rounded-full bg-red-900 py-2 px-4 text-sm text-white shadow">
-                  Guía de Ubicación
+                  Más Información
                 </button>
             </div>
           </Link>
