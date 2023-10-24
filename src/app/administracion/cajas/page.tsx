@@ -68,7 +68,7 @@ function BienestarUniversitarioPage() {
         <h1 className="text-center mt-0 text-4xl font-bold text-white">
           Servicios de Cajas
         </h1>
-        <div className="flex flex-row m-10 mt-4 mb-0 justify-evenly">
+        <div className="flex flex-row m-10 mt-4 mb-0 pb-4 justify-evenly">
           <Circularbutton
             imageUrl={
               "https://img2.freepng.es/20180425/gqw/kisspng-computer-icons-university-education-scholarship-st-5ae05c41e789e1.4489979315246531219484.jpg"
