@@ -5,8 +5,8 @@ import WhiteHeaderTitle from "@/app/components/white-header-title";
 function BienestarUniversitarioPage() {
   const videoUrl =
     "https://drive.google.com/uc?id=12UmVcV_XpDeF7V2PhrMQ0opcDXSwCZiJ";
-  const videoWidth = "72%";
-  const videoHeight = "100%";
+  const videoWidth = "580px";
+  const videoHeight = "100px";
   const id = "1";
   return (
     <>
@@ -17,8 +17,8 @@ function BienestarUniversitarioPage() {
         directionRight="/administracion/cajas/pagosenlinea"
         titleRight="Pagos en línea ->"
       />
-      <div className="grid grid-cols-1 w-full px-16 gap-x-8 xl:grid-cols-9">
-        <div className="col-span-4 bg-green">
+      <div className="grid grid-cols-1 w-full px-4 gap-x-8 xl:grid-cols-12">
+        <div className="col-span-5 bg-green">
           <h2 className="text-center mt-4 text-2xl font-bold text-white mb-2">
             Ubicación
           </h2>
@@ -30,16 +30,12 @@ function BienestarUniversitarioPage() {
             />
           </div>
         </div>
-        <div className="col-span-5 grid grid-cols-1 gap-16 p-8 h-fit mt-6 sm:grid-cols-2">
+        <div className="col-span-7 grid grid-cols-1 gap-16 pt-8  h-fit mt-6 sm:grid-cols-2 xl:mr-16">
           <div className="bg-[#898989] rounded-2xl p-4 text-white my-auto shadow-lg h-full">
-            <h3 className="text-center text-2xl font-bold mb-2">Requisitos</h3>
+            <h3 className="text-center text-2xl font-bold mb-2">
+                Contactos
+            </h3>
             <ul className="text-xl p-6 pt-2 text-center">
-              <li>Carnet de Identidad</li>
-              <li>
-                <h3 className="text-center text-2xl font-bold mb-2 mt-4">
-                  Contactos
-                </h3>
-              </li>
               <li>Teléfonos: 2001800 </li>
               <li>2246725</li>
               <li>2246726</li>
@@ -53,19 +49,12 @@ function BienestarUniversitarioPage() {
             <ul className="text-xl p-6 pt-2 text-center">
               <li>Lunes a Viernes: 08:00 a 19:00</li>
               <li>Sabado: 08:00 a 12:00</li>
-              <li>
-                <h3 className="text-center text-2xl font-bold mb-2 mt-4">
-                  Ubicación
-                </h3>
-              </li>
-              <li>Torre inovación</li>
-              <li>Planta Baja</li>
             </ul>
           </div>
         </div>
       </div>
       <div>
-        <h1 className="text-center mt-0 text-4xl font-bold text-white">
+        <h1 className="text-center mt-4 text-4xl font-bold text-white">
           Servicios de Cajas
         </h1>
         <div className="flex flex-row m-10 mt-4 mb-0 pb-4 justify-evenly">
