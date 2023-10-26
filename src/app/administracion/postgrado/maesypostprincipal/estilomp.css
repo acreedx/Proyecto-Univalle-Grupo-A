@@ -12,8 +12,8 @@ h1 {
   }
   
   .card {
-    width: 300px;
-    height: 400px;
+    width: 350px;
+    height: 450px;
     position: relative;
     margin: 20px;
   }
@@ -63,25 +63,16 @@ h1 {
     box-shadow: 0 5px 10px #000;
   }
 
-  .card .back .link {
-    height: 50px;
-  }
-
-  .card .back .link a {
-    color: #f3f3f3;
-  }
-
   .card .back h3 {
-    font-size: 20px;
+    font-size: 30px;
     margin-top: 5px;
     letter-spacing: 2px;
   } 
 
   .card .back p {
-    font-size: 14px;
-    margin-bottom: 70px;
-    letter-spacing: 1px;
     text-align: justify;
+    letter-spacing: 1px;
+    font-size: 15px;
   }
 
   .card:hover .front {
@@ -91,10 +82,10 @@ h1 {
   .card:hover .back {
     transform: perspective(600px) rotateY(360deg);
   }
-
+  
 .boton {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
