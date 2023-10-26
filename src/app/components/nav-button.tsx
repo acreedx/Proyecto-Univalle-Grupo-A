@@ -10,7 +10,7 @@ const navbutton: FC<NavButtonProps> = ({ routeUrl }) => {
       <div className="w-[200px]">
         <Link
           href={{ pathname: routeUrl }}
-          className="inline-block py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium hover:border-primary hover:bg-primary hover:text-white transition"
+          className="inline-block py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color text-white font-medium hover:border-primary hover:bg-primary hover:text-white transition"
         >
           Ver detalles
         </Link>
