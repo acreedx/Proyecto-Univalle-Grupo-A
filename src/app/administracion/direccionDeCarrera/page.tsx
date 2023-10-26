@@ -111,11 +111,11 @@ function DireccionDeCarrera() {
 
       <section id="facultades" className="p-4 lg:p-8 dark:bg-gray-800 dark:text-gray-100 ">
         <div className="container mx-auto space-y-12 ">
-          {facultades.map((facultadItem, index) => (
+          {facultades.map((facultadItem) => (
             <div
-              key={index}
+              key={facultadItem.id}
               className={`flex flex-col overflow-hidden rounded-md shadow-2xl ${
-                index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"
+                facultadItem.id % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"
               }  `}
             >
               <img

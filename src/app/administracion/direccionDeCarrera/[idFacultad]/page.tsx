@@ -1,5 +1,4 @@
 import React from "react";
-import Cardbutton from "@/app/components/card-button";
 import HeaderTitle from "@/app/components/header-title";
 import Link from "next/link";
 import Image from "next/image";
@@ -416,10 +415,11 @@ function Carreras({ params }: { params: { idFacultad: number } }) {
         title={carrera.titulo}
       />
       <div className="container mx-auto space-y-5">
-        {carrera.carreras.map((carreraItem, index) => (
+        {carrera.carreras.map((carreraItem) => (
           <section
+            key={carreraItem.id}
             className={`flex flex-wrap ${
-              index % 2 === 0 ? "md:flex-row-reverse" : ""
+              carreraItem.id % 2 === 0 ? "md:flex-row-reverse" : ""
             } mx-8 my-8  dark:bg-gray-900 bg-gray-600 bg-opacity-30 `}
           >
             <div className="w-full md:w-1/2 p-4 md:p-8 grid place-content-center">
