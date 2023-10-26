@@ -1,5 +1,5 @@
 import ButtonNav from '@/app/components/ButtonNav';
-import './estilompyd.css';
+import './estilomp.css';
 
 function principal() {
     return(

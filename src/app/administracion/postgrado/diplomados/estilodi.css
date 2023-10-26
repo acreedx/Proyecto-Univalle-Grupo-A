@@ -11,14 +11,14 @@ h1 {
   justify-content: center;
 }
 
-.card {
+.cardD {
   width: 500px;
   height: 300px;
   position: relative;
   margin: 20px;
 }
 
-.card .face {
+.cardD .face {
   position: absolute;
   width: 100%;
   height: 80%;
@@ -28,19 +28,19 @@ h1 {
   transition: .5s;
 }
 
-.card .front {
+.cardD .front {
   transform: perspective(600px) rotateY(0deg);
   box-shadow: 0 5px 10px #000;
 }
 
-.card .front img {
+.cardD .front img {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.card .front h3 {
+.cardD .front h3 {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -51,7 +51,7 @@ h1 {
   text-align: center;
 }
 
-.card .back {
+.cardD .back {
   transform: perspective(600px) rotateY(180deg);
   background: rgb(3, 35, 54);
   padding: 15px;
@@ -63,24 +63,24 @@ h1 {
   box-shadow: 0 5px 10px #000;
 }
 
-.card .back h3 {
+.cardD .back h3 {
   font-size: 20px;
   margin-top: 5px;
   letter-spacing: 2px;
 } 
 
-.card .back p {
+.cardD .back p {
   margin-bottom: 30px;
   text-align: justify;
   letter-spacing: 1px;
   font-size: 15px;
 }
 
-.card:hover .front {
+.cardD:hover .front {
   transform: perspective(600px) rotateY(180deg);
 }
 
-.card:hover .back {
+.cardD:hover .back {
   transform: perspective(600px) rotateY(360deg);
 }
 

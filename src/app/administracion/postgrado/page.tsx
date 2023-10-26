@@ -1,5 +1,5 @@
 import ButtonNav from '@/app/components/ButtonNav';
-import './estilop.css';
+import './estilo.css';
 
 function BienvenidaPostgrado() {
     return (
@@ -12,7 +12,7 @@ function BienvenidaPostgrado() {
             </center>
             <div className='boton'><ButtonNav href='/administracion' text='Volver'/></div>
             <div className="contenedor"> 
-                <div className="card">
+                <div className="cardS">
                     <div className="face front">
                         <img src="https://escueladoctorjacintoconvit.files.wordpress.com/2015/10/vision.png" alt="Vision" />
                         <h3>Visión</h3>
@@ -25,7 +25,7 @@ function BienvenidaPostgrado() {
                         </p>
                     </div>
                 </div>
-                <div className="card">
+                <div className="cardS">
                     <div className="face front">
                         <img src="https://dis.uajms.edu.bo/wp-content/uploads/2022/11/RESENA-HISTORICA.png" alt="Historia" />
                         <h3>Historia</h3>                        
@@ -35,7 +35,7 @@ function BienvenidaPostgrado() {
                         <p>En estos 33 años de vida académica, la Universidad del Valle, a través de la Facultad de Postgrado, ha formado más de 20,000 profesionales especialistas a nivel de diplomados, maestrías y doctorados en las 5 sedes de la Universidad.</p>
                     </div>
                 </div>
-                <div className="card">
+                <div className="cardS">
                     <div className="face front">
                         <img src="https://uneg.edu.mx/wp-content/uploads/2022/12/8-min.jpg" alt="Maestrías y Doctorados" />
                         <h3>Maestrías, Doctorados y Diplomados.</h3>
@@ -48,7 +48,7 @@ function BienvenidaPostgrado() {
                         </div>
                     </div>
                 </div>
-                <div className="card">
+                <div className="cardS">
                     <div className="face front">
                         <img src="https://4.bp.blogspot.com/-svET659LOno/WBlPANPJkII/AAAAAAAAAFA/_fW-6Pyujusi4-tlKSY79HTOu0RWApk-ACLcB/s1600/mision.jpg" alt="Mision" />
                         <h3>Misión</h3>

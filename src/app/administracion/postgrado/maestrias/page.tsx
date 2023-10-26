@@ -1,5 +1,5 @@
 import ButtonNav from '@/app/components/ButtonNav';
-import './estilomaes.css';
+import './estilomaestrias.css';
 
 function maestrias(){
     return(
@@ -7,7 +7,7 @@ function maestrias(){
             <center><h1>Maestrias Univalle</h1></center>
             <div className='boton'><ButtonNav href='/administracion/postgrado/maesypostprincipal' text='Volver'/></div>
             <div className="contenedor">
-                <div className="card">
+                <div className="cardM">
                     <div className="face front">
                         <img src="https://serviciosocial.senado.gob.mx/images/requisito.png" alt="Historia" />
                         <h3>Requisitos</h3>                        
@@ -25,7 +25,7 @@ function maestrias(){
                             - Carta de aceptación al programa.</p>
                     </div>
                 </div>
-                <div className="card">
+                <div className="cardM">
                     <div className="face front">
                         <img src="https://www.univalle.edu/wp-content/uploads/2022/07/slide_poscbba_maes21.jpg" alt="Maestrias" />
                         <h3>Maestria en Educación Superior</h3>                        
@@ -41,7 +41,7 @@ function maestrias(){
                         </p>
                     </div>
                 </div>
-                <div className="card">
+                <div className="cardM">
                     <div className="face front">
                         <img src="https://www.univalle.edu/wp-content/uploads/2022/07/publi_maestrlpz13.jpg" alt="Doctorados" />
                         <h3>Maestria en Tecnologías de información</h3>                        
@@ -57,7 +57,7 @@ function maestrias(){
                         </p>
                     </div>
                 </div>
-                <div className="card">
+                <div className="cardM">
                     <div className="face front">
                         <img src="https://www.univalle.edu/wp-content/uploads/2022/07/slide_poscbba_maes22.jpg" alt="Doctorados" />
                         <h3>Maestria en Marketing</h3>                        
