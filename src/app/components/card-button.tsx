@@ -15,7 +15,7 @@ const cardbutton: FC<CardButtonProps> = ({
 }) => {
   return (
     <>
-      <div className="w-full md:w-1/2 xl:w-1/3 px-4 transform transition-transform hover:scale-105">
+      <div className="w-full md:w-1/2 xl:w-1/3 px-4  transform transition-transform hover:scale-105">
         <div className="bg-white rounded-lg overflow-hidden mb-10">
           <img src={imageUrl} alt="image" className="w-full" />
 
@@ -30,7 +30,7 @@ const cardbutton: FC<CardButtonProps> = ({
             </p>
             <Link
               href={{ pathname: routeUrl }}
-              className="inline-block py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium hover:border-primary hover:bg-primary hover:text-white transition"
+              className="inline-block  py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium hover:border-primary hover:bg-primary hover:text-white transition"
             >
               Ver detalles
             </Link>
