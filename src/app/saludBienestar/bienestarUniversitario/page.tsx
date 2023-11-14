@@ -8,8 +8,10 @@ import CopyToClipboard from "@/app/components/copy-clipboard";
 import GenericButton from "@/app/components/generic-button";
 import { useState, useEffect } from "react";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+
 import { IContact,IServicio,IUbicacion } from "@/Services";
 
+import { isValidUrl } from "@/app/components/functions";
 
 const Ubication = () => {
   const [ubiData, setUbiData] = useState<IUbicacion | null>(null);
@@ -192,24 +194,29 @@ const Services = () => {
   const ServiciosPorPagina = 3;
 
   useEffect(() => {
-    fetch('http://apisistemaunivalle.somee.com/api/Servicios/getActiveServicios')
-      .then(response => response.json())
-      .then(data => {
+    fetch(
+      "http://apisistemaunivalle.somee.com/api/Servicios/getActiveServicios"
+    )
+      .then((response) => response.json())
+      .then((data) => {
         if (Array.isArray(data.data)) {
           setServices(data.data);
         } else {
-          console.error('Los datos de la API no son una matriz válida.');
+          console.error("Los datos de la API no son una matriz válida.");
         }
       })
-      .catch(error => {
-
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }, []);
   const startIndex = (currentPage - 1) * ServiciosPorPagina;
   const endIndex = startIndex + ServiciosPorPagina;
   const ServiciosEnPagina = services
-    .filter(servicio => servicio.modulo === "Bienestar Universitario" && servicio.imagen !== null)
+    .filter(
+      (servicio) =>
+        servicio.modulo === "Bienestar Universitario" &&
+        servicio.imagen !== null
+    )
     .slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(services.length / ServiciosPorPagina);
@@ -219,47 +226,48 @@ const Services = () => {
   };
 
   return (
-
     <div className="col-span-5 mb-10">
-
       <h3 className="mt-10 font-bold text-white col-start-2 mb-4 text-center text-base min-[320px]:text-lg sm:text-xl md:text-2xl xl:text-3xl">
         Servicios de bienestar universitario
       </h3>
 
       <div className="flex gap-2 w-full justify-center col-span-5 flex-col items-center min-[320px]:flex-row">
         <button
-          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"}`}
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
+            currentPage === 1 ? "invisible" : "visible"
+          }`}
           onClick={() => goToPage(currentPage - 1)}
           disabled={currentPage === 1}
         >
           <FaArrowAltCircleLeft />
         </button>
-        {ServiciosEnPagina
-          .map((datos: any, i) => {
-            let routeUrl = ''; // Inicializa la variable de ruta
+        {ServiciosEnPagina.map((datos: any, i) => {
+          let routeUrl = ""; // Inicializa la variable de ruta
 
-            if (datos.nombre === "Objetos perdidos") {
-              routeUrl = "/saludBienestar/bienestarUniversitario/objetosPerdidos";
-            } else if (datos.nombre === "Becas y ayudas") {
-              routeUrl = "/saludBienestar/bienestarUniversitario/becasAyudas";
-            }
-            // Si no es ninguno de los 2, routeUrl seguirá siendo una cadena vacía
+          if (datos.nombre === "Objetos Perdidos") {
+            routeUrl = "/saludBienestar/bienestarUniversitario/objetosPerdidos";
+          } else if (datos.nombre === "Becas") {
+            routeUrl = "/saludBienestar/bienestarUniversitario/becasAyudas";
+          }
+          // Si no es ninguno de los 2, routeUrl seguirá siendo una cadena vacía
 
-            return (
-              <div key={i} className="flex gap-2">
-                <Circularbutton
-                  imageUrl={datos.imagen}
-                  text={datos.nombre}
-                  routeUrl={routeUrl}
-                />
-              </div>
-            );
-          })
-        }
-
+          return (
+            <div key={i} className="flex gap-2">
+              <Circularbutton
+                imageUrl={
+                  isValidUrl(datos.imagen) ? datos.imagen : "/ImgDefault.png"
+                }
+                text={datos.nombre}
+                routeUrl={routeUrl}
+              />
+            </div>
+          );
+        })}
 
         <button
-          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"}`}
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
+            currentPage === totalPages ? "invisible" : "visible"
+          }`}
           onClick={() => goToPage(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
@@ -269,7 +277,6 @@ const Services = () => {
     </div>
   );
 };
-
 
 function BienestarUniversitarioPage() {
   const [loading, setLoading] = useState(true);
