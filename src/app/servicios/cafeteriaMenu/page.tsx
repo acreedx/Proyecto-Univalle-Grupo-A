@@ -2,7 +2,7 @@
 import ItemMenu from "@/app/components/item-menu";
 import ButtonNav from "@/app/components/ButtonNav";
 import menu from "@/app/DataTools/DataMenuCafeteria";
-import React, { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import response,{ICafeteriaData}from"@/app/DataTools/DataCafeteria";
 //import { getPrice, getDescription } from "@/app/DataTools/DataCafeteria";
 
@@ -11,6 +11,7 @@ function CafeteriaMenuPage() {
   const [dataTable2, setMenuinfo] = useState<ICafeteriaData[]>([]);
   const [TotalResult,setTotal]= useState(Number);
   const resultsPerPage = 10;
+  console.log("asdsad")
   function onPageChangeTable2(p: number) {
     setPageTable2(p);
   }
@@ -23,7 +24,6 @@ function CafeteriaMenuPage() {
     "Especial",
     "Ensalada"
   ]
-
   useEffect(() => {
     const getData = async () => {
       const query = await fetch('http://apisistemaunivalle.somee.com/api/Publicaciones/getPublicacionesbyModuloId/4');
@@ -37,7 +37,7 @@ function CafeteriaMenuPage() {
   }, [pageTable2]);
 
   const getDescription = (a:any) =>{
-    var description
+    var description = ""
     a.map((b:any) => {
       if (!categorysArray.includes(b.contenido) && isNaN(b.contenido)) {
         description = b.contenido
@@ -64,8 +64,8 @@ function CafeteriaMenuPage() {
         price = Number(content.contenido)
       }
     })
-    return price
-  }
+    return price
+  }
   return (
     
     <main className="h-full grid gap-5">
@@ -82,15 +82,15 @@ function CafeteriaMenuPage() {
       </ul>
       
       <div className="flex flex-wrap justify-center items-center gap-4">
-      {dataTable2.map((menu:any, i) => (
-        <ItemMenu
-        key={i}
-        imageUrl={menu.imageUrl}
-        name={menu.name}
-        price= {getPrice(menu.price).toString()}
-        description = {"getDescription(menu.description)"}
+      {dataTable2.map((menu:any, i) => (
         
-      />
+        <ItemMenu
+          key={i}
+          imageUrl={menu.archivo}
+          name={menu.titulo}
+          price= {getPrice(menu.descripcion).toString()}
+          description = {getDescription(menu.descripcion).toString()}
+        />
       ))}
       </div>
     </main>

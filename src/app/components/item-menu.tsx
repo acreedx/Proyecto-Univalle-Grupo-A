@@ -4,7 +4,7 @@ interface ItemMenuProps {
   imageUrl: string;
   name: string;
   price: string;
-  description: string;
+  description: string | undefined;
 }
 const itemMenu: FC<ItemMenuProps> = ({
   imageUrl,
