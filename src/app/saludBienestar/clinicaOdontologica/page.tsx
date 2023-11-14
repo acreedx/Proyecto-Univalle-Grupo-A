@@ -7,11 +7,14 @@ import VideoPlayer from "@/app/components/video-player";
 import CopyToClipboard from "@/app/components/copy-clipboard";
 import GenericButton from "@/app/components/generic-button";
 import { useEffect, useState } from "react";
-import { IContact,IUbicacion,IRequisitos } from "@/Services";
+import { IContact, IUbicacion, IRequisitos } from "@/Services";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 
 const RequirementInfo = () => {
   const [requirements, setRequirements] = useState<IRequisitos[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const RequerimientosPorPagina = 3;
   useEffect(() => {
     fetch('https://apisistemaunivalle.somee.com/api/Requisitos/getRequisitosByModuloId/16')
       .then(response => response.json())
@@ -28,13 +31,31 @@ const RequirementInfo = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
+  const startIndex = (currentPage - 1) * RequerimientosPorPagina;
+  const endIndex = startIndex + RequerimientosPorPagina;
+  const RequerimientosEnPagina = requirements
+    .slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(requirements.length / RequerimientosPorPagina);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+  };
   return (
     <div className="col-span-5 mb-10">
       <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
         Requisitos para usar los servicios de Gabinete Médico
       </h3>
       <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
-        {requirements && requirements.map((requirement: any) => (
+        <button
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
+            }`}
+          onClick={() => goToPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <FaArrowAltCircleLeft />
+        </button>
+        {RequerimientosEnPagina.map((requirement: any) => (
           <div key={requirement.identificador}>
             <CardRequirement
               title={requirement.descripcion}
@@ -46,6 +67,14 @@ const RequirementInfo = () => {
             />
           </div>
         ))}
+        <button
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
+            }`}
+          onClick={() => goToPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <FaArrowAltCircleRight />
+        </button>
       </div>
     </div>
   );
