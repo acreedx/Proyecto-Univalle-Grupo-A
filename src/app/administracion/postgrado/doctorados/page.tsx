@@ -35,9 +35,7 @@ function doctorados() {
                         <img src='https://www.univalle.edu/wp-content/uploads/2022/06/sedelapaz01.jpg'></img>
                         <p className='info'>
                         Modalidad: <br/>
-                        ON LINE<br/>
-                        Si necesitas más información visitanos en: <br/>
-                        Av. Argentina 2083, La Paz, Piso 16 Torre A
+                        ON LINE
                         </p>
                     </div>
                 </div>
@@ -51,9 +49,7 @@ function doctorados() {
                         <img src='https://www.univalle.edu/wp-content/uploads/2022/06/sedelapaz01.jpg'></img>
                         <p className='info'>
                         Modalidad: <br/>
-                        ON LINE<br/>
-                        Si necesitas más información visitanos en: <br/>
-                        Av. Argentina 2083, La Paz, Piso 16 Torre A
+                        ON LINE
                         </p>
                     </div>
                 </div>
