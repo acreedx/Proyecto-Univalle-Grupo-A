@@ -8,21 +8,46 @@ import CopyToClipboard from "@/app/components/copy-clipboard";
 import GenericButton from "@/app/components/generic-button";
 import { useState, useEffect } from "react";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+
+import { IContact,IServicio,IUbicacion } from "@/Services";
+
 import { isValidUrl } from "@/app/components/functions";
 
 const Ubication = () => {
-  const videoUrl =
-    "https://drive.google.com/uc?id=1VfBa-fHQbXTr3AOOvZMzBuQiGXZSLnI6";
-  const imgUrl =
-    "https://drive.google.com/uc?id=1EHJkYfgYfkcBAd69TiGuN1lT0wHrX9bL";
-  const ubiWidth = "100%";
-  const videoHeight = "360";
-
+  const [ubiData, setUbiData] = useState<IUbicacion | null>(null);
   const [ubication, setUbication] = useState(true);
+
+  useEffect(() => {
+    const fetchUbicationData = async () => {
+      try {
+        const res = await fetch('https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/1');
+        if (!res.ok) {
+          throw new Error('Error al obtener los datos de ubicación.');
+        }
+        const { data } = await res.json();
+        setUbiData(data[0]); // Supongo que solo hay un elemento en el arreglo de datos
+      } catch (error) {
+        console.error('Error fetching location data:', error);
+      }
+    };
+
+    fetchUbicationData();
+  }, []);
 
   const handleUbicationInformation = (ubiState: boolean) => {
     setUbication(ubiState);
   };
+
+  if (!ubiData) {
+    return null; // Puedes mostrar un indicador de carga aquí si lo deseas
+  }
+
+  const { imagen, video } = ubiData;
+  const imgUrl = imagen ?? ''; // Usa una cadena vacía si la imagen es null
+  const videoUrl = video ?? ''; // Usa una cadena vacía si el video es null
+
+  const ubiWidth = '100%';
+  const videoHeight = '360';
 
   return (
     <div className="col-span-4 2xl:col-span-3">
@@ -53,38 +78,99 @@ const Ubication = () => {
   );
 };
 
+
+// const Ubication = () => {
+//   const videoUrl =
+//     "https://drive.google.com/uc?id=1VfBa-fHQbXTr3AOOvZMzBuQiGXZSLnI6";
+//   const imgUrl =
+//     "https://drive.google.com/uc?id=1EHJkYfgYfkcBAd69TiGuN1lT0wHrX9bL";
+//   const ubiWidth = "100%";
+//   const videoHeight = "360";
+
+//   const [ubication, setUbication] = useState(true);
+
+//   const handleUbicationInformation = (ubiState: boolean) => {
+//     setUbication(ubiState);
+//   };
+
+//   return (
+//     <div className="col-span-4 2xl:col-span-3">
+//       <div className="mb-2 flex flex-col justify-center min-[420px]:flex-row min-[420px]:justify-evenly">
+//         <h2 className="text-center mt-4 text-xl font-bold text-white mb-2 md:text-2xl xl:text-3xl">
+//           Ubicación
+//         </h2>
+//         <div className="flex flex-col gap-y-2 items-center justify-center min-[210px]:flex-row min-[210px]:gap-x-2 ">
+//           <GenericButton
+//             text="Croqui"
+//             functionOnClick={() => handleUbicationInformation(true)}
+//             active={ubication}
+//           />
+//           <GenericButton
+//             text="Video"
+//             functionOnClick={() => handleUbicationInformation(false)}
+//             active={!ubication}
+//           />
+//         </div>
+//       </div>
+
+//       {ubication ? (
+//         <img src={imgUrl} width={ubiWidth} alt="Croquis" />
+//       ) : (
+//         <VideoPlayer url={videoUrl} width={ubiWidth} height={videoHeight} />
+//       )}
+//     </div>
+//   );
+// };
+
+
 const Contacts = () => {
+  const [contacts, setContacts] = useState<IContact[]>([]);
+
+  useEffect(() => {
+    fetch('https://apisistemaunivalle.somee.com/api/Referencia/getReferenciasbyModuloId/1')
+      .then(response => response.json())
+      .then(data => {
+        if (Array.isArray(data.data)) {
+          setContacts(data.data);
+        } else {
+          console.error('Los datos de la API no son una matriz válida.');
+        }
+      })
+      .catch(error => {
+
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+
   return (
     <div className="mt-10 2xl:mt-0 flex-1">
       <CardGray title="Contactos">
-        <ul>
-          <li>
-            Teléfonos:
-            <ul className="list-disc pl-4 sm:pl-6 xl:pl-4 2xl:pl-6">
-              <li>
-                <CopyToClipboard text="(591-2) 2001800" />
-              </li>
-              <li>
-                <CopyToClipboard text="(591-2) 2246725" />
-              </li>
-              <li>
-                <CopyToClipboard text="(591-2) 2246726" />
-              </li>
-            </ul>
-          </li>
-          <li>
-            Whatsapp:
-            <ul className="list-disc pl-4 sm:pl-6 xl:pl-4 2xl:pl-6">
-              <li>
-                <CopyToClipboard text="+591 77277872" />
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <table className="min-w-full divide-y divide-gray-200 place-items-center" >
+          <thead>
+            <tr className="">
+              <th className=" text-left">Nombre</th>
+              <th className=" text-left">Teléfono</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map((datos: any) => (
+              <tr key={`datos-${datos.identificador}`} >
+                <td className=" border-b border-gray-200">
+                  {datos.nombre || ''}
+                </td>
+                <td className=" border-b border-gray-200">
+                  <CopyToClipboard text={datos.numero || ''} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </CardGray>
     </div>
   );
 };
+
 
 const Schedule = () => {
   return (
@@ -100,31 +186,13 @@ const Schedule = () => {
     </div>
   );
 };
-type Servicio = {
-  identificador: number;
-  nombre: string | null;
-  modulo: string | null;
-  imagen: string;
-};
+
 
 const Services = () => {
-  const [services, setServices] = useState<Servicio[]>([]);
+  const [services, setServices] = useState<IServicio[]>([]);
   const [currentPage, setCurrentPage] = useState(1); // Agrega el estado de la página actual
   const ServiciosPorPagina = 3;
 
-  // const services = [
-  //   {
-  //     imageUrl: "https://static.vecteezy.com/system/resources/previews/005/734/015/non_2x/scholarship-graduation-cap-certificate-and-coin-cartoon-icon-illustration-education-financial-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg",
-  //     text: "Becas y ayudas",
-  //     routeUrl: "/saludBienestar/bienestarUniversitario/becasAyudas",
-  //   },
-  //   {
-  //     imageUrl: "https://img.freepik.com/vector-premium/accesorios-oficina-caja-carton-libro-cuaderno-regla-cuchillo-carpeta-lapiz-boligrafo-calculadora-tijeras-cinta-pintura-material-oficina-papeleria-educacion_169241-2421.jpg",
-  //     text: "Objetos perdidos",
-  //     routeUrl: "/saludBienestar/bienestarUniversitario/objetosPerdidos",
-  //   },
-
-  // ];
   useEffect(() => {
     fetch(
       "http://apisistemaunivalle.somee.com/api/Servicios/getActiveServicios"
