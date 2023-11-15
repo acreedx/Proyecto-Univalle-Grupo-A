@@ -8,44 +8,46 @@ import URL from "@/../utils/api";
 import { ITramitesData, convertJSONListService } from "@/../utils/tramitesData";
 import { ICategoriasData, convertJSONListCategory } from "@/../utils/categoriasData";
 import Link from "next/link";
-interface Tramite {
-  text: string;
-  imageUrl: string;
-  routeUrl: string;
-}
-export default function Tramites() {
+import { GetServerSidePropsContext } from "next";
+import data from "@/app/DataTools/DataMissingObject";
+
+
+interface props {
+
+    name: string;
+  }
+  export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { name } = context.query;
+    return {
+      props: {
+        name,
+      },
+    };
+  }
+  
+
+export default function Tramites({name}: props) {
   const [currentPage, setCurrentPage] = useState(1);
   const tramitesPorPagina = 6;
-  const route = "Servicios/getTramiteByModuleActive/"
-//  const route = "Servicios/getTramiteByNameCategory/"
-  const getActiveCategoriesRoute = "Categoria/getAllCategorias"
-  //const route = "Servicios/getAllServicios" 
+  // const route = "Servicios/getTramiteByModuleActive/"
+
+  const route = "Servicios/getTramiteByCategory/"
+
   const moduleName = "Tramites";
   const [services, setServices] = useState<ITramitesData[]>([]);
   const [categories, setCategories] = useState<ICategoriasData[]>([]);
 
 
-  
-  useEffect(() => {
-    async function doFetchCategory() {
-      fetch(`${URL.baseUrl}${getActiveCategoriesRoute}`)
-        .then((res) => res.json())
-        .then((res) => setCategories(convertJSONListCategory(res.data)));
-    }
-    doFetchCategory();
-    
-  }, []);
-
   useEffect(() => {
     async function doFetch() {
-      fetch(`${URL.baseUrl}${route}${moduleName}`)
+      fetch(`${URL.baseUrl}${route}${name}`)
         .then((res) => res.json())
-        .then((res) => setServices(convertJSONListService(res.data)));
+        .then((res) => {setServices(convertJSONListService(res.data))
+        console.log("response",data )
+        });
     }
     doFetch();
-    
   }, []);
-
 
 
   const startIndex = (currentPage - 1) * tramitesPorPagina;
@@ -60,11 +62,14 @@ export default function Tramites() {
   return (
     <>
       <HeaderTitle direction="/administracion" title="" />
-      <ul className="flex flex-col md:flex-row items-center py-5 p-4 gap-4 justify-center md:-mt-5">
-      {categories.map((categoria, index) => (
 
-       <ButtonNav key={index} href={`/administracion/tramites/${categoria.name}`}  text={categoria.name} />
-          ))}
+      <ul className="flex flex-col md:flex-row items-center py-5 p-4 gap-4 justify-center md:-mt-5">
+        {categories.map((categoria, index) => (
+
+            <ButtonNav href="" text={categoria.name} />
+
+        ))}
+
       </ul>
       <div className="flex justify-between items-center mx-6">
         <button
@@ -78,7 +83,6 @@ export default function Tramites() {
 
         <div className="flex flex-wrap flex-grow justify-center items-center gap-4 md:gap-6 text-center">
           {tramitesEnPagina.map((services, index) => (
-            
             <div key={index} className="flex justify-center items-center p-2 md:p-4 w-1/2 md:w-1/4">
               <CircularButton imageUrl={services.image} text={services.name} routeUrl={""} />
 
