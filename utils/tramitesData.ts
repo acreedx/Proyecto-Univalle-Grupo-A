@@ -28,6 +28,7 @@ interface ITramitesData {
           ? data.referencia[0].numerocel
           : null,
       durationId: data.tramites && data.tramites[0] ? data.tramites[0].id : null,
+
       duration:
         data.tramites && data.tramites[0] ? data.tramites[0].tiempotramite : null,
   
