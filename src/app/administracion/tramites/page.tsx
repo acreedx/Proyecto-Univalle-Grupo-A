@@ -5,8 +5,8 @@ import HeaderTitle from "@/app/components/header-title";
 import { useState, useEffect } from "react";
 import { FaArrowAltCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import URL from "@/../utils/api";
-import { ITramitesData, convertJSONListService } from "@/../utils/tramitesData";
-import { ICategoriasData, convertJSONListCategory } from "@/../utils/categoriasData";
+import { ITramitesData, convertJSONListService } from "../../../../utils/interfaces/tramitesData";
+import { ICategoriasData, convertJSONListCategory } from "../../../../utils/interfaces/categoriasData";
 import Link from "next/link";
 interface Tramite {
   text: string;
@@ -18,13 +18,12 @@ export default function Tramites() {
   const tramitesPorPagina = 6;
   const route = "Servicios/getTramiteByModuleActive/"
   const routeCategory = "Servicios/getTramiteByCategory/"
-  const getActiveCategoriesRoute = "Categoria/getAllCategorias"
+  const getActiveCategoriesRoute = "Categoria/getActiveCategorias"
   //const route = "Servicios/getAllServicios" 
   const moduleName = "Tramites";
   const [services, setServices] = useState<ITramitesData[]>([]);
   const [categories, setCategories] = useState<ICategoriasData[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [selectedTramite, setSelectedTramite] = useState<number>(0);
 
   const handleCategoryChange = async (categoryName: string) => {
     setSelectedCategory(categoryName);
@@ -42,10 +41,10 @@ export default function Tramites() {
     async function doFetchCategory() {
       fetch(`${URL.baseUrl}${getActiveCategoriesRoute}`)
         .then((res) => res.json())
-        .then((res) => setCategories(convertJSONListCategory(res.data)));
+        .then((res) => {setCategories(convertJSONListCategory(res.data))
+        console.log(res)});
     }
     doFetchCategory();
-
   }, []);
 
   useEffect(() => {
@@ -99,8 +98,7 @@ export default function Tramites() {
 
             <div key={index} className="flex justify-center items-center p-2 md:p-4 w-1/2 md:w-1/4">
          
-              <CircularButton imageUrl={services.image} text={services.name} routeUrl={`/administracion/tramites/${services.id}`}  />
-   
+              <CircularButton imageUrl={services.image} text={services.name} routeUrl={`tramites/${services.id}`}  />
               
             </div>
           ))}
