@@ -1,70 +1,43 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Navbutton from "@/app/components/nav-button";
 import HeaderTitle from "@/app/components/header-title";
 import Image from "next/image";
+import URL from "../../../api/apiCareerDirection";
 
-interface Facultad {
+interface IFacultad {
   id: number;
   titulo: string;
   descripcion: string;
   imagen: string;
 }
 
-interface idFacultad {
-  idFacultad: number;
+interface DireccionDeCarreraProps {
+  faculty: IFacultad[]; // Ajusta el tipo según la estructura real de tus datos
 }
 
-const facultades: Facultad[] = [
-  {
-    id: 1,
-    titulo: "FACULTAD DE CIENCIAS DE LA SALUD",
-    descripcion:
-      "Esta facultad se dedica a la formación de profesionales de la salud, incluyendo médicos, enfermeras y otros expertos en el cuidado de la salud.",
-    imagen:
-      "https://eablogs.org/wp-content/uploads/2021/11/Trabajos-para-estudiantes-de-ciencias-de-la-salud.jpg",
-  },
-  {
-    id: 2,
-    titulo: "FACULTAD DE CIENCIAS EMPRESARIALES Y SOCIALES",
-    descripcion:
-      "En esta facultad, los estudiantes obtienen conocimientos en administración de empresas y disciplinas sociales, preparándolos para carreras en el mundo empresarial y la ciencia social.",
-    imagen:
-      "https://concepto.de/wp-content/uploads/2014/08/empresario-2-e1551211012370.jpg",
-  },
-  {
-    id: 3,
-    titulo: "FACULTAD DE INFORMÁTICA Y ELECTRÓNICA",
-    descripcion:
-      "Los programas académicos de esta facultad se centran en la tecnología, abarcando campos como la informática, la electrónica y la ingeniería de sistemas.",
-    imagen: "https://i.blogs.es/c7decb/estudiantes-ingenieria/1366_2000.jpg",
-  },
-  {
-    id: 4,
-    titulo: "FACULTAD DE ARQUITECTURA, URBANISMO Y DISEÑO",
-    descripcion:
-      "En esta facultad, los estudiantes aprenden a diseñar espacios arquitectónicos y urbanos, así como a crear interiores funcionales y estéticos.",
-    imagen:
-      "https://www.inforpractico.com/wp-content/uploads/descubre-las-funciones-de-un-disenador-grafico-y-su-importancia.jpg",
-  },
-  {
-    id: 5,
-    titulo: "FACULTAD DE GASTRONOMÍA Y TURISMO",
-    descripcion:
-      "Los programas de esta facultad se centran en la gastronomía, la hospitalidad y el turismo, preparando a los estudiantes para carreras en la industria de la hospitalidad y el turismo.",
-    imagen:
-      "https://blogs.unitec.mx/hubfs/Imported_Blog_Media/7-razones-para-estudiar-gastronomia-en-la-unitec-1-Dec-17-2022-07-43-33-2946-PM.jpg",
-  },
-  {
-    id: 6,
-    titulo: "FACULTAD DE TECNOLOGÍA",
-    descripcion:
-      "En esta facultad, los estudiantes se forman en diversas disciplinas tecnológicas, desde la ingeniería hasta la tecnología de la información, preparándolos para carreras en el campo tecnológico.",
-    imagen:
-      "https://admision.utem.cl/wp-content/uploads/2019/12/me-gusta-la-tecnologia.jpg",
-  },
-];
+function DireccionDeCarrera({ faculty }: DireccionDeCarreraProps) {
+  const [data, setData] = useState<IFacultad[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${URL.baseUrl}Facultad/ListaActivos`);
+        const apiData = await res.json();
+        console.log("API Response:", apiData);
 
-function DireccionDeCarrera() {
+        if (apiData && apiData.response) {
+          setData(apiData.response);
+        } else {
+          console.error("Malformatted API data");
+        }
+      } catch (error) {
+        console.error("Error fetching data from the API:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <>
       <HeaderTitle direction="/administracion" title="" />
@@ -109,32 +82,45 @@ function DireccionDeCarrera() {
         </div>
       </section>
 
-      <section id="facultades" className="p-4 lg:p-8 dark:bg-gray-800 dark:text-gray-100 ">
+      <section
+        id="facultades"
+        className="p-4 lg:p-8 dark:bg-gray-800 dark:text-gray-100 "
+      >
         <div className="container mx-auto space-y-12 ">
-          {facultades.map((facultadItem) => (
-            <div
-              key={facultadItem.id}
-              className={`flex flex-col overflow-hidden rounded-md shadow-2xl ${
-                facultadItem.id % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"
-              }  `}
-            >
-              <img
-                src={facultadItem.imagen}
-                alt=""
-                className="h-80 dark:bg-gray-500 aspect-video"
-              />
-              <div className="flex flex-col justify-center flex-1 p-6 dark:bg-gray-900 bg-gray-500 bg-opacity-50">
-                <span className="text-xs uppercase text-white">Univalle</span>
-                <h3 className="text-3xl font-bold text-white">
-                  {facultadItem.titulo}
-                </h3>
-                <p className="my-6 text-gray-400">{facultadItem.descripcion}</p>
-                <Navbutton
-                  routeUrl={`/administracion/direccionDeCarrera/${facultadItem.id}`}
+          {data.length > 0 ? (
+            data.map((facultadItem) => (
+              <div
+                key={facultadItem.id}
+                className={`flex flex-col overflow-hidden rounded-md shadow-2xl ${
+                  facultadItem.id % 2 === 0
+                    ? "lg:flex-row-reverse"
+                    : "lg:flex-row"
+                }  `}
+              >
+                <img
+                  src={facultadItem.imagen}
+                  alt=""
+                  className="h-80 dark:bg-gray-500 aspect-video"
                 />
+                <div className="flex flex-col justify-center flex-1 p-6 dark:bg-gray-900 bg-gray-500 bg-opacity-50">
+                  <span className="text-xs uppercase text-white">Univalle</span>
+                  <h3 className="text-3xl font-bold text-white">
+                    {facultadItem.titulo}
+                  </h3>
+                  <p className="my-6 text-gray-300">
+                    {facultadItem.descripcion}
+                  </p>
+                  <Navbutton
+                    routeUrl={`/administracion/direccionDeCarrera/${facultadItem.id}`}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className=" text-white text-center">
+              No se han encontrado datos de la facultad.
+            </p>
+          )}
         </div>
       </section>
     </>
