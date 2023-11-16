@@ -57,13 +57,13 @@ function InformacionTramite({ params }: { params: { id: number } }) {
             />
 
           <div className="mt-8"></div>
-          <div className="flex flex-row items-center gap-4 justify-center">
+          <div className="flex flex-row  items-center gap-4 justify-center">
             <img
               src="/icons/usericon.png"
               alt="Encargado icon"
-              className="w-14"
+              className="w-14 mt-8"
             />
-            <p className="text-white text-base md:text-2xl font-bold">
+            <p className="text-white mt-8  text-base md:text-2xl font-bold">
               {service?.encharged}
             </p>
             
