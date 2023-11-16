@@ -11,9 +11,10 @@ import { objetosPerdidosProps, data } from "@/app/DataTools/DataMissingObject";
 
 function ObjetosPerdidosPage() {
   const [loading, setLoading] = useState(true);
-  const [missObjs, setMissObjs] = useState<objetosPerdidosProps[]>(data);
-  const [searchMissObjs, setSearchMissObjs] =
-    useState<objetosPerdidosProps[]>(data);
+  const [missObjs, setMissObjs] = useState<objetosPerdidosProps[]>([]);
+  const [searchMissObjs, setSearchMissObjs] = useState<objetosPerdidosProps[]>(
+    []
+  );
 
   //Get Information
 
@@ -24,6 +25,10 @@ function ObjetosPerdidosPage() {
   }
 
   useEffect(() => {
+    setLoading(true);
+    setMissObjs(data);
+    setSearchMissObjs(data);
+    setLoading(false);
     window.scrollTo(0, 0);
     //getInfo();
   }, []);
@@ -49,22 +54,24 @@ function ObjetosPerdidosPage() {
   //Función de búsqueda
 
   const searchObjs = (parameter: string) => {
+    setLoading(true);
     setSearchMissObjs(
       missObjs.filter((obj) =>
         obj.name.toLowerCase().includes(parameter.toLowerCase())
       )
     );
+    setLoading(false);
   };
 
   const showObjects = (objs: MissObject[]) => {
     return (
       <div className="flex flex-wrap justify-center items-center gap-4">
-        {objs.length > 0 ? (
+        {loading ? (
+          <LoadingScreen /> // Muestra la pantalla de carga mientras se busca
+        ) : objs.length > 0 ? (
           objs.map((obj, index) => (
             <ItemMissObj key={index} imageUrl={obj.image} name={obj.name} />
           ))
-        ) : loading ? (
-          <LoadingScreen />
         ) : (
           <NotFoundMessage message="No se encontraron resultados" />
         )}
