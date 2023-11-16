@@ -8,13 +8,16 @@ import GenericButton from "@/app/components/generic-button";
 import { isValidUrl } from "@/app/components/functions";
 import Circularbutton from "@/app/components/circular-button";
 import { useEffect, useState } from "react";
-import { IContact, IServicio, IUbicacion, IRequisitos, IHorarios } from "@/Services";
+import {
+  IContact,
+  IServicio,
+  IUbicacion,
+  IRequisitos,
+  IHorarios,
+} from "@/Services";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
-
-
-
 
 function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
   const params = useParams();
@@ -24,25 +27,25 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
     const [currentPage, setCurrentPage] = useState(1);
     const RequerimientosPorPagina = 3;
     useEffect(() => {
-      fetch(`https://apisistemaunivalle.somee.com/api/Requisitos/getRequisitosByServiceId/${id}`)
-        .then(response => response.json())
-        .then(data => {
+      fetch(
+        `https://apisistemaunivalle.somee.com/api/Requisitos/getRequisitosByServiceId/${id}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
           if (Array.isArray(data.data)) {
             setRequirements(data.data);
-            console.log(data.data)
+            console.log(data.data);
           } else {
-            console.error('Los datos de la API no son una matriz válida.');
+            console.error("Los datos de la API no son una matriz válida.");
           }
         })
-        .catch(error => {
-
-          console.error('Error fetching data:', error);
+        .catch((error) => {
+          console.error("Error fetching data:", error);
         });
     }, []);
     const startIndex = (currentPage - 1) * RequerimientosPorPagina;
     const endIndex = startIndex + RequerimientosPorPagina;
-    const RequerimientosEnPagina = requirements
-      .slice(startIndex, endIndex);
+    const RequerimientosEnPagina = requirements.slice(startIndex, endIndex);
 
     const totalPages = Math.ceil(requirements.length / RequerimientosPorPagina);
 
@@ -56,8 +59,9 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
         </h3>
         <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
           <button
-            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
-              }`}
+            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
+              currentPage === 1 ? "invisible" : "visible"
+            }`}
             onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
           >
@@ -67,17 +71,21 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
             <div key={requirement.identificador}>
               <CardRequirement
                 title={requirement.descripcion}
-                info={requirement.pasosRequisito && requirement.pasosRequisito.map((paso: any) => (
-                  <div key={paso.identificador}>
-                    <strong>{paso.nombre}</strong>
-                  </div>
-                ))}
+                info={
+                  requirement.pasosRequisito &&
+                  requirement.pasosRequisito.map((paso: any) => (
+                    <div key={paso.identificador}>
+                      <strong>{paso.nombre}</strong>
+                    </div>
+                  ))
+                }
               />
             </div>
           ))}
           <button
-            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
-              }`}
+            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
+              currentPage === totalPages ? "invisible" : "visible"
+            }`}
             onClick={() => goToPage(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
@@ -95,9 +103,11 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
     useEffect(() => {
       const fetchUbicationData = async () => {
         try {
-          const res = await fetch(`https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyServicioId/${id}`);
+          const res = await fetch(
+            `https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyServicioId/${id}`
+          );
           if (!res.ok) {
-            throw new Error('Error al obtener los datos de ubicación.');
+            throw new Error("Error al obtener los datos de ubicación.");
           }
           const resData = await res.json();
           setUbiData({
@@ -107,7 +117,7 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
             video: resData.data[0].video,
           }); // Supongo que solo hay un elemento en el arreglo de datos
         } catch (error) {
-          console.error('Error fetching location data:', error);
+          console.error("Error fetching location data:", error);
         }
       };
 
@@ -123,11 +133,11 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
     }
 
     const { imagen, video } = ubiData;
-    const imgUrl = imagen ?? ''; // Usa una cadena vacía si la imagen es null
-    const videoUrl = video ?? ''; // Usa una cadena vacía si el video es null
+    const imgUrl = imagen ?? ""; // Usa una cadena vacía si la imagen es null
+    const videoUrl = video ?? ""; // Usa una cadena vacía si el video es null
 
-    const ubiWidth = '100%';
-    const videoHeight = '360';
+    const ubiWidth = "100%";
+    const videoHeight = "360";
 
     return (
       <div className="col-span-4 2xl:col-span-3">
@@ -162,26 +172,26 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
     const [contacts, setContacts] = useState<IContact[]>([]);
 
     useEffect(() => {
-      fetch(`https://apisistemaunivalle.somee.com/api/Referencia/getReferenciasbyServicioId/${id}`)
-        .then(response => response.json())
-        .then(data => {
+      fetch(
+        `https://apisistemaunivalle.somee.com/api/Referencia/getReferenciasbyServicioId/${id}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
           if (Array.isArray(data.data)) {
             setContacts(data.data);
           } else {
-            console.error('Los datos de la API no son una matriz válida.');
+            console.error("Los datos de la API no son una matriz válida.");
           }
         })
-        .catch(error => {
-
-          console.error('Error fetching data:', error);
+        .catch((error) => {
+          console.error("Error fetching data:", error);
         });
     }, []);
-
 
     return (
       <div className="mt-10 2xl:mt-0 flex-1">
         <CardGray title="Contactos">
-          <table className="min-w-full divide-y divide-gray-200 place-items-center" >
+          <table className="min-w-full divide-y divide-gray-200 place-items-center">
             <thead>
               <tr className="">
                 <th className=" text-left">Nombre</th>
@@ -190,12 +200,12 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
             </thead>
             <tbody>
               {contacts.map((datos: any) => (
-                <tr key={`datos-${datos.identificador}`} >
+                <tr key={`datos-${datos.identificador}`}>
                   <td className=" border-b border-gray-200">
-                    {datos.nombre || ''}
+                    {datos.nombre || ""}
                   </td>
                   <td className=" border-b border-gray-200">
-                    <CopyToClipboard text={datos.numero || ''} />
+                    <CopyToClipboard text={datos.numero || ""} />
                   </td>
                 </tr>
               ))}
@@ -296,10 +306,12 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
 
   return (
     <>
-      <div>{servicio ? servicio[0].nombre : "Cargando..."}</div>;
       {servicio && (
         <>
-          <HeaderTitle direction="/saludBienestar/gabineteMedico" title={servicio[0].nombre} />
+          <HeaderTitle
+            direction="/saludBienestar/gabineteMedico"
+            title={servicio[0].nombre}
+          />
 
           <div
             className="mt-8 flex flex-col w-full px-1 gap-x-1
@@ -321,8 +333,6 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
       )}
     </>
   );
-
-
 }
 
 export default ServicioPage;
