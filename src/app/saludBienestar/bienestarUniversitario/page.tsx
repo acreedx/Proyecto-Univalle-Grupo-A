@@ -199,7 +199,7 @@ const Services = () => {
 
   useEffect(() => {
     fetch(
-      "http://apisistemaunivalle.somee.com/api/Servicios/getActiveServicios"
+      "https://apisistemaunivalle.somee.com/api/Servicios/getServicioByModuloId/1"
     )
       .then((response) => response.json())
       .then((data) => {
@@ -218,7 +218,6 @@ const Services = () => {
   const ServiciosEnPagina = services
     .filter(
       (servicio) =>
-        servicio.modulo === "Bienestar Universitario" &&
         servicio.imagen !== null
     )
     .slice(startIndex, endIndex);
@@ -237,9 +236,8 @@ const Services = () => {
 
       <div className="flex gap-2 w-full justify-center col-span-5 flex-col items-center min-[320px]:flex-row">
         <button
-          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
-            currentPage === 1 ? "invisible" : "visible"
-          }`}
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
+            }`}
           onClick={() => goToPage(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -271,9 +269,8 @@ const Services = () => {
         })}
 
         <button
-          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
-            currentPage === totalPages ? "invisible" : "visible"
-          }`}
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
+            }`}
           onClick={() => goToPage(currentPage + 1)}
           disabled={currentPage === totalPages}
         >

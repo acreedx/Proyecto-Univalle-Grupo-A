@@ -299,7 +299,7 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
       <div>{servicio ? servicio[0].nombre : "Cargando..."}</div>;
       {servicio && (
         <>
-          <HeaderTitle direction="/saludBienestar/bienestarUniversitario" title={servicio[0].nombre} />
+          <HeaderTitle direction="/saludBienestar/gabineteMedico" title={servicio[0].nombre} />
 
           <div
             className="mt-8 flex flex-col w-full px-1 gap-x-1

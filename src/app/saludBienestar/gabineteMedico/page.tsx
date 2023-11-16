@@ -6,6 +6,8 @@ import HeaderTitle from "@/app/components/header-title";
 import VideoPlayer from "@/app/components/video-player";
 import CopyToClipboard from "@/app/components/copy-clipboard";
 import GenericButton from "@/app/components/generic-button";
+import Circularbutton from "@/app/components/circular-button";
+import { isValidUrl } from "@/app/components/functions";
 import { useEffect, useState } from "react";
 import { IContact, IServicio, IUbicacion, IRequisitos, IHorarios } from "@/Services";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
@@ -202,7 +204,7 @@ const Schedule = () => {
     const fetchData = async () => {
       try {
         // Fetch location data
-        const ubiRes = await fetch('https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/16');
+        const ubiRes = await fetch('https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/15');
         if (!ubiRes.ok) {
           throw new Error('Error al obtener los datos de ubicación.');
         }
@@ -210,7 +212,7 @@ const Schedule = () => {
         setUbiData(uData.data); // Set the array of locations
 
         // Fetch schedule data
-        const scheduleRes = await fetch('https://apisistemaunivalle.somee.com/api/Horarios/getHorarioByModuloId/16');
+        const scheduleRes = await fetch('https://apisistemaunivalle.somee.com/api/Horarios/getHorarioByModuloId/15');
         if (!scheduleRes.ok) {
           throw new Error('Error al obtener los datos de horarios.');
         }
@@ -252,6 +254,87 @@ const Schedule = () => {
   );
 };
 
+const Services = () => {
+  const [services, setServices] = useState<IServicio[]>([]);
+  const [currentPage, setCurrentPage] = useState(1); // Agrega el estado de la página actual
+  const ServiciosPorPagina = 3;
+
+  useEffect(() => {
+    fetch(
+      "https://apisistemaunivalle.somee.com/api/Servicios/getServicioByModuloId/15"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (Array.isArray(data.data)) {
+          setServices(data.data);
+        } else {
+          console.error("Los datos de la API no son una matriz válida.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+  const startIndex = (currentPage - 1) * ServiciosPorPagina;
+  const endIndex = startIndex + ServiciosPorPagina;
+  const ServiciosEnPagina = services
+    .filter(
+      (servicio) =>
+        servicio.imagen !== null
+    )
+    .slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(services.length / ServiciosPorPagina);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  return (
+    <div className="col-span-5 mb-10">
+      <h3 className="mt-10 font-bold text-white col-start-2 mb-4 text-center text-base min-[320px]:text-lg sm:text-xl md:text-2xl xl:text-3xl">
+        Servicios de bienestar universitario
+      </h3>
+
+      <div className="flex gap-2 w-full justify-center col-span-5 flex-col items-center min-[320px]:flex-row">
+        <button
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
+            }`}
+          onClick={() => goToPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <FaArrowAltCircleLeft />
+        </button>
+        {ServiciosEnPagina.map((datos: any, i) => {
+          let routeUrl = ""; // Inicializa la variable de ruta
+          routeUrl = `/saludBienestar/gabineteMedico/${datos.identificador}`;
+          // Si no es ninguno de los 2, routeUrl seguirá siendo una cadena vacía
+
+          return (
+            <div key={i} className="flex gap-2">
+              <Circularbutton
+                imageUrl={
+                  isValidUrl(datos.imagen) ? datos.imagen : "/ImgDefault.png"
+                }
+                text={datos.nombre}
+                routeUrl={routeUrl}
+              />
+            </div>
+          );
+        })}
+
+        <button
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
+            }`}
+          onClick={() => goToPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <FaArrowAltCircleRight />
+        </button>
+      </div>
+    </div>
+  );
+};
 function gabineteMedico() {
   return (
     <>
@@ -271,6 +354,7 @@ function gabineteMedico() {
           <Schedule />
         </div>
         <RequirementInfo />
+        <Services />
       </div>
     </>
   );
