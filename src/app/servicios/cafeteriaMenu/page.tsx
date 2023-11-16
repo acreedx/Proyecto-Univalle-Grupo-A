@@ -70,14 +70,14 @@ function CafeteriaMenuPage() {
     <main className="h-full grid gap-5">
       <h1 className="text-center mt-10 text-4xl font-bold text-white">Cafeteria</h1>
       <ul className="flex items-center py-5 p-4 gap-4 justify-center">
-        <ButtonNav href="/servicios/CafeteriaMenu" text="Todo" />
-        <ButtonNav href="/servicios/CafeteriaMenu/cafeteriaMenuJugos" text="Jugos/Batidos" />
-        <ButtonNav href="/servicios/CafeteriaMenu/cafeteriaMenuPostres" text="Postres" />
-        <ButtonNav href="/servicios/CafeteriaMenu/cafeteriaMenuCafes" text="Cafés" />
-        <ButtonNav href="/servicios/CafeteriaMenu/cafeteriaMenuDesayunos" text="Desayunos" />
-        <ButtonNav href="/servicios/CafeteriaMenu/cafeteriaMenuSandwiches" text="Sandwiches" />
-        <ButtonNav href="/servicios/CafeteriaMenu/cafeteriaMenuEspeciales" text="Especiales" />
-        <ButtonNav href="/servicios/CafeteriaMenu/cafeteriaMenuEnsaladas" text="Ensaladas" />
+        <ButtonNav href="/servicios/cafeteriaMenu" text="Todo" />
+        <ButtonNav href="/servicios/cafeteriaMenu/cafeteriaMenuJugos" text="Jugos/Batidos" />
+        <ButtonNav href="/servicios/cafeteriaMenu/cafeteriaMenuPostres" text="Postres" />
+        <ButtonNav href="/servicios/cafeteriaMenu/cafeteriaMenuCafes" text="Cafés" />
+        <ButtonNav href="/servicios/cafeteriaMenu/cafeteriaMenuDesayunos" text="Desayunos" />
+        <ButtonNav href="/servicios/cafeteriaMenu/cafeteriaMenuSandwiches" text="Sandwiches" />
+        <ButtonNav href="/servicios/cafeteriaMenu/cafeteriaMenuEspeciales" text="Especiales" />
+        <ButtonNav href="/servicios/cafeteriaMenu/cafeteriaMenuEnsaladas" text="Ensaladas" />
       </ul>
       
       <div className="flex flex-wrap justify-center items-center gap-4">
