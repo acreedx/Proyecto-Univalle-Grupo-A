@@ -32,7 +32,7 @@ function SaludYBienestarPage() {
             "https://static.vecteezy.com/system/resources/previews/006/310/372/non_2x/business-people-with-magnifier-and-computer-searching-new-information-explore-and-business-concept-of-data-research-and-information-cartoon-illustration-isolated-on-white-background-vector.jpg"
           }
           text={"Bienestar Universitario"}
-          routeUrl="/saludBienestar/bienestarUniversitario"
+          routeUrl="/saludBienestar/bienestarUniversitario/"
         />
       </div>
     </main>

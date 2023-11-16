@@ -2,7 +2,7 @@ import ButtonNav from "@/app/components/ButtonNav";
 
 interface headerTitleProps {
   direction: string;
-  title: string;
+  title?: string;
 }
 
 function HeaderTitle({ direction, title }: headerTitleProps) {

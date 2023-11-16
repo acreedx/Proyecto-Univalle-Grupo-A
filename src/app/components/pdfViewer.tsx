@@ -4,9 +4,13 @@ import WebViewer, { WebViewerInstance } from "@pdftron/webviewer";
 
 interface PDFViewerProps {
   href: string;
+  onInstanceReady?: (instance: WebViewerInstance) => void;
 }
-function PDFViewer({ href }: PDFViewerProps) {
+
+function PDFViewer({ href, onInstanceReady }: PDFViewerProps) {
+ 
   const viewer: any = useRef<HTMLDivElement | null>(null);
+  
   useEffect(() => {
     import("@pdftron/webviewer").then(() => {
       if (viewer.current) {
@@ -28,11 +32,14 @@ function PDFViewer({ href }: PDFViewerProps) {
             const items = header.getItems().slice(4, -7);
             header.update(items);
           });
+          if (onInstanceReady) {
+            onInstanceReady(instance);
+          }
         });
       }
 
     });
-  }, []);
+  }, [href,onInstanceReady]);
 
   return (
     <div>
