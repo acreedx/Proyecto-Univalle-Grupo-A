@@ -26,7 +26,7 @@ function CafeteriaPage() {
           </div>
           
           <div className="flex-1  p-4">
-            <Link href={"/servicios/cafeteriaMenu"}>
+            <Link href={"/servicios/CafeteriaMenu"}>
               <div className="p-4 flex justify-between items-center">
                   <button className="bg-white text-red-500 px-6 py-3 rounded-full uppercase ml-auto font-bold text-2xl mx-10">Menu 〉</button>
               </div>
