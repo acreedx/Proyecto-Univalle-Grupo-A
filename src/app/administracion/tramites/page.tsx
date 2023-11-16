@@ -75,7 +75,7 @@ export default function Tramites() {
       <ul className="flex flex-col md:flex-row items-center py-5 p-4 gap-4 justify-center md:-mt-5">
         {categories.map((categoria, index) => (
           <button
-          className="text-white text-xs min-[320px]:text-sm sm:text-base md:text-xl"
+          className="text-white text-xs min-[320px]:text-sm sm:text-base md:text-xl bg-slate-600 rounded-xl mx-3 py-1 px-2 "
             key={index}
             onClick={() => handleCategoryChange(categoria.name)} >
             {categoria.name}
