@@ -1,13 +1,25 @@
+"use client";
 import VideoPlayer from "@/app/components/video-player";
 import Circularbutton from "@/app/components/circular-button";
-import HeaderTitle from "@/app/components/header-title";
+import React, { useState, useEffect } from "react";
 import WhiteHeaderTitle from "@/app/components/white-header-title";
+import { ICajasData } from "../../../../utils/interfaces/cajasData";
+import servicesProvider from "../../../../utils/providers/servicesProvider";
+import Link from "next/link";
 function BienestarUniversitarioPage() {
   const videoUrl =
     "https://drive.google.com/uc?id=12UmVcV_XpDeF7V2PhrMQ0opcDXSwCZiJ";
   const videoWidth = "580px";
   const videoHeight = "100px";
-  const id = "1";
+
+  const [services, setServices] = useState<ICajasData[]>([]);
+
+  useEffect(() => {
+    async function doFetch() {
+      setServices(await servicesProvider.ServicesList());
+    }
+    doFetch();
+  }, []);
   return (
     <>
       <WhiteHeaderTitle
@@ -32,9 +44,7 @@ function BienestarUniversitarioPage() {
         </div>
         <div className="col-span-7 grid grid-cols-1 gap-16 pt-8  h-fit mt-6 sm:grid-cols-2 xl:mr-16">
           <div className="bg-[#898989] rounded-2xl p-4 text-white my-auto shadow-lg h-full">
-            <h3 className="text-center text-2xl font-bold mb-2">
-                Contactos
-            </h3>
+            <h3 className="text-center text-2xl font-bold mb-2">Contactos</h3>
             <ul className="text-xl p-6 pt-2 text-center">
               <li>Teléfonos: 2001800 </li>
               <li>2246725</li>
@@ -58,23 +68,18 @@ function BienestarUniversitarioPage() {
           Servicios de Cajas
         </h1>
         <div className="flex flex-row m-10 mt-4 mb-0 pb-4 justify-evenly">
-          <Circularbutton
-            imageUrl={
-              "https://img2.freepng.es/20180425/gqw/kisspng-computer-icons-university-education-scholarship-st-5ae05c41e789e1.4489979315246531219484.jpg"
+          {services.map((e, index) => {
+            if (e.status == "success") {
+              return (
+                <Circularbutton
+                  key={index}
+                  imageUrl={e.imagen}
+                  text={e.nombre}
+                  routeUrl={`cajas/${e.id}`}
+                />
+              );
             }
-            text={"Cobro de Colegiatura"}
-            routeUrl="/administracion/cajas/1"
-          />
-          <Circularbutton
-            imageUrl={"https://cdn-icons-png.flaticon.com/512/2720/2720583.png"}
-            text={"Cobro de Trámites"}
-            routeUrl="/administracion/cajas/2"
-          />
-          <Circularbutton
-            imageUrl={"https://cdn-icons-png.flaticon.com/512/431/431223.png"}
-            text={"Cobro de Cheques"}
-            routeUrl="/administracion/cajas/3"
-          />
+          })}
         </div>
       </div>
     </>
