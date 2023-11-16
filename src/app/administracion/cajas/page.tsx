@@ -35,11 +35,7 @@ function BienestarUniversitarioPage() {
             Ubicación
           </h2>
           <div className="grid justify-items-center">
-            <VideoPlayer
-              url={videoUrl}
-              width={videoWidth}
-              height={videoHeight}
-            />
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/S3W--nMfzM0?si=ogfWL-yqZrK0uqmp" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
           </div>
         </div>
         <div className="col-span-7 grid grid-cols-1 gap-16 pt-8  h-fit mt-6 sm:grid-cols-2 xl:mr-16">
