@@ -6,9 +6,11 @@ import HeaderTitle from "@/app/components/header-title";
 import VideoPlayer from "@/app/components/video-player";
 import CopyToClipboard from "@/app/components/copy-clipboard";
 import GenericButton from "@/app/components/generic-button";
+import Circularbutton from "@/app/components/circular-button";
 import { useEffect, useState } from "react";
-import { IContact, IUbicacion, IRequisitos } from "@/Services";
+import { IContact, IUbicacion, IRequisitos, IHorarios, IServicio } from "@/Services";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import { isValidUrl } from "@/app/components/functions";
 
 
 const RequirementInfo = () => {
@@ -145,48 +147,6 @@ const Ubication = () => {
   );
 };
 
-// const Ubication = () => {
-//   const videoUrl =
-//     "https://drive.google.com/uc?id=1etx-59zNpnuhlY2u4C77Ec4GPa6mX_x8";
-//   const imgUrl =
-//     "https://drive.google.com/uc?id=1gdY9Fn99yFKo3NoyWtmOIzc0nU6daRn3";
-//   const ubiWidth = "100%";
-//   const videoHeight = "360";
-
-//   const [ubication, setUbication] = useState(true);
-
-//   const handleUbicationInformation = (ubiState: boolean) => {
-//     setUbication(ubiState);
-//   };
-
-//   return (
-//     <div className="col-span-4 2xl:col-span-3">
-//       <div className="mb-2 flex flex-col justify-center min-[420px]:flex-row min-[420px]:justify-evenly">
-//         <h2 className="text-center mt-4 text-xl font-bold text-white mb-2 md:text-2xl xl:text-3xl">
-//           Ubicación
-//         </h2>
-//         <div className="flex flex-col gap-y-2 items-center justify-center min-[210px]:flex-row min-[210px]:gap-x-2">
-//           <GenericButton
-//             text="Croqui"
-//             functionOnClick={() => handleUbicationInformation(true)}
-//             active={ubication}
-//           />
-//           <GenericButton
-//             text="Video"
-//             functionOnClick={() => handleUbicationInformation(false)}
-//             active={!ubication}
-//           />
-//         </div>
-//       </div>
-
-//       {ubication ? (
-//         <img src={imgUrl} width={ubiWidth} alt="Croquis" />
-//       ) : (
-//         <VideoPlayer url={videoUrl} width={ubiWidth} height={videoHeight} />
-//       )}
-//     </div>
-//   );
-// };
 
 
 const Contacts = () => {
@@ -238,23 +198,143 @@ const Contacts = () => {
 };
 
 const Schedule = () => {
+  const [ubiData, setUbiData] = useState<IUbicacion[]>([]);
+  const [scheduleData, setScheduleData] = useState<IHorarios[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch location data
+        const ubiRes = await fetch('https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/16');
+        if (!ubiRes.ok) {
+          throw new Error('Error al obtener los datos de ubicación.');
+        }
+        const uData = await ubiRes.json();
+        setUbiData(uData.data); // Set the array of locations
+
+        // Fetch schedule data
+        const scheduleRes = await fetch('https://apisistemaunivalle.somee.com/api/Horarios/getHorarioByModuloId/16');
+        if (!scheduleRes.ok) {
+          throw new Error('Error al obtener los datos de horarios.');
+        }
+        const SData = await scheduleRes.json();
+        setScheduleData(SData.data);
+
+        console.log('ubiData:', uData.data);
+        console.log('scheduleData:', SData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="mt-10 2xl:mt-0 flex-1">
       <CardGray title="Horarios de atención">
-        <ul className="list-disc pl-1 sm:pl-2 lg:pl-6 xl:pl-4 2xl:pl-6">
-          <li>Lunes a Viernes: 08:00 a 19:00</li>
-          <li>Sábado: 08:00 a 12:00</li>
-        </ul>
+        {scheduleData && scheduleData.length > 0 ? (
+          <>
+            {scheduleData.map((datos: any, index) => (
+              <p key={index}>{`${datos.diasAtencion[0].nombreDia}: ${datos.horaInicio} a ${datos.horaFin}`}</p>
+            ))}
+          </>
+        ) : (
+          <p>No hay horarios disponibles.</p>
+        )}
         <br />
-        <p>
-          <span className="font-bold">Ubicación: </span>
-          <span>Piso 2 - Torre Maestra</span>
-        </p>
+        {ubiData.map((datos: any) => (
+          <tr key={`datos-${datos.identificador}`} >
+            <p>
+              <span className="font-bold">Ubicación: </span>
+              <span>{datos.descripcion}</span>
+            </p>
+          </tr>
+        ))}
       </CardGray>
     </div>
   );
 };
+const Services = () => {
+  const [services, setServices] = useState<IServicio[]>([]);
+  const [currentPage, setCurrentPage] = useState(1); // Agrega el estado de la página actual
+  const ServiciosPorPagina = 3;
 
+  useEffect(() => {
+    fetch(
+      "https://apisistemaunivalle.somee.com/api/Servicios/getServicioByModuloId/16"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (Array.isArray(data.data)) {
+          setServices(data.data);
+        } else {
+          console.error("Los datos de la API no son una matriz válida.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+  const startIndex = (currentPage - 1) * ServiciosPorPagina;
+  const endIndex = startIndex + ServiciosPorPagina;
+  const ServiciosEnPagina = services
+    .filter(
+      (servicio) =>
+        servicio.imagen !== null
+    )
+    .slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(services.length / ServiciosPorPagina);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  return (
+    <div className="col-span-5 mb-10">
+      <h3 className="mt-10 font-bold text-white col-start-2 mb-4 text-center text-base min-[320px]:text-lg sm:text-xl md:text-2xl xl:text-3xl">
+        Servicios de bienestar universitario
+      </h3>
+
+      <div className="flex gap-2 w-full justify-center col-span-5 flex-col items-center min-[320px]:flex-row">
+        <button
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
+            }`}
+          onClick={() => goToPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <FaArrowAltCircleLeft />
+        </button>
+        {ServiciosEnPagina.map((datos: any, i) => {
+          let routeUrl = ""; // Inicializa la variable de ruta
+          routeUrl = `/saludBienestar/clinicaOdontologica/${datos.identificador}`;
+          
+          // Si no es ninguno de los 2, routeUrl seguirá siendo una cadena vacía
+
+          return (
+            <div key={i} className="flex gap-2">
+              <Circularbutton
+                imageUrl={
+                  isValidUrl(datos.imagen) ? datos.imagen : "/ImgDefault.png"
+                }
+                text={datos.nombre}
+                routeUrl={routeUrl}
+              />
+            </div>
+          );
+        })}
+
+        <button
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
+            }`}
+          onClick={() => goToPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <FaArrowAltCircleRight />
+        </button>
+      </div>
+    </div>
+  );
+};
 function BienestarUniversitarioPage() {
   return (
     <>
@@ -274,6 +354,7 @@ function BienestarUniversitarioPage() {
           <Schedule />
         </div>
         <RequirementInfo />
+        <Services />
       </div>
     </>
   );

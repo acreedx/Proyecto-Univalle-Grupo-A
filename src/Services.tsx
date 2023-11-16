@@ -3,7 +3,7 @@ export interface IUbicacion {
     descripcion: string | null;
     imagen: string | null;
     video: string | null;
-}
+};
 export interface IContact {
     data:
     [
@@ -14,7 +14,7 @@ export interface IContact {
         }
     ]
 
-}
+};
 export interface IServicio {
     identificador: number;
     nombre: string | null;
@@ -35,4 +35,13 @@ export interface IRequisitos {
             ]
         }
     ]
+};
+export interface IHorarios {
+    identificador: number;
+    horaInicio: string | null;
+    horaFin: string | null;
+    diasAtencion: [{
+        idAtencion: number;
+        nombreDia: string | null;
+    }];
 }
