@@ -7,7 +7,7 @@ import VideoPlayer from "@/app/components/video-player";
 import CopyToClipboard from "@/app/components/copy-clipboard";
 import GenericButton from "@/app/components/generic-button";
 import { useEffect, useState } from "react";
-import { IContact, IUbicacion, IRequisitos } from "@/Services";
+import { IContact, IUbicacion, IRequisitos, IHorarios } from "@/Services";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 
@@ -145,48 +145,6 @@ const Ubication = () => {
   );
 };
 
-// const Ubication = () => {
-//   const videoUrl =
-//     "https://drive.google.com/uc?id=1etx-59zNpnuhlY2u4C77Ec4GPa6mX_x8";
-//   const imgUrl =
-//     "https://drive.google.com/uc?id=1gdY9Fn99yFKo3NoyWtmOIzc0nU6daRn3";
-//   const ubiWidth = "100%";
-//   const videoHeight = "360";
-
-//   const [ubication, setUbication] = useState(true);
-
-//   const handleUbicationInformation = (ubiState: boolean) => {
-//     setUbication(ubiState);
-//   };
-
-//   return (
-//     <div className="col-span-4 2xl:col-span-3">
-//       <div className="mb-2 flex flex-col justify-center min-[420px]:flex-row min-[420px]:justify-evenly">
-//         <h2 className="text-center mt-4 text-xl font-bold text-white mb-2 md:text-2xl xl:text-3xl">
-//           Ubicación
-//         </h2>
-//         <div className="flex flex-col gap-y-2 items-center justify-center min-[210px]:flex-row min-[210px]:gap-x-2">
-//           <GenericButton
-//             text="Croqui"
-//             functionOnClick={() => handleUbicationInformation(true)}
-//             active={ubication}
-//           />
-//           <GenericButton
-//             text="Video"
-//             functionOnClick={() => handleUbicationInformation(false)}
-//             active={!ubication}
-//           />
-//         </div>
-//       </div>
-
-//       {ubication ? (
-//         <img src={imgUrl} width={ubiWidth} alt="Croquis" />
-//       ) : (
-//         <VideoPlayer url={videoUrl} width={ubiWidth} height={videoHeight} />
-//       )}
-//     </div>
-//   );
-// };
 
 
 const Contacts = () => {
@@ -238,18 +196,57 @@ const Contacts = () => {
 };
 
 const Schedule = () => {
+  const [ubiData, setUbiData] = useState<IUbicacion[]>([]);
+  const [scheduleData, setScheduleData] = useState<IHorarios[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch location data
+        const ubiRes = await fetch('https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/16');
+        if (!ubiRes.ok) {
+          throw new Error('Error al obtener los datos de ubicación.');
+        }
+        const uData = await ubiRes.json();
+        setUbiData(uData.data); // Set the array of locations
+
+        // Fetch schedule data
+        const scheduleRes = await fetch('https://apisistemaunivalle.somee.com/api/Horarios/getHorarioByModuloId/16');
+        if (!scheduleRes.ok) {
+          throw new Error('Error al obtener los datos de horarios.');
+        }
+        const SData = await scheduleRes.json();
+        setScheduleData(SData.data);
+
+        console.log('ubiData:', uData.data);
+        console.log('scheduleData:', SData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="mt-10 2xl:mt-0 flex-1">
       <CardGray title="Horarios de atención">
-        <ul className="list-disc pl-1 sm:pl-2 lg:pl-6 xl:pl-4 2xl:pl-6">
-          <li>Lunes a Viernes: 08:00 a 19:00</li>
-          <li>Sábado: 08:00 a 12:00</li>
-        </ul>
+        {scheduleData && scheduleData.length > 0 ? (
+          <>
+            {scheduleData.map((datos: any, index) => (
+              <p key={index}>{`${datos.diasAtencion[0].nombreDia}: ${datos.horaInicio} a ${datos.horaFin}`}</p>
+            ))}
+          </>
+        ) : (
+          <p>No hay horarios disponibles.</p>
+        )}
         <br />
-        <p>
-          <span className="font-bold">Ubicación: </span>
-          <span>Piso 2 - Torre Maestra</span>
-        </p>
+        {ubiData.map((datos: any) => (
+          <tr key={`datos-${datos.identificador}`} >
+            <p>
+              <span className="font-bold">Ubicación: </span>
+              <span>{datos.descripcion}</span>
+            </p>
+          </tr>
+        ))}
       </CardGray>
     </div>
   );
