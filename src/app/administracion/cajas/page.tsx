@@ -4,7 +4,7 @@ import HeaderTitle from "@/app/components/header-title";
 import WhiteHeaderTitle from "@/app/components/white-header-title";
 function BienestarUniversitarioPage() {
   const videoUrl =
-    "https://drive.google.com/uc?id=12UmVcV_XpDeF7V2PhrMQ0opcDXSwCZiJ";
+    "https://www.youtube.com/embed/RRLkkkfr8vA?si=yQeu4luCZAG18Xg4";
   const videoWidth = "72%";
   const videoHeight = "100%";
   const id = "1";
@@ -23,11 +23,15 @@ function BienestarUniversitarioPage() {
             Ubicación
           </h2>
           <div className="grid justify-items-center">
-            <VideoPlayer
-              url={videoUrl}
-              width={videoWidth}
-              height={videoHeight}
-            />
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/tnDQAVuJp5c?si=Udl_tGNxPNoPXJx-"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
         <div className="col-span-5 grid grid-cols-1 gap-16 p-8 h-fit mt-6 sm:grid-cols-2">
