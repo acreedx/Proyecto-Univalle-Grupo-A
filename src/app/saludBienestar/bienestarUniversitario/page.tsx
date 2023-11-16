@@ -12,6 +12,7 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { IContact, IHorarios, IServicio, IUbicacion } from "@/Services";
 
 import { isValidUrl } from "@/app/components/functions";
+import Link from "next/link";
 
 const Ubication = () => {
   const [ubiData, setUbiData] = useState<IUbicacion | null>(null);
@@ -20,14 +21,16 @@ const Ubication = () => {
   useEffect(() => {
     const fetchUbicationData = async () => {
       try {
-        const res = await fetch('https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/1');
+        const res = await fetch(
+          "https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/1"
+        );
         if (!res.ok) {
-          throw new Error('Error al obtener los datos de ubicación.');
+          throw new Error("Error al obtener los datos de ubicación.");
         }
         const { data } = await res.json();
         setUbiData(data[0]); // Supongo que solo hay un elemento en el arreglo de datos
       } catch (error) {
-        console.error('Error fetching location data:', error);
+        console.error("Error fetching location data:", error);
       }
     };
 
@@ -43,11 +46,11 @@ const Ubication = () => {
   }
 
   const { imagen, video } = ubiData;
-  const imgUrl = imagen ?? ''; // Usa una cadena vacía si la imagen es null
-  const videoUrl = video ?? ''; // Usa una cadena vacía si el video es null
+  const imgUrl = imagen ?? ""; // Usa una cadena vacía si la imagen es null
+  const videoUrl = video ?? ""; // Usa una cadena vacía si el video es null
 
-  const ubiWidth = '100%';
-  const videoHeight = '360';
+  const ubiWidth = "100%";
+  const videoHeight = "360";
 
   return (
     <div className="col-span-4 2xl:col-span-3">
@@ -78,31 +81,30 @@ const Ubication = () => {
   );
 };
 
-
 const Contacts = () => {
   const [contacts, setContacts] = useState<IContact[]>([]);
 
   useEffect(() => {
-    fetch('https://apisistemaunivalle.somee.com/api/Referencia/getReferenciasbyModuloId/1')
-      .then(response => response.json())
-      .then(data => {
+    fetch(
+      "https://apisistemaunivalle.somee.com/api/Referencia/getReferenciasbyModuloId/1"
+    )
+      .then((response) => response.json())
+      .then((data) => {
         if (Array.isArray(data.data)) {
           setContacts(data.data);
         } else {
-          console.error('Los datos de la API no son una matriz válida.');
+          console.error("Los datos de la API no son una matriz válida.");
         }
       })
-      .catch(error => {
-
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }, []);
-
 
   return (
     <div className="mt-10 2xl:mt-0 flex-1">
       <CardGray title="Contactos">
-        <table className="min-w-full divide-y divide-gray-200 place-items-center" >
+        <table className="min-w-full divide-y divide-gray-200 place-items-center">
           <thead>
             <tr className="">
               <th className=" text-left">Nombre</th>
@@ -111,12 +113,12 @@ const Contacts = () => {
           </thead>
           <tbody>
             {contacts.map((datos: any) => (
-              <tr key={`datos-${datos.identificador}`} >
+              <tr key={`datos-${datos.identificador}`}>
                 <td className=" border-b border-gray-200">
-                  {datos.nombre || ''}
+                  {datos.nombre || ""}
                 </td>
                 <td className=" border-b border-gray-200">
-                  <CopyToClipboard text={datos.numero || ''} />
+                  <CopyToClipboard text={datos.numero || ""} />
                 </td>
               </tr>
             ))}
@@ -127,7 +129,6 @@ const Contacts = () => {
   );
 };
 
-
 const Schedule = () => {
   const [ubiData, setUbiData] = useState<IUbicacion[]>([]);
   const [scheduleData, setScheduleData] = useState<IHorarios[]>([]);
@@ -135,25 +136,29 @@ const Schedule = () => {
     const fetchData = async () => {
       try {
         // Fetch location data
-        const ubiRes = await fetch('https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/1');
+        const ubiRes = await fetch(
+          "https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/1"
+        );
         if (!ubiRes.ok) {
-          throw new Error('Error al obtener los datos de ubicación.');
+          throw new Error("Error al obtener los datos de ubicación.");
         }
         const uData = await ubiRes.json();
         setUbiData(uData.data); // Set the array of locations
 
         // Fetch schedule data
-        const scheduleRes = await fetch('https://apisistemaunivalle.somee.com/api/Horarios/getHorarioByModuloId/1');
+        const scheduleRes = await fetch(
+          "https://apisistemaunivalle.somee.com/api/Horarios/getHorarioByModuloId/1"
+        );
         if (!scheduleRes.ok) {
-          throw new Error('Error al obtener los datos de horarios.');
+          throw new Error("Error al obtener los datos de horarios.");
         }
         const SData = await scheduleRes.json();
         setScheduleData(SData.data);
 
-        console.log('ubiData:', uData.data);
-        console.log('scheduleData:', SData);
+        console.log("ubiData:", uData.data);
+        console.log("scheduleData:", SData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -165,7 +170,9 @@ const Schedule = () => {
         {scheduleData && scheduleData.length > 0 ? (
           <>
             {scheduleData.map((datos: any, index) => (
-              <p key={index}>{`${datos.diasAtencion[0].nombreDia}: ${datos.horaInicio} a ${datos.horaFin}`}</p>
+              <p
+                key={index}
+              >{`${datos.diasAtencion[0].nombreDia}: ${datos.horaInicio} a ${datos.horaFin}`}</p>
             ))}
           </>
         ) : (
@@ -173,7 +180,7 @@ const Schedule = () => {
         )}
         <br />
         {ubiData.map((datos: any) => (
-          <tr key={`datos-${datos.identificador}`} >
+          <tr key={`datos-${datos.identificador}`}>
             <p>
               <span className="font-bold">Ubicación: </span>
               <span>{datos.descripcion}</span>
@@ -184,7 +191,6 @@ const Schedule = () => {
     </div>
   );
 };
-
 
 const Services = () => {
   const [services, setServices] = useState<IServicio[]>([]);
@@ -231,8 +237,9 @@ const Services = () => {
 
       <div className="flex gap-2 w-full justify-center col-span-5 flex-col items-center min-[320px]:flex-row">
         <button
-          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
-            }`}
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
+            currentPage === 1 ? "invisible" : "visible"
+          }`}
           onClick={() => goToPage(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -245,6 +252,8 @@ const Services = () => {
             routeUrl = "/saludBienestar/bienestarUniversitario/objetosPerdidos";
           } else if (datos.nombre === "Becas") {
             routeUrl = "/saludBienestar/bienestarUniversitario/becasAyudas";
+          } else {
+            routeUrl = `/saludBienestar/bienestarUniversitario/${datos.identificador}`;
           }
           // Si no es ninguno de los 2, routeUrl seguirá siendo una cadena vacía
 
@@ -262,8 +271,9 @@ const Services = () => {
         })}
 
         <button
-          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
-            }`}
+          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
+            currentPage === totalPages ? "invisible" : "visible"
+          }`}
           onClick={() => goToPage(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
