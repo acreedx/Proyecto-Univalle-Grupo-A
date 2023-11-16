@@ -25,7 +25,7 @@ const SwiperComponent: FC<SwiperComponentProps> = ({ slides, description }) => {
               <img
                 src={slide}
                 alt={`Slide ${index + 1}`}
-                className="drop-shadow-xl w-full object-contain"
+                className="drop-shadow-xl w-full object-contain h-80"
               />
               <h1 className="text-white text-xl font-bold text-center mt-6 px-24">
                 {description[index]}
