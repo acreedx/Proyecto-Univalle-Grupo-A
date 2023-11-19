@@ -13,8 +13,9 @@ const Navbar = () => {
               LA RESPUESTA CIENTIFICA AL FUTURO
             </p>
           </div>
-        </div>
+          </div>
       </div>
+      
     </nav>
   );
 };
