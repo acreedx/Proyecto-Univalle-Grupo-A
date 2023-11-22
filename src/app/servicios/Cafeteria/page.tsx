@@ -1,6 +1,6 @@
 import Circularbutton from "@/app/components/circular-button";
 import Link from "next/link";
-
+import HeaderTitle from "@/app/components/header-title";
 
 function CafeteriaPage() {
   return (
@@ -10,10 +10,11 @@ function CafeteriaPage() {
       
         
         <div className="flex-1 flex">
-          <div className="flex-1  p-4">           
+          <div className="flex-1  p-4">
+            <HeaderTitle direction="/" title=""></HeaderTitle>
             <h1 className="text-center mt-10 text-4xl font-bold text-white">Video informativo</h1>
             <center className="p-10">
-            <iframe width="480" height="360" src="https://www.youtube.com/embed/iA9vIfTF7Wo" title="Vida del programador - Gracioso" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            <iframe width="480" height="360" src="https://www.youtube.com/embed/9OX7cGzFoJw" title="video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
             </center>
             <div className="rounded-3xl bg-gray-400 text-white p-4 text-2xl mx-20">
               <h1 className="text-center font-bold text-white text-4xl p-5">Horario de atencion</h1>

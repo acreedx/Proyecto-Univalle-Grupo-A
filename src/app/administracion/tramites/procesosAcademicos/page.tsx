@@ -72,14 +72,12 @@ function ProcesosAcademicos() {
   };
   return (
     <>
-      <div className="mt-3 md:-ml-24">
         <HeaderTitle direction="/administracion" title="" />
-      </div>
-
+      
       <ul className="flex flex-col md:flex-row items-center py-5 p-4 gap-4 justify-center md:-mt-5">
         <ButtonNav href="/administracion/tramites/solicitudes" text="Solicitudes" />
-        <ButtonNav href="/administracion/tramites/procesosAcademicos" text="Procesos académicos" />
-        <ButtonNav href="/administracion/tramites/certificaciones" text="Certificaciones" />
+        <ButtonNav  className="bg-blue-500"  href="/administracion/tramites/procesosAcademicos" text="Procesos académicos" />
+          <ButtonNav href="/administracion/tramites/certificaciones" text="Certificaciones" />
       </ul>
 
       <div className="flex justify-between items-center mx-6">
