@@ -17,7 +17,7 @@ interface DireccionDeCarreraProps {
   faculty: IFacultad[]; // Ajusta el tipo según la estructura real de tus datos
 }
 
-function DireccionDeCarrera({ faculty }: DireccionDeCarreraProps) {
+function DireccionDeCarrera() {
   const [data, setData] = useState<IFacultad[]>([]);
   useEffect(() => {
     const fetchData = async () => {

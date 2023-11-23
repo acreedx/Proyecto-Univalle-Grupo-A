@@ -34,10 +34,8 @@ interface CarrerasProps {
 
 function Carreras({
   params,
-  carrer,
 }: {
   params: { idFacultad: number };
-  carrer: CarrerasProps;
 }) {
   const [data, setData] = useState<ICarrera[]>([]);
   const [facultadTitle, setFacultadTitle] = useState<string | null>(null);
