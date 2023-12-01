@@ -2,18 +2,17 @@
 import { useEffect, useState } from 'react'
 import ImageCarrousel from "@/app/components/image-carrousel";
 import HeaderTitle from '@/app/components/header-title';
-
-import URL from '@/../utils/api';
-import { ITramitesData, convertJSONService } from "@/../utils/interfaces/tramitesData";
+import { ITramitesData } from "@/../utils/interfaces/tramitesData";
 import { IStepRequirementData } from '@/../utils/interfaces/stepRequerimentData';
 import stepRequerimentProvider from '@/../utils/providers/stepRequerimentProvider';
-import locationsProvider from '../../../../../utils/providers/locationsProvider';
-import tramitesProvider from '../../../../../utils/providers/tramitesProvider';
+import locationsProvider from '@/../../utils/providers/locationsProvider';
+import tramitesProvider from '@/../../utils/providers/tramitesProvider';
 import '@/app/styles/scrollStyle.css'
+import GenericButton from '@/app/components/generic-button';
 
 function InformacionTramite({ params }: { params: { id: number } }) {
   const [service, setService] = useState<ITramitesData>();
-  const route = "Servicios/getTramiteById/";
+  const [imgSelect, setImgSelect] = useState(true)
   const { id } = params;
   const [stepsRequirements, setStepsrequirements] = useState<IStepRequirementData[]>([]);
 
@@ -25,7 +24,7 @@ function InformacionTramite({ params }: { params: { id: number } }) {
         setService(await tramitesProvider.GetOneTramite(id))
         setStepsrequirements(await stepRequerimentProvider.GetStepsRequirementsList(id))
         const locations = await locationsProvider.GetLocationsList(id)
-        const newSlides = locations.map(item => item.imagen)
+        const newSlides = imgSelect == true ? locations.map(item => item.imagen) : locations.map(item => item.video)
         const newDescriptions = locations.map(item => item.descripcion)
         setSlides(newSlides)
         setDescriptions(newDescriptions)
@@ -34,13 +33,27 @@ function InformacionTramite({ params }: { params: { id: number } }) {
       }
     }
     doFetch();
-  }, []);
-
-
+  }, [imgSelect]);
+  const handleUbicationInformation = (ubiState: boolean) => {
+    setImgSelect(ubiState);
+  };
   return (
     <>
 
       <HeaderTitle direction="/administracion/tramites" title={service?.name} />
+      <div className="flex flex-col ml-96 gap-y-2 my-2 min-[210px]:flex-row min-[210px]:gap-x-2 ">
+          <GenericButton
+            text="Croqui"
+            functionOnClick={() => handleUbicationInformation(true)}
+            active={imgSelect}
+          />
+          <GenericButton
+            text="Video"
+            functionOnClick={() => handleUbicationInformation(false)}
+            active={!imgSelect}
+          />
+        </div>
+
 
       <div className="grid grid-cols-1 mt-1 p-5 md:p-10 gap-5 md:gap-20 py-0 xl:grid-cols-12">
         <div className="col-span-7 xl:col-span-5 md:col-span-10">
@@ -93,7 +106,7 @@ function InformacionTramite({ params }: { params: { id: number } }) {
               </li>
             ))}
           </ol>
-       
+
         </div>
       </div >
     </>

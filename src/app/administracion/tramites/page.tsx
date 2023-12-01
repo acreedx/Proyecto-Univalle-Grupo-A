@@ -53,11 +53,8 @@ export default function Tramites() {
     
    //setServices(await tramitesProvider.TramitesList())
       setCategories(await categoriasProvider.CategoriesList())
-
     }
-
     doFetch();
-
   }, []);
 
 
@@ -122,7 +119,7 @@ export default function Tramites() {
           <FaArrowAltCircleRight />
         </button>
       </div>
-      <div className="flex justify-center ">
+      <div className="flex justify-center py-5">
         <span className="text-white inline-block align-middle text-2xl bg-slate-600 rounded-2xl p-2">
           Página {currentPage} de {totalPages}
         </span>
