@@ -8,63 +8,72 @@ import Pagination from "@/app/components/Pagination";
 import NotFoundMessage from "@/app/components/not-found-message";
 import LoadingScreen from "@/app/components/loading-screen";
 import { objetosPerdidosProps, data } from "@/app/DataTools/DataMissingObject";
+import { isValidUrl } from "@/app/components/functions";
 
 function ObjetosPerdidosPage() {
   const [loading, setLoading] = useState(true);
-  const [missObjs, setMissObjs] = useState<objetosPerdidosProps[]>(data);
-  const [searchMissObjs, setSearchMissObjs] =
-    useState<objetosPerdidosProps[]>(data);
+  const [missObjs, setMissObjs] = useState<MissObject[]>([]);
+  const [searchMissObjs, setSearchMissObjs] = useState<MissObject[]>([]);
 
   //Get Information
 
   interface MissObject {
-    id: number;
-    image: string;
-    name: string;
+    titulo: string;
+    archivo: string;
   }
 
   useEffect(() => {
+    setLoading(true);
+    getInfo();
+    setLoading(false);
     window.scrollTo(0, 0);
-    //getInfo();
   }, []);
 
-  // const getInfo = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       "https://jsonplaceholder.typicode.com/photos"
-  //     );
-  //     if (!response.ok) {
-  //       throw new Error("Error al obtener los datos");
-  //     }
-  //     const data = await response.json();
-  //     setMissObjs(data);
-  //     setSearchMissObjs(data);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.error(error);
-  //     setLoading(false);
-  //   }
-  // };
+  const getInfo = async () => {
+    try {
+      const response = await fetch(
+        "http://apisistemaunivalle.somee.com/api/Publicaciones/getPublicacionesbyServicioId/1"
+      );
+      if (!response.ok) {
+        throw new Error("Error al obtener los datos");
+      }
+      const data = await response.json();
+      setMissObjs(data.data);
+      setSearchMissObjs(data.data);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  };
 
   //Función de búsqueda
 
   const searchObjs = (parameter: string) => {
+    setLoading(true);
     setSearchMissObjs(
       missObjs.filter((obj) =>
-        obj.name.toLowerCase().includes(parameter.toLowerCase())
+        obj.titulo.toLowerCase().includes(parameter.toLowerCase())
       )
     );
+    setLoading(false);
   };
 
   const showObjects = (objs: MissObject[]) => {
     return (
       <div className="flex flex-wrap justify-center items-center gap-4">
-        {objs.length > 0 ? (
+        {loading ? (
+          <LoadingScreen /> // Muestra la pantalla de carga mientras se busca
+        ) : objs.length > 0 ? (
           objs.map((obj, index) => (
-            <ItemMissObj key={index} imageUrl={obj.image} name={obj.name} />
+            <ItemMissObj
+              key={index}
+              imageUrl={
+                isValidUrl(obj.archivo) ? obj.archivo : "/placeholder.jpg"
+              }
+              name={obj.titulo}
+            />
           ))
-        ) : loading ? (
-          <LoadingScreen />
         ) : (
           <NotFoundMessage message="No se encontraron resultados" />
         )}
