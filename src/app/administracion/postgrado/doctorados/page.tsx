@@ -1,11 +1,10 @@
-import ButtonNav from '@/app/components/ButtonNav';
+import HeaderTitle from '@/app/components/header-title';
 import './estilodoc.css';
 
 function doctorados() {
     return(
         <div>
-            <center><h1>Doctorados Univalle</h1></center>
-            <div className='boton'><ButtonNav href='/administracion/postgrado/maesypostprincipal' text='Volver'/></div>
+            <HeaderTitle title='Doctorados Univalle' direction='/administracion/postgrado/maesypostprincipal'/>
             <div className="contenedor">
                 <div className="card">
                     <div className="face front">

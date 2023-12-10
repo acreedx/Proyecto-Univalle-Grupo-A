@@ -1,11 +1,10 @@
-import ButtonNav from '@/app/components/ButtonNav';
+import HeaderTitle from '@/app/components/header-title';
 import './estilomaestrias.css';
 
 function maestrias(){
     return(
         <div>
-            <center><h1>Maestrias Univalle</h1></center>
-            <div className='boton'><ButtonNav href='/administracion/postgrado/maesypostprincipal' text='Volver'/></div>
+            <HeaderTitle title='Maestrias Univalle' direction='/administracion/postgrado/maesypostprincipal'/>
             <div className="contenedor">
                 <div className="cardM">
                     <div className="face front">
