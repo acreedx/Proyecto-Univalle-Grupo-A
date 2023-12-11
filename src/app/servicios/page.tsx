@@ -2,12 +2,13 @@
 
 import Circularbutton from "../components/circular-button";
 import { Button } from "@nextui-org/react";
+import HeaderTitle from "@/app/components/header-title";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
 function ServiciosPage() {
   return (
     <main className="h-full grid gap-40">
-      <h1 className="text-center mt-10 text-4xl font-bold text-white">Servicios</h1>
+      <HeaderTitle direction="/" title="Servicios" />
       <div className="flex gap-16 w-full justify-center">
         <Circularbutton
           imageUrl={
