@@ -43,12 +43,12 @@ function InformacionTramite({ params }: { params: { id: number } }) {
       <HeaderTitle direction="/administracion/tramites" title={service?.name} />
       <div className="flex flex-col ml-96 gap-y-2 my-2 min-[210px]:flex-row min-[210px]:gap-x-2 ">
           <GenericButton
-            text="Croqui"
+            text="Imagen"
             functionOnClick={() => handleUbicationInformation(true)}
             active={imgSelect}
           />
           <GenericButton
-            text="Video"
+            text="Croquis"
             functionOnClick={() => handleUbicationInformation(false)}
             active={!imgSelect}
           />
