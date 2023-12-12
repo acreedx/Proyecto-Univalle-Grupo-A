@@ -9,6 +9,7 @@ import NotFoundMessage from "@/app/components/not-found-message";
 import LoadingScreen from "@/app/components/loading-screen";
 import { objetosPerdidosProps, data } from "@/app/DataTools/DataMissingObject";
 import { isValidUrl } from "@/app/components/functions";
+import URL from "../../../../../utils/api";
 
 function ObjetosPerdidosPage() {
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,8 @@ function ObjetosPerdidosPage() {
   const [searchMissObjs, setSearchMissObjs] = useState<MissObject[]>([]);
 
   //Get Information
-
+  const route = "Publicaciones/getPublicacionesbyServicioId/";
+  const moduleId = 237;
   interface MissObject {
     titulo: string;
     archivo: string;
@@ -32,7 +34,7 @@ function ObjetosPerdidosPage() {
   const getInfo = async () => {
     try {
       const response = await fetch(
-        "http://apisistemaunivalle.somee.com/api/Publicaciones/getPublicacionesbyServicioId/1"
+        `${URL.baseUrl}${route}${moduleId}`
       );
       if (!response.ok) {
         throw new Error("Error al obtener los datos");

@@ -54,44 +54,48 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
     };
     return (
       <div className="col-span-5 mb-10">
-        <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
-          Requisitos para usar los servicios de Gabinete Médico
-        </h3>
-        <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
-          <button
-            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
-              currentPage === 1 ? "invisible" : "visible"
-            }`}
-            onClick={() => goToPage(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            <FaArrowAltCircleLeft />
-          </button>
-          {RequerimientosEnPagina.map((requirement: any) => (
-            <div key={requirement.identificador}>
-              <CardRequirement
-                title={requirement.descripcion}
-                info={
-                  requirement.pasosRequisito &&
-                  requirement.pasosRequisito.map((paso: any) => (
-                    <div key={paso.identificador}>
-                      <strong>{paso.nombre}</strong>
-                    </div>
-                  ))
-                }
-              />
+        {requirements.length > 0 ? (
+          <>
+            <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
+              Requisitos para usar los servicios de <p>{servicio && servicio[0].nombre}</p>
+            </h3>
+            <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
+              <button
+                className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
+                  }`}
+                onClick={() => goToPage(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                <FaArrowAltCircleLeft />
+              </button>
+              {RequerimientosEnPagina.map((requirement: any) => (
+                <div key={requirement.identificador}>
+                  <CardRequirement
+                    title={requirement.descripcion}
+                    info={
+                      requirement.pasosRequisito &&
+                      requirement.pasosRequisito.map((paso: any) => (
+                        <div key={paso.identificador}>
+                          <strong>{paso.nombre}</strong>
+                        </div>
+                      ))
+                    }
+                  />
+                </div>
+              ))}
+              <button
+                className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
+                  }`}
+                onClick={() => goToPage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                <FaArrowAltCircleRight />
+              </button>
             </div>
-          ))}
-          <button
-            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
-              currentPage === totalPages ? "invisible" : "visible"
-            }`}
-            onClick={() => goToPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            <FaArrowAltCircleRight />
-          </button>
-        </div>
+          </>
+        ) : (
+          <p className="text-white rounded-full p-2 text-sm md:text-2xl place-self-center text-center h-full">No hay requisitos disponibles. </p>
+        )}
       </div>
     );
   };
@@ -110,12 +114,17 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
             throw new Error("Error al obtener los datos de ubicación.");
           }
           const resData = await res.json();
-          setUbiData({
-            identificador: resData.data[0].identificador,
-            descripcion: resData.data[0].descripcion,
-            imagen: resData.data[0].imagen,
-            video: resData.data[0].video,
-          }); // Supongo que solo hay un elemento en el arreglo de datos
+          if (resData.data.length > 0) {
+            setUbiData({
+              identificador: resData.data[0].identificador,
+              descripcion: resData.data[0].descripcion,
+              imagen: resData.data[0].imagen,
+              video: resData.data[0].video,
+            });
+          } else {
+            // No data available, you can set a default state or display a message/image
+            setUbiData(null);
+          }
         } catch (error) {
           console.error("Error fetching location data:", error);
         }
@@ -128,15 +137,21 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
       setUbication(ubiState);
     };
 
-    if (!ubiData) {
-      return null; // Puedes mostrar un indicador de carga aquí si lo deseas
+    if (ubiData === null) {
+      // No data available, you can set a default image or message here
+      const defaultImgUrl = "public/icono-pelicula-no-disponible-no-hay-video-simbolo-grabacion-incorrecta_883533-431.png"; // Replace with your default image URL
+      return (
+        <div className="col-span-4 2xl:col-span-3">
+          <h2 className="text-center mt-4 text-xl font-bold text-white mb-2 md:text-2xl xl:text-3xl">
+            Ubicación
+          </h2>
+          <img src={defaultImgUrl} width="100%" alt="Default Image" />
+        </div>
+      );
     }
 
     const { imagen, video } = ubiData;
-    const imgUrl = imagen ?? ""; // Usa una cadena vacía si la imagen es null
-    const videoUrl = video ?? ""; // Usa una cadena vacía si el video es null
-
-    const ubiWidth = "100%";
+    const imgUrl = imagen ?? ""; // Use a default image URL if 'imagen' is null
     const videoHeight = "360";
 
     return (
@@ -160,13 +175,14 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
         </div>
 
         {ubication ? (
-          <img src={imgUrl} width={ubiWidth} alt="Croquis" />
+          <img src={imgUrl} width="100%" alt="Croquis" />
         ) : (
-          <VideoPlayer url={videoUrl} width={ubiWidth} height={videoHeight} />
+          <VideoPlayer url={video ?? ""} width="100%" height={videoHeight} />
         )}
       </div>
     );
   };
+
 
   const Contacts = () => {
     const [contacts, setContacts] = useState<IContact[]>([]);
@@ -190,27 +206,32 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
 
     return (
       <div className="mt-10 2xl:mt-0 flex-1">
+
         <CardGray title="Contactos">
-          <table className="min-w-full divide-y divide-gray-200 place-items-center">
-            <thead>
-              <tr className="">
-                <th className=" text-left">Nombre</th>
-                <th className=" text-left">Teléfono</th>
-              </tr>
-            </thead>
-            <tbody>
-              {contacts.map((datos: any) => (
-                <tr key={`datos-${datos.identificador}`}>
-                  <td className=" border-b border-gray-200">
-                    {datos.nombre || ""}
-                  </td>
-                  <td className=" border-b border-gray-200">
-                    <CopyToClipboard text={datos.numero || ""} />
-                  </td>
+          {contacts && contacts.length > 0 ? (
+            <table className="min-w-full divide-y divide-gray-200 place-items-center">
+              <thead>
+                <tr className="">
+                  <th className=" text-left">Nombre</th>
+                  <th className=" text-left">Teléfono</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {contacts.map((datos: any) => (
+                  <tr key={`datos-${datos.identificador}`}>
+                    <td className=" border-b border-gray-200">
+                      {datos.nombre || ""}
+                    </td>
+                    <td className=" border-b border-gray-200">
+                      <CopyToClipboard text={datos.numero || ""} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No existen contactos disponibles.</p>
+          )}
         </CardGray>
       </div>
     );
@@ -265,21 +286,26 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
             <p>No hay horarios disponibles.</p>
           )}
           <br />
-          {ubiData.map((datos: any) => (
-            <tr key={`datos-${datos.identificador}`}>
-              <p>
-                <span className="font-bold">Ubicación: </span>
-                <span>{datos.descripcion}</span>
-              </p>
-            </tr>
-          ))}
+          {ubiData.length > 0 ? (
+            <table>
+              <tbody>
+                {ubiData.map((datos: any) => (
+                  <tr key={`datos-${datos.identificador}`}>
+                    <td>
+                      <span className="font-bold">Ubicación: </span>
+                      <span>{datos.descripcion}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No hay ubicaciones disponibles.</p>
+          )}
         </CardGray>
       </div>
     );
   };
-  // Route -> /shop/[tag]/[item]
-  // URL -> /shop/shoes/nike-air-max-97
-  // `params` -> { tag: 'shoes', item: 'nike-air-max-97' }
 
   const [servicio, setServicio] = useState<any>(null);
 
