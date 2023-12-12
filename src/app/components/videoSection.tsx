@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react';
 import ReactPlayer from 'react-player';
+import React, { useEffect, useRef } from 'react';
 
 interface VideoSectionProps {
     title: string;
@@ -12,13 +12,18 @@ interface VideoSectionProps {
 }
 
 const VideoSection = ({ title, description, videoUrl, width, height }: VideoSectionProps) => {
+
+
+
     return (
-        <section className="shadow-md rounded-lg overflow-hidden">
-            <div className="max-w-screen-xl px-4 py-8 mx-auto text-center">
-                <h2 className="text-3xl font-semibold text-white mb-4">{title}</h2>
+        <section className="overflow-hidden">
+            <div className="max-w-screen-xl mx-auto text-center">
+                <h2 className="text-3xl font-bold text-white mb-4">{title}</h2>
                 <p className="text-white mb-6">{description}</p>
                 <div className="max-w-screen-lg mx-auto aspect-w-16 aspect-h-9">
                     <ReactPlayer
+                        playing
+                        loop
                         url={videoUrl}
                         width={width}
                         height={height}

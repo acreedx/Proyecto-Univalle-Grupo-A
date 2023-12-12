@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="h-full grid gap-40 mx-0">
       <h1 className="text-center mt-10 text-4xl font-bold text-white">
-        Servicios
+        Bienvenido a InfoUnivalle
       </h1>
       <div className="flex gap-16 w-full justify-center">
         <Circularbutton
