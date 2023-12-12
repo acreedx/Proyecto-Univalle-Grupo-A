@@ -11,92 +11,26 @@ import { isValidUrl } from "@/app/components/functions";
 import { useEffect, useState } from "react";
 import { IContact, IServicio, IUbicacion, IRequisitos, IHorarios } from "@/Services";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import URL from "../../../../utils/api";
 
-
-const RequirementInfo = () => {
-  const [requirements, setRequirements] = useState<IRequisitos[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const RequerimientosPorPagina = 3;
-  useEffect(() => {
-    fetch('https://apisistemaunivalle.somee.com/api/Requisitos/getRequisitosByModuloId/16')
-      .then(response => response.json())
-      .then(data => {
-        if (Array.isArray(data.data)) {
-          setRequirements(data.data);
-          console.log(data.data)
-        } else {
-          console.error('Los datos de la API no son una matriz válida.');
-        }
-      })
-      .catch(error => {
-
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-  const startIndex = (currentPage - 1) * RequerimientosPorPagina;
-  const endIndex = startIndex + RequerimientosPorPagina;
-  const RequerimientosEnPagina = requirements
-    .slice(startIndex, endIndex);
-
-  const totalPages = Math.ceil(requirements.length / RequerimientosPorPagina);
-
-  const goToPage = (page: number) => {
-    setCurrentPage(page);
-  };
-  return (
-    <div className="col-span-5 mb-10">
-      <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
-        Requisitos para usar los servicios de Gabinete Médico
-      </h3>
-      <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
-        <button
-          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
-            }`}
-          onClick={() => goToPage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          <FaArrowAltCircleLeft />
-        </button>
-        {RequerimientosEnPagina.map((requirement: any) => (
-          <div key={requirement.identificador}>
-            <CardRequirement
-              title={requirement.descripcion}
-              info={requirement.pasosRequisito && requirement.pasosRequisito.map((paso: any) => (
-                <div key={paso.identificador}>
-                  <strong>{paso.nombre}</strong>
-                </div>
-              ))}
-            />
-          </div>
-        ))}
-        <button
-          className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
-            }`}
-          onClick={() => goToPage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          <FaArrowAltCircleRight />
-        </button>
-      </div>
-    </div>
-  );
-};
-
+const moduleId = 15;
 const Ubication = () => {
   const [ubiData, setUbiData] = useState<IUbicacion | null>(null);
   const [ubication, setUbication] = useState(true);
-
+  const route = "Ubicaciones/getUbicacionesbyModuloId/";
   useEffect(() => {
     const fetchUbicationData = async () => {
       try {
-        const res = await fetch('https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/15');
+        const res = await fetch(
+          `${URL.baseUrl}${route}${moduleId}`
+        );
         if (!res.ok) {
-          throw new Error('Error al obtener los datos de ubicación.');
+          throw new Error("Error al obtener los datos de ubicación.");
         }
         const { data } = await res.json();
         setUbiData(data[0]); // Supongo que solo hay un elemento en el arreglo de datos
       } catch (error) {
-        console.error('Error fetching location data:', error);
+        console.error("Error fetching location data:", error);
       }
     };
 
@@ -112,11 +46,11 @@ const Ubication = () => {
   }
 
   const { imagen, video } = ubiData;
-  const imgUrl = imagen ?? ''; // Usa una cadena vacía si la imagen es null
-  const videoUrl = video ?? ''; // Usa una cadena vacía si el video es null
+  const imgUrl = imagen ?? ""; // Usa una cadena vacía si la imagen es null
+  const videoUrl = video ?? ""; // Usa una cadena vacía si el video es null
 
-  const ubiWidth = '100%';
-  const videoHeight = '360';
+  const ubiWidth = "100%";
+  const videoHeight = "360";
 
   return (
     <div className="col-span-4 2xl:col-span-3">
@@ -147,82 +81,91 @@ const Ubication = () => {
   );
 };
 
-
 const Contacts = () => {
   const [contacts, setContacts] = useState<IContact[]>([]);
-
+  const route = "Referencia/getReferenciasbyModuloId/";
   useEffect(() => {
-    fetch('https://apisistemaunivalle.somee.com/api/Referencia/getReferenciasbyModuloId/15')
-      .then(response => response.json())
-      .then(data => {
+    fetch(
+      `${URL.baseUrl}${route}${moduleId}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
         if (Array.isArray(data.data)) {
           setContacts(data.data);
         } else {
-          console.error('Los datos de la API no son una matriz válida.');
+          console.error("Los datos de la API no son una matriz válida.");
         }
       })
-      .catch(error => {
-
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }, []);
-
 
   return (
     <div className="mt-10 2xl:mt-0 flex-1">
       <CardGray title="Contactos">
-        <table className="min-w-full divide-y divide-gray-200 place-items-center" >
-          <thead>
-            <tr className="">
-              <th className=" text-left">Nombre</th>
-              <th className=" text-left">Teléfono</th>
-            </tr>
-          </thead>
-          <tbody>
-            {contacts.map((datos: any) => (
-              <tr key={`datos-${datos.identificador}`} >
-                <td className=" border-b border-gray-200">
-                  {datos.nombre || ''}
-                </td>
-                <td className=" border-b border-gray-200">
-                  <CopyToClipboard text={datos.numero || ''} />
-                </td>
+        {contacts && contacts.length > 0 ? (
+          <table className="min-w-full divide-y divide-gray-200 place-items-center">
+            <thead>
+              <tr className="">
+                <th className=" text-left">Nombre</th>
+                <th className=" text-left">Teléfono</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+
+              {contacts.map((datos: any) => (
+                <tr key={`datos-${datos.identificador}`}>
+                  <td className=" border-b border-gray-200">
+                    {datos.nombre || ""}
+                  </td>
+                  <td className=" border-b border-gray-200">
+                    <CopyToClipboard text={datos.numero || ""} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No existen contactos disponibles.</p>
+        )}
       </CardGray>
     </div>
   );
 };
 
-
 const Schedule = () => {
   const [ubiData, setUbiData] = useState<IUbicacion[]>([]);
   const [scheduleData, setScheduleData] = useState<IHorarios[]>([]);
+  const routeUbi = "Ubicaciones/getUbicacionesbyModuloId/";
+  const routeH = "Horarios/getHorarioByModuloId/";
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch location data
-        const ubiRes = await fetch('https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/15');
+        const ubiRes = await fetch(
+          `${URL.baseUrl}${routeUbi}${moduleId}`
+        );
         if (!ubiRes.ok) {
-          throw new Error('Error al obtener los datos de ubicación.');
+          throw new Error("Error al obtener los datos de ubicación.");
         }
         const uData = await ubiRes.json();
         setUbiData(uData.data); // Set the array of locations
 
         // Fetch schedule data
-        const scheduleRes = await fetch('https://apisistemaunivalle.somee.com/api/Horarios/getHorarioByModuloId/15');
+        const scheduleRes = await fetch(
+          `${URL.baseUrl}${routeH}${moduleId}`
+        );
         if (!scheduleRes.ok) {
-          throw new Error('Error al obtener los datos de horarios.');
+          throw new Error("Error al obtener los datos de horarios.");
         }
         const SData = await scheduleRes.json();
         setScheduleData(SData.data);
 
-        console.log('ubiData:', uData.data);
-        console.log('scheduleData:', SData);
+        console.log("ubiData:", uData.data);
+        console.log("scheduleData:", SData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -234,22 +177,112 @@ const Schedule = () => {
         {scheduleData && scheduleData.length > 0 ? (
           <>
             {scheduleData.map((datos: any, index) => (
-              <p key={index}>{`${datos.diasAtencion[0].nombreDia}: ${datos.horaInicio} a ${datos.horaFin}`}</p>
+              <p
+                key={index}
+              >{`${datos.diasAtencion[0].nombreDia}: ${datos.horaInicio} a ${datos.horaFin}`}</p>
             ))}
           </>
         ) : (
           <p>No hay horarios disponibles.</p>
         )}
         <br />
-        {ubiData.map((datos: any) => (
-          <tr key={`datos-${datos.identificador}`} >
-            <p>
-              <span className="font-bold">Ubicación: </span>
-              <span>{datos.descripcion}</span>
-            </p>
-          </tr>
-        ))}
+        {ubiData.length > 0 ? (
+          <table>
+            <tbody>
+              {ubiData.map((datos: any) => (
+                <tr key={`datos-${datos.identificador}`}>
+                  <td>
+                    <span className="font-bold">Ubicación: </span>
+                    <span>{datos.descripcion}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No hay ubicaciones disponibles.</p>
+        )}
       </CardGray>
+    </div>
+  );
+};
+const RequirementInfo = () => {
+  const [requirements, setRequirements] = useState<IRequisitos[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const RequerimientosPorPagina = 3;
+  const route = "Requisitos/getRequisitosByModuloId/";
+  useEffect(() => {
+    fetch(`${URL.baseUrl}${route}${moduleId}`)
+      .then(response => response.json())
+      .then(data => {
+        if (Array.isArray(data.data)) {
+          setRequirements(data.data);
+          console.log(data.data)
+        } else {
+          console.error('Los datos de la API no son una matriz válida.');
+        }
+      })
+      .catch(error => {
+
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+  const startIndex = (currentPage - 1) * RequerimientosPorPagina;
+  const endIndex = startIndex + RequerimientosPorPagina;
+  const RequerimientosEnPagina = requirements
+    .slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(requirements.length / RequerimientosPorPagina);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+  };
+  return (
+    <div className="col-span-5 mb-10">
+      <h3 className="text-center mt-10 text-xl font-bold text-white col-start-2 mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
+        Requisitos para usar los servicios de Gabinete Médico
+      </h3>
+      {requirements.length > 0 ? (
+        <>
+
+          <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
+            <button
+              className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
+                }`}
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <FaArrowAltCircleLeft />
+            </button>
+            {RequerimientosEnPagina.map((requirement: any) => (
+              <div key={requirement.identificador}>
+                <CardRequirement
+                  title={requirement.descripcion}
+                  info={
+                    requirement.pasosRequisito &&
+                    requirement.pasosRequisito.map((paso: any) => (
+                      <div key={paso.identificador}>
+                        <strong>{paso.nombre}</strong>
+                      </div>
+                    ))
+                  }
+                />
+              </div>
+            ))}
+            <button
+              className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
+                }`}
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              <FaArrowAltCircleRight />
+            </button>
+          </div>
+        </>
+      ) : (
+        <p className="text-white rounded-full p-2 text-sm md:text-2xl place-self-center text-center h-full">No hay requisitos disponibles. </p>
+
+      )}
     </div>
   );
 };
@@ -258,10 +291,10 @@ const Services = () => {
   const [services, setServices] = useState<IServicio[]>([]);
   const [currentPage, setCurrentPage] = useState(1); // Agrega el estado de la página actual
   const ServiciosPorPagina = 3;
-
+  const route = "Servicios/getServicioByModuloId/";
   useEffect(() => {
     fetch(
-      "https://apisistemaunivalle.somee.com/api/Servicios/getServicioByModuloId/15"
+      `${URL.baseUrl}${route}${moduleId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -293,7 +326,7 @@ const Services = () => {
   return (
     <div className="col-span-5 mb-10">
       <h3 className="mt-10 font-bold text-white col-start-2 mb-4 text-center text-base min-[320px]:text-lg sm:text-xl md:text-2xl xl:text-3xl">
-        Servicios de bienestar universitario
+        Servicios de Gabinete Medico
       </h3>
 
       <div className="flex gap-2 w-full justify-center col-span-5 flex-col items-center min-[320px]:flex-row">
@@ -307,7 +340,8 @@ const Services = () => {
         </button>
         {ServiciosEnPagina.map((datos: any, i) => {
           let routeUrl = ""; // Inicializa la variable de ruta
-          routeUrl = `/saludBienestar/gabineteMedico/${datos.identificador}`;
+          routeUrl = `/saludBienestar/clinicaOdontologica/${datos.identificador}`;
+
           // Si no es ninguno de los 2, routeUrl seguirá siendo una cadena vacía
 
           return (
