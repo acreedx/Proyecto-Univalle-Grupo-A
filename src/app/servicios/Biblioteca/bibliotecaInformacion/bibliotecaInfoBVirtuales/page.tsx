@@ -14,7 +14,6 @@ const ULibrary = () => {
         <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
           <h1 className="font-dmserif text-3xl font-bold text-white">eLibro</h1>
           <p className="mb-3 text-base italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Esta plataforma permite la lectura en línea, pero también la descarga de los libros para leerlos en otro dispositivo. Es compatible con todos los navegadores, permite la lectura on-line y off-line desde ordenadores o dispositivos móviles (smartphones, tablets) iOS y Android.</p>
-          <button className="rounded-full bg-[#98075b] py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">Saber Más</button>
         </div>
       </div>
       <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
@@ -25,7 +24,6 @@ const ULibrary = () => {
         <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
           <h1 className="font-dmserif text-3xl font-bold text-white">DynaMed</h1>
           <p className="mb-3 text-base italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">DynaMed es ampliamente utilizado en entornos clínicos para mantener a los profesionales médicos informados sobre las últimas evidencias y prácticas médicas.</p>
-          <button className="rounded-full bg-[#98075b] py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">Saber Más</button>
         </div>
       </div>
       <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
@@ -36,7 +34,6 @@ const ULibrary = () => {
         <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
           <h1 className="font-dmserif text-3xl font-bold text-white">ebooks 7-24</h1>
           <p className="mb-3 text-base italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">A través de EBooks 7-24, los usuarios pueden acceder a una amplia gama de contenidos académicos y de investigación, incluyendo libros de texto, monografías, revistas, y otros recursos educativos.</p>
-          <button className="rounded-full bg-[#98075b] py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">Saber Más</button>
         </div>
       </div>
       <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
@@ -47,7 +44,6 @@ const ULibrary = () => {
         <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
           <h1 className="font-dmserif text-3xl font-bold text-white">latindex</h1>
           <p className="mb-3 text-base italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Latindex es un sistema de información en línea que proporciona un directorio y una base de datos de revistas científicas de América Latina, el Caribe, España y Portugal.</p>
-          <button className="rounded-full bg-[#98075b] py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">Saber Más</button>
         </div>
       </div>
       <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
@@ -58,7 +54,6 @@ const ULibrary = () => {
         <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
           <h1 className="font-dmserif text-3xl font-bold text-white">SciDev.Net</h1>
           <p className="mb-3 text-base italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">SciDev.Net es una red de información y comunicación que se enfoca en proporcionar noticias y análisis sobre ciencia y tecnología para el desarrollo global.</p>
-          <button className="rounded-full bg-[#98075b] py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">Saber Más</button>
         </div>
       </div>
       <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
@@ -69,7 +64,6 @@ const ULibrary = () => {
         <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
           <h1 className="font-dmserif text-3xl font-bold text-white"> Difusión Juridica de Bolivia4</h1>
           <p className="mb-3 text-base italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Es una biblioteca virtual especializada en ciencias jurídicas que se enfoca en proporcionar acceso a una amplia gama de recursos relacionados con el campo del derecho en Bolivia.</p>
-          <button className="rounded-full bg-[#98075b] py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">Saber Más</button>
         </div>
       </div>
     </div>
