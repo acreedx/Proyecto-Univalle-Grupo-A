@@ -36,8 +36,6 @@ function maestrias(){
                         Cochabamba <br/>
                         Modalidad:<br/>
                         ON LINE / Semipresencial <br/>
-                        Si necesitas más información visitanos en: <br/>
-                        Av. Argentina 2083, La Paz, Piso 16 Torre A
                         </p>
                     </div>
                 </div>
@@ -52,8 +50,6 @@ function maestrias(){
                         La Paz <br/>
                         Modalidad: <br/>
                         ON LINE / Semipresencial <br/>
-                        Si necesitas más información visitanos en: <br/>
-                        Av. Argentina 2083, La Paz, Piso 16 Torre A
                         </p>
                     </div>
                 </div>
@@ -68,8 +64,6 @@ function maestrias(){
                         Cochabamba <br/>
                         Modalidad: <br/>
                         ON LINE / Semipresencial <br/>
-                        Si necesitas más información visitanos en: <br/>
-                        Av. Argentina 2083, La Paz, Piso 16 Torre A
                         </p>
                     </div>
                 </div>

@@ -37,6 +37,18 @@ function BienvenidaPostgrado() {
                 </div>
                 <div className="cardS">
                     <div className="face front">
+                        <img src="https://img.freepik.com/vector-gratis/ubicacion_53876-25530.jpg?size=338&ext=jpg&ga=GA1.1.1826414947.1699833600&semt=ais" alt="Ubicación" />
+                        <h3>Ubicación</h3>                        
+                    </div>
+                    <div className="face back">
+                        <h3>¡Encuentranos!</h3>
+                        <img src="https://media.licdn.com/dms/image/D4E05AQHpK1DBFtuseQ/feedshare-thumbnail_720_1280/0/1693335378796?e=2147483647&v=beta&t=Czd990g-2zXtRVexeWmThPhfrfVoBEdJ0nmrsMeJNN0" alt="PostGrado"/>
+                        <p>Si necesitas más información visitanos en: <br/>
+                        Av. Argentina 2083, La Paz, Piso 16 Torre A</p>
+                    </div>
+                </div>
+                <div className="cardS">
+                    <div className="face front">
                         <img src="https://uneg.edu.mx/wp-content/uploads/2022/12/8-min.jpg" alt="Maestrías y Doctorados" />
                         <h3>Maestrías, Doctorados y Diplomados.</h3>
                     </div>

@@ -11,7 +11,6 @@ function CafeteriaMenuPage() {
   const [dataTable2, setMenuinfo] = useState<ICafeteriaData[]>([]);
   const [TotalResult,setTotal]= useState(Number);
   const resultsPerPage = 10;
-  console.log("asdsad")
   function onPageChangeTable2(p: number) {
     setPageTable2(p);
   }
@@ -26,7 +25,7 @@ function CafeteriaMenuPage() {
   ]
   useEffect(() => {
     const getData = async () => {
-      const query = await fetch('http://apisistemaunivalle.somee.com/api/Publicaciones/getPublicacionesbyModuloId/4');
+      const query = await fetch('https://apisistemaunivalle.somee.com/api/Publicaciones/getPublicacionesbyModuloId/4');
       const response:any= await query.json();
       //console.log(response)
       setTotal(response.data.length);
@@ -83,7 +82,6 @@ function CafeteriaMenuPage() {
       
       <div className="flex flex-wrap justify-center items-center gap-4">
       {dataTable2.map((menu:any, i) => (
-        
         <ItemMenu
           key={i}
           imageUrl={menu.archivo}
