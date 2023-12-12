@@ -2,6 +2,7 @@
 
 import Circularbutton from "../components/circular-button";
 import { Button } from "@nextui-org/react";
+import HeaderTitle from "@/app/components/header-title";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import HeaderTitle from "../components/header-title";
 
