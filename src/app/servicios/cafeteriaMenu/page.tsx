@@ -5,6 +5,7 @@ import menu from "@/app/DataTools/DataMenuCafeteria";
 import React, { useState, useEffect, ChangeEvent } from "react";
 import response,{ICafeteriaData}from"@/app/DataTools/DataCafeteria";
 //import { getPrice, getDescription } from "@/app/DataTools/DataCafeteria";
+import HeaderTitle from "@/app/components/header-title";
 
 function CafeteriaMenuPage() {
   const [pageTable2, setPageTable2] = useState(1);
@@ -42,6 +43,7 @@ function CafeteriaMenuPage() {
         description = b.contenido
       }
     })
+    console.log(dataTable2)
     return description
     
   }
@@ -68,7 +70,8 @@ function CafeteriaMenuPage() {
   return (
     
     <main className="h-full grid gap-5">
-      <h1 className="text-center mt-10 text-4xl font-bold text-white">Cafeteria</h1>
+      <h1 className="text-center mt-10 text-4xl font-bold text-white">Cafeteria - Todos los productos</h1>
+      <HeaderTitle direction="/servicios/Cafeteria" title=""></HeaderTitle>
       <ul className="flex items-center py-5 p-4 gap-4 justify-center">
         <ButtonNav href="/servicios/cafeteriaMenu" text="Todo" />
         <ButtonNav href="/servicios/cafeteriaMenu/cafeteriaMenuJugos" text="Jugos/Batidos" />
