@@ -32,7 +32,7 @@ function ObjetosPerdidosPage() {
   const getInfo = async () => {
     try {
       const response = await fetch(
-        "http://apisistemaunivalle.somee.com/api/Publicaciones/getPublicacionesbyServicioId/1"
+        "https://apisistemaunivalle.somee.com/api/Publicaciones/getPublicacionesbyServicioId/1"
       );
       if (!response.ok) {
         throw new Error("Error al obtener los datos");
