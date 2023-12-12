@@ -59,9 +59,8 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
         </h3>
         <div className="flex flex-col gap-16 w-full justify-center col-span-full lg:flex-row">
           <button
-            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
-              currentPage === 1 ? "invisible" : "visible"
-            }`}
+            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === 1 ? "invisible" : "visible"
+              }`}
             onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
           >
@@ -83,9 +82,8 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
             </div>
           ))}
           <button
-            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${
-              currentPage === totalPages ? "invisible" : "visible"
-            }`}
+            className={`text-white rounded-full p-2 text-4xl md:text-7xl h-full flex items-center ${currentPage === totalPages ? "invisible" : "visible"
+              }`}
             onClick={() => goToPage(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
@@ -191,26 +189,31 @@ function ServicioPage({ searchParams }: { searchParams: URLSearchParams }) {
     return (
       <div className="mt-10 2xl:mt-0 flex-1">
         <CardGray title="Contactos">
-          <table className="min-w-full divide-y divide-gray-200 place-items-center">
-            <thead>
-              <tr className="">
-                <th className=" text-left">Nombre</th>
-                <th className=" text-left">Teléfono</th>
-              </tr>
-            </thead>
-            <tbody>
-              {contacts.map((datos: any) => (
-                <tr key={`datos-${datos.identificador}`}>
-                  <td className=" border-b border-gray-200">
-                    {datos.nombre || ""}
-                  </td>
-                  <td className=" border-b border-gray-200">
-                    <CopyToClipboard text={datos.numero || ""} />
-                  </td>
+          {contacts && contacts.length > 0 ? (
+            <table className="min-w-full divide-y divide-gray-200 place-items-center">
+              <thead>
+                <tr className="">
+                  <th className=" text-left">Nombre</th>
+                  <th className=" text-left">Teléfono</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+
+                {contacts.map((datos: any) => (
+                  <tr key={`datos-${datos.identificador}`}>
+                    <td className=" border-b border-gray-200">
+                      {datos.nombre || ""}
+                    </td>
+                    <td className=" border-b border-gray-200">
+                      <CopyToClipboard text={datos.numero || ""} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No existen contactos disponibles.</p>
+          )}
         </CardGray>
       </div>
     );

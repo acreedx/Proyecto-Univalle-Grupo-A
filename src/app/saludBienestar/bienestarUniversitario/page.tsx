@@ -8,21 +8,23 @@ import CopyToClipboard from "@/app/components/copy-clipboard";
 import GenericButton from "@/app/components/generic-button";
 import { useState, useEffect } from "react";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
-
+import URL from "../../../../utils/api";
 import { IContact, IHorarios, IServicio, IUbicacion } from "@/Services";
 
 import { isValidUrl } from "@/app/components/functions";
 import Link from "next/link";
 
+
+const moduleId = 1;
 const Ubication = () => {
   const [ubiData, setUbiData] = useState<IUbicacion | null>(null);
   const [ubication, setUbication] = useState(true);
-
+  const route = "Ubicaciones/getUbicacionesbyModuloId/";
   useEffect(() => {
     const fetchUbicationData = async () => {
       try {
         const res = await fetch(
-          "https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/1"
+          `${URL.baseUrl}${route}${moduleId}`
         );
         if (!res.ok) {
           throw new Error("Error al obtener los datos de ubicación.");
@@ -83,10 +85,10 @@ const Ubication = () => {
 
 const Contacts = () => {
   const [contacts, setContacts] = useState<IContact[]>([]);
-
+  const route = "Referencia/getReferenciasbyModuloId/";
   useEffect(() => {
     fetch(
-      "https://apisistemaunivalle.somee.com/api/Referencia/getReferenciasbyModuloId/1"
+      `${URL.baseUrl}${route}${moduleId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -104,27 +106,33 @@ const Contacts = () => {
   return (
     <div className="mt-10 2xl:mt-0 flex-1">
       <CardGray title="Contactos">
-        <table className="min-w-full divide-y divide-gray-200 place-items-center">
-          <thead>
-            <tr className="">
-              <th className=" text-left">Nombre</th>
-              <th className=" text-left">Teléfono</th>
-            </tr>
-          </thead>
-          <tbody>
-            {contacts.map((datos: any) => (
-              <tr key={`datos-${datos.identificador}`}>
-                <td className=" border-b border-gray-200">
-                  {datos.nombre || ""}
-                </td>
-                <td className=" border-b border-gray-200">
-                  <CopyToClipboard text={datos.numero || ""} />
-                </td>
+        {contacts && contacts.length > 0 ? (
+          <table className="min-w-full divide-y divide-gray-200 place-items-center">
+            <thead>
+              <tr className="">
+                <th className=" text-left">Nombre</th>
+                <th className=" text-left">Teléfono</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+
+              {contacts.map((datos: any) => (
+                <tr key={`datos-${datos.identificador}`}>
+                  <td className=" border-b border-gray-200">
+                    {datos.nombre || ""}
+                  </td>
+                  <td className=" border-b border-gray-200">
+                    <CopyToClipboard text={datos.numero || ""} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No existen contactos disponibles.</p>
+        )}
       </CardGray>
+
     </div>
   );
 };
@@ -132,12 +140,13 @@ const Contacts = () => {
 const Schedule = () => {
   const [ubiData, setUbiData] = useState<IUbicacion[]>([]);
   const [scheduleData, setScheduleData] = useState<IHorarios[]>([]);
+  const routeUbi = "Ubicaciones/getUbicacionesbyModuloId/";
+  const routeH = "Horarios/getHorarioByModuloIdActive/";
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch location data
         const ubiRes = await fetch(
-          "https://apisistemaunivalle.somee.com/api/Ubicaciones/getUbicacionesbyModuloId/1"
+          `${URL.baseUrl}${routeUbi}${moduleId}`
         );
         if (!ubiRes.ok) {
           throw new Error("Error al obtener los datos de ubicación.");
@@ -147,16 +156,13 @@ const Schedule = () => {
 
         // Fetch schedule data
         const scheduleRes = await fetch(
-          "https://apisistemaunivalle.somee.com/api/Horarios/getHorarioByModuloId/1"
+          `${URL.baseUrl}${routeH}${moduleId}`
         );
         if (!scheduleRes.ok) {
           throw new Error("Error al obtener los datos de horarios.");
         }
         const SData = await scheduleRes.json();
         setScheduleData(SData.data);
-
-        console.log("ubiData:", uData.data);
-        console.log("scheduleData:", SData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -179,14 +185,22 @@ const Schedule = () => {
           <p>No hay horarios disponibles.</p>
         )}
         <br />
-        {ubiData.map((datos: any) => (
-          <tr key={`datos-${datos.identificador}`}>
-            <p>
-              <span className="font-bold">Ubicación: </span>
-              <span>{datos.descripcion}</span>
-            </p>
-          </tr>
-        ))}
+        {ubiData.length > 0 ? (
+          <table>
+            <tbody>
+              {ubiData.map((datos: any) => (
+                <tr key={`datos-${datos.identificador}`}>
+                  <td>
+                    <span className="font-bold">Ubicación: </span>
+                    <span>{datos.descripcion}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No hay ubicaciones disponibles.</p>
+        )}
       </CardGray>
     </div>
   );
@@ -196,10 +210,10 @@ const Services = () => {
   const [services, setServices] = useState<IServicio[]>([]);
   const [currentPage, setCurrentPage] = useState(1); // Agrega el estado de la página actual
   const ServiciosPorPagina = 3;
-
+  const route = "Servicios/getServicioByModuloId/";
   useEffect(() => {
     fetch(
-      "https://apisistemaunivalle.somee.com/api/Servicios/getServicioByModuloId/1"
+      `${URL.baseUrl}${route}${moduleId}`
     )
       .then((response) => response.json())
       .then((data) => {
